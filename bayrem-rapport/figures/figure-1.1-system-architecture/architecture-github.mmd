@@ -1,0 +1,39 @@
+graph TD
+    subgraph "🖥️ PRESENTATION LAYER"
+        A["Angular 16 Frontend<br/>• Responsive UI<br/>• Role-based Views<br/>• HTTP Polling Chat"]
+    end
+    
+    subgraph "⚙️ APPLICATION SERVICES"
+        B["Spring Boot 3.x API<br/>• REST Controllers<br/>• Business Logic<br/>• Spring Security + JWT<br/>• Email Service"]
+        
+        C["🤖 Flask AI Chatbot<br/>• OpenAI GPT Integration<br/>• Car Recommendations<br/>• DB Context Fetching<br/>• FAQ Responses"]
+        
+        D["🔐 Keycloak Server<br/>• Admin Auth (OAuth2)<br/>• Role Management<br/>• Token Issuing"]
+    end
+    
+    subgraph "🛡️ SECURITY"
+        S1["Spring Security<br/>• JWT Validation<br/>• Customer/Agency Auth<br/>• CORS Config"]
+    end
+    
+    subgraph "🗄️ DATA LAYER"
+        E["MySQL 8 Database<br/>• Users & Agencies<br/>• Vehicles & Bookings<br/>• Chat Messages<br/>• Notifications"]
+    end
+    
+    subgraph "🚀 DEVOPS & INFRASTRUCTURE"
+        F["🐳 Docker<br/>Multi-container"]
+        G["☸️ Kubernetes<br/>Minikube"]
+        H["🔄 GitLab CI/CD<br/>Pipeline"]
+    end
+    
+    A -->|"HTTPS REST"| B
+    A -->|"HTTP POST /chat"| C
+    A -->|"Admin OAuth2"| D
+    
+    B -->|"JPA/Hibernate"| E
+    B <-->|"Token Validation"| D
+    B ---|"JWT Filter"| S1
+    
+    C -->|"Fetch Context"| E
+    C -->|"OpenAI API"| AI[("☁️ OpenAI<br/>GPT API")]
+    
+    F --> G --> H

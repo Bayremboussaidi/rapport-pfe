@@ -58,144 +58,225 @@
 \contentsline {section}{\numberline {\filterminitoc {1.}7}Project Architectures and Design Approaches}{13}{section.1.7}%
 \contentsline {subsection}{\numberline {\if@rl \I {1.7.1}\else \textLR {1.7.1}\fi }System Architecture: Microservices with Three-Tier Logical Structure}{13}{subsection.1.7.1}%
 \contentsline {subsubsection}{\numberline {\if@rl \I {1.7.1}\else \textLR {1.7.1}\fi .1}Architecture Layers}{14}{subsubsection.1.7.1.1}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {1.7.1}\else \textLR {1.7.1}\fi .2}Service Communication Flow}{15}{subsubsection.1.7.1.2}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.7.1}\else \textLR {1.7.1}\fi .2}Service Communication Flow}{14}{subsubsection.1.7.1.2}%
 \contentsline {subsubsection}{\numberline {\if@rl \I {1.7.1}\else \textLR {1.7.1}\fi .3}Containerization and Deployment}{15}{subsubsection.1.7.1.3}%
-\contentsline {subsection}{\numberline {\if@rl \I {2.7.1}\else \textLR {1.7.2}\fi }Design Pattern: RESTful Service-Oriented Architecture (SOA)}{16}{subsection.1.7.2}%
-\contentsline {subsection}{\numberline {\if@rl \I {3.7.1}\else \textLR {1.7.3}\fi }Design Pattern: MVC for Payment Service}{16}{subsection.1.7.3}%
-\contentsline {subsection}{\numberline {\if@rl \I {4.7.1}\else \textLR {1.7.4}\fi }FastAPI Chatbot Microservice}{16}{subsection.1.7.4}%
+\contentsline {subsection}{\numberline {\if@rl \I {2.7.1}\else \textLR {1.7.2}\fi }Design Pattern: RESTful Service-Oriented Architecture (SOA)}{15}{subsection.1.7.2}%
+\contentsline {subsection}{\numberline {\if@rl \I {3.7.1}\else \textLR {1.7.3}\fi }Design Pattern: MVC for Payment Service}{15}{subsection.1.7.3}%
+\contentsline {subsection}{\numberline {\if@rl \I {4.7.1}\else \textLR {1.7.4}\fi }Flask AI Chatbot Microservice}{15}{subsection.1.7.4}%
 \contentsline {section}{\numberline {\filterminitoc {1.}8}Project Management and Design Methodology}{16}{section.1.8}%
 \contentsline {subsection}{\numberline {\if@rl \I {1.8.1}\else \textLR {1.8.1}\fi }Traditional vs Agile Approaches}{16}{subsection.1.8.1}%
 \contentsline {subsection}{\numberline {\if@rl \I {2.8.1}\else \textLR {1.8.2}\fi }Methodology Selection: Why Scrum?}{16}{subsection.1.8.2}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {2.8.1}\else \textLR {1.8.2}\fi .1}Comparative Analysis of Agile Methods}{17}{subsubsection.1.8.2.1}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {2.8.1}\else \textLR {1.8.2}\fi .2}Justification for Choosing Scrum}{17}{subsubsection.1.8.2.2}%
-\contentsline {subsection}{\numberline {\if@rl \I {3.8.1}\else \textLR {1.8.3}\fi }Scrum Framework Overview}{18}{subsection.1.8.3}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {3.8.1}\else \textLR {1.8.3}\fi .1}Scrum Team Roles}{18}{subsubsection.1.8.3.1}%
-\contentsline {paragraph}{The Product Owner (PO)}{19}{paragraph*.12}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {2.8.1}\else \textLR {1.8.2}\fi .1}Comparative Analysis of Agile Methods}{16}{subsubsection.1.8.2.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {2.8.1}\else \textLR {1.8.2}\fi .2}Justification for Choosing Scrum}{16}{subsubsection.1.8.2.2}%
+\contentsline {subsection}{\numberline {\if@rl \I {3.8.1}\else \textLR {1.8.3}\fi }Scrum Framework Overview}{17}{subsection.1.8.3}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {3.8.1}\else \textLR {1.8.3}\fi .1}Scrum Team Roles}{17}{subsubsection.1.8.3.1}%
+\contentsline {paragraph}{The Product Owner (PO)}{18}{paragraph*.12}%
 \contentsline {paragraph}{The Scrum Master (SM)}{19}{paragraph*.13}%
-\contentsline {paragraph}{The Development Team}{20}{paragraph*.14}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {3.8.1}\else \textLR {1.8.3}\fi .2}Scrum Events (Ceremonies)}{20}{subsubsection.1.8.3.2}%
-\contentsline {paragraph}{Sprint}{20}{paragraph*.16}%
-\contentsline {paragraph}{Sprint Planning Meeting}{22}{paragraph*.17}%
+\contentsline {paragraph}{The Development Team}{19}{paragraph*.14}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {3.8.1}\else \textLR {1.8.3}\fi .2}Scrum Events (Ceremonies)}{21}{subsubsection.1.8.3.2}%
+\contentsline {paragraph}{Sprint}{21}{paragraph*.16}%
+\contentsline {paragraph}{Sprint Planning Meeting}{21}{paragraph*.17}%
 \contentsline {paragraph}{Daily Scrum (Stand-up)}{22}{paragraph*.18}%
 \contentsline {paragraph}{Sprint Review}{23}{paragraph*.19}%
-\contentsline {paragraph}{Sprint Retrospective}{24}{paragraph*.20}%
+\contentsline {paragraph}{Sprint Retrospective}{23}{paragraph*.20}%
 \contentsline {paragraph}{Backlog Refinement (Grooming)}{24}{paragraph*.21}%
 \contentsline {subsubsection}{\numberline {\if@rl \I {3.8.1}\else \textLR {1.8.3}\fi .3}Scrum Artifacts}{25}{subsubsection.1.8.3.3}%
 \contentsline {paragraph}{Product Backlog}{25}{paragraph*.22}%
-\contentsline {paragraph}{Sprint Backlog}{26}{paragraph*.23}%
+\contentsline {paragraph}{Sprint Backlog}{25}{paragraph*.23}%
 \contentsline {paragraph}{Increment}{26}{paragraph*.24}%
 \contentsline {paragraph}{Burndown Chart}{26}{paragraph*.25}%
-\contentsline {paragraph}{Velocity Chart}{27}{paragraph*.27}%
-\contentsline {subsection}{\numberline {\if@rl \I {4.8.1}\else \textLR {1.8.4}\fi }Agile Methodology Implementation}{28}{subsection.1.8.4}%
-\contentsline {subsection}{\numberline {\if@rl \I {5.8.1}\else \textLR {1.8.5}\fi }Development Environment}{29}{subsection.1.8.5}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {5.8.1}\else \textLR {1.8.5}\fi .1}Hardware Environment}{29}{subsubsection.1.8.5.1}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {5.8.1}\else \textLR {1.8.5}\fi .2}Software Environment}{29}{subsubsection.1.8.5.2}%
+\contentsline {paragraph}{Velocity Chart}{26}{paragraph*.27}%
+\contentsline {subsection}{\numberline {\if@rl \I {4.8.1}\else \textLR {1.8.4}\fi }Agile Methodology Implementation}{27}{subsection.1.8.4}%
+\contentsline {subsection}{\numberline {\if@rl \I {5.8.1}\else \textLR {1.8.5}\fi }Development Environment}{28}{subsection.1.8.5}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {5.8.1}\else \textLR {1.8.5}\fi .1}Hardware Environment}{28}{subsubsection.1.8.5.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {5.8.1}\else \textLR {1.8.5}\fi .2}Software Environment}{28}{subsubsection.1.8.5.2}%
 \contentsline {subsubsection}{\numberline {\if@rl \I {5.8.1}\else \textLR {1.8.5}\fi .3}Deployment Tools}{29}{subsubsection.1.8.5.3}%
 \contentsline {section}{\numberline {\filterminitoc {1.}9}Conclusion}{29}{section.1.9}%
 \select@language {french}
-\contentsline {chapter}{\numberline {\textLR {2}}\bgroup \beginL \latintext Needs Analysis and Specification\endL \egroup }{31}{chapter.2}%
-\contentsline {section}{\numberline {\filterminitoc {2.}1}Introduction}{32}{section.2.1}%
-\contentsline {section}{\numberline {\filterminitoc {2.}2}Actors Identification}{32}{section.2.2}%
-\contentsline {subsection}{\numberline {\if@rl \I {1.2.2}\else \textLR {2.2.1}\fi }Human Actors}{32}{subsection.2.2.1}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {1.2.2}\else \textLR {2.2.1}\fi .1}Administrator}{32}{subsubsection.2.2.1.1}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {1.2.2}\else \textLR {2.2.1}\fi .2}Agency}{33}{subsubsection.2.2.1.2}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {1.2.2}\else \textLR {2.2.1}\fi .3}Customer}{33}{subsubsection.2.2.1.3}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {1.2.2}\else \textLR {2.2.1}\fi .4}Visitor}{34}{subsubsection.2.2.1.4}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {1.2.2}\else \textLR {2.2.1}\fi .5}Follower}{34}{subsubsection.2.2.1.5}%
-\contentsline {subsection}{\numberline {\if@rl \I {2.2.2}\else \textLR {2.2.2}\fi }System Actors}{34}{subsection.2.2.2}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {2.2.2}\else \textLR {2.2.2}\fi .1}Chatbot (AI Assistant)}{34}{subsubsection.2.2.2.1}%
-\contentsline {subsection}{\numberline {\if@rl \I {3.2.2}\else \textLR {2.2.3}\fi }Actor Hierarchy Diagram}{35}{subsection.2.2.3}%
-\contentsline {section}{\numberline {\filterminitoc {2.}3}Needs Identification}{35}{section.2.3}%
-\contentsline {subsection}{\numberline {\if@rl \I {1.3.2}\else \textLR {2.3.1}\fi }Functional Needs}{35}{subsection.2.3.1}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {1.3.2}\else \textLR {2.3.1}\fi .1}Customer Functional Requirements}{36}{subsubsection.2.3.1.1}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {1.3.2}\else \textLR {2.3.1}\fi .2}Agency Functional Requirements}{36}{subsubsection.2.3.1.2}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {1.3.2}\else \textLR {2.3.1}\fi .3}Administrator Functional Requirements}{37}{subsubsection.2.3.1.3}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {1.3.2}\else \textLR {2.3.1}\fi .4}Follower Functional Requirements}{38}{subsubsection.2.3.1.4}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {1.3.2}\else \textLR {2.3.1}\fi .5}System-wide Functionalities}{38}{subsubsection.2.3.1.5}%
-\contentsline {subsection}{\numberline {\if@rl \I {2.3.2}\else \textLR {2.3.2}\fi }Non-Functional Needs}{38}{subsection.2.3.2}%
-\contentsline {section}{\numberline {\filterminitoc {2.}4}System Design}{40}{section.2.4}%
-\contentsline {subsection}{\numberline {\if@rl \I {1.4.2}\else \textLR {2.4.1}\fi }Global Use Case Diagram}{40}{subsection.2.4.1}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {1.4.2}\else \textLR {2.4.1}\fi .1}Customer Use Case Diagram}{40}{subsubsection.2.4.1.1}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {1.4.2}\else \textLR {2.4.1}\fi .2}Agency Use Case Diagram}{40}{subsubsection.2.4.1.2}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {1.4.2}\else \textLR {2.4.1}\fi .3}Administrator Use Case Diagram}{40}{subsubsection.2.4.1.3}%
-\contentsline {subsection}{\numberline {\if@rl \I {2.4.2}\else \textLR {2.4.2}\fi }Global Class Diagram}{41}{subsection.2.4.2}%
-\contentsline {section}{\numberline {\filterminitoc {2.}5}Project Management Methodology}{41}{section.2.5}%
-\contentsline {subsection}{\numberline {\if@rl \I {1.5.2}\else \textLR {2.5.1}\fi }Traditional vs Agile Methods}{41}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {\if@rl \I {2.5.2}\else \textLR {2.5.2}\fi }Methodology Selection}{41}{subsection.2.5.2}%
-\contentsline {subsection}{\numberline {\if@rl \I {3.5.2}\else \textLR {2.5.3}\fi }Scrum Methodology Overview}{44}{subsection.2.5.3}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {3.5.2}\else \textLR {2.5.3}\fi .1}Scrum Key Concepts}{45}{subsubsection.2.5.3.1}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {3.5.2}\else \textLR {2.5.3}\fi .2}Scrum Team Composition}{46}{subsubsection.2.5.3.2}%
-\contentsline {section}{\numberline {\filterminitoc {2.}6}Scrum Implementation and Artifacts}{46}{section.2.6}%
-\contentsline {section}{\numberline {\filterminitoc {2.}7}Introduction to Scrum Artifacts}{46}{section.2.7}%
-\contentsline {subsection}{\numberline {\if@rl \I {1.7.2}\else \textLR {2.7.1}\fi }Purpose of Scrum Artifacts}{47}{subsection.2.7.1}%
-\contentsline {subsection}{\numberline {\if@rl \I {2.7.2}\else \textLR {2.7.2}\fi }How We Used Artifacts}{48}{subsection.2.7.2}%
-\contentsline {section}{\numberline {\filterminitoc {2.}8}Product Backlog}{49}{section.2.8}%
-\contentsline {subsection}{\numberline {\if@rl \I {1.8.2}\else \textLR {2.8.1}\fi }User Stories and Prioritization}{49}{subsection.2.8.1}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {1.8.2}\else \textLR {2.8.1}\fi .1}Authentication, Car Management \& Booking (Sprints 1-3)}{49}{subsubsection.2.8.1.1}%
-\contentsline {subsubsection}{\numberline {\if@rl \I {1.8.2}\else \textLR {2.8.1}\fi .2}Communication, Blog, Contracts \& DevOps (Sprints 4-8)}{49}{subsubsection.2.8.1.2}%
-\contentsline {subsection}{\numberline {\if@rl \I {2.8.2}\else \textLR {2.8.2}\fi }Backlog Summary}{49}{subsection.2.8.2}%
-\contentsline {section}{\numberline {\filterminitoc {2.}9}Sprint Planning}{49}{section.2.9}%
+\contentsline {chapter}{\numberline {\textLR {2}}\bgroup \beginL \latintext Needs Analysis and Specification\endL \egroup }{30}{chapter.2}%
+\contentsline {section}{\numberline {\filterminitoc {2.}1}Introduction}{31}{section.2.1}%
+\contentsline {section}{\numberline {\filterminitoc {2.}2}Actors Identification}{31}{section.2.2}%
+\contentsline {subsection}{\numberline {\if@rl \I {1.2.2}\else \textLR {2.2.1}\fi }Human Actors}{31}{subsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.2.2}\else \textLR {2.2.1}\fi .1}Administrator}{31}{subsubsection.2.2.1.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.2.2}\else \textLR {2.2.1}\fi .2}Agency}{32}{subsubsection.2.2.1.2}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.2.2}\else \textLR {2.2.1}\fi .3}Customer}{32}{subsubsection.2.2.1.3}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.2.2}\else \textLR {2.2.1}\fi .4}Visitor}{33}{subsubsection.2.2.1.4}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.2.2}\else \textLR {2.2.1}\fi .5}Follower}{33}{subsubsection.2.2.1.5}%
+\contentsline {subsection}{\numberline {\if@rl \I {2.2.2}\else \textLR {2.2.2}\fi }System Actors}{33}{subsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {2.2.2}\else \textLR {2.2.2}\fi .1}Chatbot (AI Assistant)}{33}{subsubsection.2.2.2.1}%
+\contentsline {subsection}{\numberline {\if@rl \I {3.2.2}\else \textLR {2.2.3}\fi }Actor Hierarchy Diagram}{34}{subsection.2.2.3}%
+\contentsline {section}{\numberline {\filterminitoc {2.}3}Needs Identification}{34}{section.2.3}%
+\contentsline {subsection}{\numberline {\if@rl \I {1.3.2}\else \textLR {2.3.1}\fi }Functional Needs}{34}{subsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.3.2}\else \textLR {2.3.1}\fi .1}Customer Functional Requirements}{35}{subsubsection.2.3.1.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.3.2}\else \textLR {2.3.1}\fi .2}Agency Functional Requirements}{35}{subsubsection.2.3.1.2}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.3.2}\else \textLR {2.3.1}\fi .3}Administrator Functional Requirements}{36}{subsubsection.2.3.1.3}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.3.2}\else \textLR {2.3.1}\fi .4}Follower Functional Requirements}{37}{subsubsection.2.3.1.4}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.3.2}\else \textLR {2.3.1}\fi .5}System-wide Functionalities}{37}{subsubsection.2.3.1.5}%
+\contentsline {subsection}{\numberline {\if@rl \I {2.3.2}\else \textLR {2.3.2}\fi }Non-Functional Needs}{37}{subsection.2.3.2}%
+\contentsline {section}{\numberline {\filterminitoc {2.}4}System Design}{39}{section.2.4}%
+\contentsline {subsection}{\numberline {\if@rl \I {1.4.2}\else \textLR {2.4.1}\fi }Use Case Diagrams}{39}{subsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.4.2}\else \textLR {2.4.1}\fi .1}Global Use Case Overview}{39}{subsubsection.2.4.1.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.4.2}\else \textLR {2.4.1}\fi .2}Customer Use Case Diagram}{39}{subsubsection.2.4.1.2}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.4.2}\else \textLR {2.4.1}\fi .3}Agency Use Case Diagram}{41}{subsubsection.2.4.1.3}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.4.2}\else \textLR {2.4.1}\fi .4}Administrator Use Case Diagram}{42}{subsubsection.2.4.1.4}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.4.2}\else \textLR {2.4.1}\fi .5}Visitor and Follower Use Cases}{43}{subsubsection.2.4.1.5}%
+\contentsline {subsection}{\numberline {\if@rl \I {2.4.2}\else \textLR {2.4.2}\fi }Class Diagram}{43}{subsection.2.4.2}%
+\contentsline {section}{\numberline {\filterminitoc {2.}5}Project Management Methodology}{45}{section.2.5}%
+\contentsline {subsection}{\numberline {\if@rl \I {1.5.2}\else \textLR {2.5.1}\fi }Traditional vs Agile Methods}{45}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {\if@rl \I {2.5.2}\else \textLR {2.5.2}\fi }Methodology Selection}{45}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {\if@rl \I {3.5.2}\else \textLR {2.5.3}\fi }Scrum Methodology Overview}{46}{subsection.2.5.3}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {3.5.2}\else \textLR {2.5.3}\fi .1}Scrum Key Concepts}{47}{subsubsection.2.5.3.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {3.5.2}\else \textLR {2.5.3}\fi .2}Scrum Team Composition}{47}{subsubsection.2.5.3.2}%
+\contentsline {section}{\numberline {\filterminitoc {2.}6}Scrum Implementation and Artifacts}{48}{section.2.6}%
+\contentsline {section}{\numberline {\filterminitoc {2.}7}Introduction to Scrum Artifacts}{48}{section.2.7}%
+\contentsline {subsection}{\numberline {\if@rl \I {1.7.2}\else \textLR {2.7.1}\fi }Purpose of Scrum Artifacts}{49}{subsection.2.7.1}%
+\contentsline {subsection}{\numberline {\if@rl \I {2.7.2}\else \textLR {2.7.2}\fi }How We Used Artifacts}{50}{subsection.2.7.2}%
+\contentsline {section}{\numberline {\filterminitoc {2.}8}Product Backlog}{50}{section.2.8}%
+\contentsline {subsection}{\numberline {\if@rl \I {1.8.2}\else \textLR {2.8.1}\fi }User Stories and Prioritization}{50}{subsection.2.8.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.8.2}\else \textLR {2.8.1}\fi .1}Authentication, Car Management \& Booking (Sprints 1-3)}{50}{subsubsection.2.8.1.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.8.2}\else \textLR {2.8.1}\fi .2}Communication, Blog, Contracts \& DevOps (Sprints 4-8)}{50}{subsubsection.2.8.1.2}%
+\contentsline {subsection}{\numberline {\if@rl \I {2.8.2}\else \textLR {2.8.2}\fi }Backlog Summary}{50}{subsection.2.8.2}%
+\contentsline {section}{\numberline {\filterminitoc {2.}9}Sprint Planning}{50}{section.2.9}%
 \contentsline {subsection}{\numberline {\if@rl \I {1.9.2}\else \textLR {2.9.1}\fi }Sprint Overview}{50}{subsection.2.9.1}%
 \contentsline {subsection}{\numberline {\if@rl \I {2.9.2}\else \textLR {2.9.2}\fi }Sprint 1: Authentication \& Platform Setup}{50}{subsection.2.9.2}%
 \contentsline {subsection}{\numberline {\if@rl \I {3.9.2}\else \textLR {2.9.3}\fi }Sprint 2: Car Management Module}{51}{subsection.2.9.3}%
 \contentsline {subsection}{\numberline {\if@rl \I {4.9.2}\else \textLR {2.9.4}\fi }Sprint 3: Booking System Core}{51}{subsection.2.9.4}%
-\contentsline {subsection}{\numberline {\if@rl \I {5.9.2}\else \textLR {2.9.5}\fi }Sprint 4: Communication Features}{52}{subsection.2.9.5}%
-\contentsline {subsection}{\numberline {\if@rl \I {6.9.2}\else \textLR {2.9.6}\fi }Sprint 5: Blog \& Subscription System}{53}{subsection.2.9.6}%
-\contentsline {subsection}{\numberline {\if@rl \I {7.9.2}\else \textLR {2.9.7}\fi }Sprint 6: Contracts \& Payments}{53}{subsection.2.9.7}%
+\contentsline {subsection}{\numberline {\if@rl \I {5.9.2}\else \textLR {2.9.5}\fi }Sprint 4: Communication Features}{51}{subsection.2.9.5}%
+\contentsline {subsection}{\numberline {\if@rl \I {6.9.2}\else \textLR {2.9.6}\fi }Sprint 5: Blog \& Subscription System}{52}{subsection.2.9.6}%
+\contentsline {subsection}{\numberline {\if@rl \I {7.9.2}\else \textLR {2.9.7}\fi }Sprint 6: Contracts \& Payments}{52}{subsection.2.9.7}%
 \contentsline {subsection}{\numberline {\if@rl \I {8.9.2}\else \textLR {2.9.8}\fi }Sprint 7: Chatbot \& Admin Panel}{53}{subsection.2.9.8}%
 \contentsline {subsection}{\numberline {\if@rl \I {9.9.2}\else \textLR {2.9.9}\fi }Sprint 8: DevOps \& Deployment}{54}{subsection.2.9.9}%
-\contentsline {section}{\numberline {\filterminitoc {2.}10}Sprint Burndown Analysis}{54}{section.2.10}%
+\contentsline {section}{\numberline {\filterminitoc {2.}10}Sprint Burndown Analysis}{55}{section.2.10}%
 \contentsline {subsection}{\numberline {\if@rl \I {1.10.2}\else \textLR {2.10.1}\fi }Project Burndown Data}{56}{subsection.2.10.1}%
-\contentsline {subsection}{\numberline {\if@rl \I {2.10.2}\else \textLR {2.10.2}\fi }Sprint 3 Detailed Burndown (Example)}{56}{subsection.2.10.2}%
-\contentsline {section}{\numberline {\filterminitoc {2.}11}Team Velocity}{56}{section.2.11}%
-\contentsline {section}{\numberline {\filterminitoc {2.}12}Definition of Done (DoD)}{57}{section.2.12}%
-\contentsline {section}{\numberline {\filterminitoc {2.}13}Scrum Ceremonies}{58}{section.2.13}%
-\contentsline {subsection}{\numberline {\if@rl \I {1.13.2}\else \textLR {2.13.1}\fi }Chapter Conclusion}{58}{subsection.2.13.1}%
-\contentsline {section}{\numberline {\filterminitoc {2.}14}Conclusion}{58}{section.2.14}%
+\contentsline {subsection}{\numberline {\if@rl \I {2.10.2}\else \textLR {2.10.2}\fi }Sprint 3 Detailed Burndown (Example)}{57}{subsection.2.10.2}%
+\contentsline {section}{\numberline {\filterminitoc {2.}11}Team Velocity}{57}{section.2.11}%
+\contentsline {section}{\numberline {\filterminitoc {2.}12}Definition of Done (DoD)}{58}{section.2.12}%
+\contentsline {section}{\numberline {\filterminitoc {2.}13}Scrum Ceremonies}{59}{section.2.13}%
+\contentsline {subsection}{\numberline {\if@rl \I {1.13.2}\else \textLR {2.13.1}\fi }Chapter Conclusion}{59}{subsection.2.13.1}%
+\contentsline {section}{\numberline {\filterminitoc {2.}14}Conclusion}{59}{section.2.14}%
 \select@language {french}
-\contentsline {chapter}{\numberline {\textLR {3}}\bgroup \beginL \latintext System Development and Implementation\endL \egroup }{60}{chapter.3}%
+\contentsline {chapter}{\numberline {\textLR {3}}\bgroup \beginL \latintext Réalisation: Core Platform et Système de Réservation\endL \egroup }{60}{chapter.3}%
 \contentsline {section}{\numberline {\filterminitoc {3.}1}Introduction}{61}{section.3.1}%
-\contentsline {section}{\numberline {\filterminitoc {3.}2}Development Environment}{61}{section.3.2}%
-\contentsline {section}{\numberline {\filterminitoc {3.}3}Database Design}{61}{section.3.3}%
-\contentsline {subsection}{\numberline {\if@rl \I {1.3.3}\else \textLR {3.3.1}\fi }Agence Table}{61}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {\if@rl \I {2.3.3}\else \textLR {3.3.2}\fi }Blog Table}{62}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {\if@rl \I {3.3.3}\else \textLR {3.3.3}\fi }Booking Table}{62}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {\if@rl \I {4.3.3}\else \textLR {3.3.4}\fi }Other Tables}{63}{subsection.3.3.4}%
-\contentsline {section}{\numberline {\filterminitoc {3.}4}Backend Implementation}{63}{section.3.4}%
-\contentsline {section}{\numberline {\filterminitoc {3.}5}Frontend Implementation}{63}{section.3.5}%
-\contentsline {section}{\numberline {\filterminitoc {3.}6}Deployment Strategy}{63}{section.3.6}%
-\contentsline {section}{\numberline {\filterminitoc {3.}7}Development Methodology}{64}{section.3.7}%
-\contentsline {section}{\numberline {\filterminitoc {3.}8}Conclusion}{64}{section.3.8}%
+\contentsline {section}{\numberline {\filterminitoc {3.}2}Sprint 1: Development Environment and Authentication}{61}{section.3.2}%
+\contentsline {subsection}{\numberline {\if@rl \I {1.2.3}\else \textLR {3.2.1}\fi }Development Environment Setup}{61}{subsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.2.3}\else \textLR {3.2.1}\fi .1}Frontend Environment}{61}{subsubsection.3.2.1.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.2.3}\else \textLR {3.2.1}\fi .2}Backend Environment}{62}{subsubsection.3.2.1.2}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.2.3}\else \textLR {3.2.1}\fi .3}Development Tools}{62}{subsubsection.3.2.1.3}%
+\contentsline {subsection}{\numberline {\if@rl \I {2.2.3}\else \textLR {3.2.2}\fi }Authentication System with Keycloak}{62}{subsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {2.2.3}\else \textLR {3.2.2}\fi .1}Why Keycloak?}{62}{subsubsection.3.2.2.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {2.2.3}\else \textLR {3.2.2}\fi .2}Keycloak Configuration}{63}{subsubsection.3.2.2.2}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {2.2.3}\else \textLR {3.2.2}\fi .3}Angular AuthGuard Implementation}{63}{subsubsection.3.2.2.3}%
+\contentsline {section}{\numberline {\filterminitoc {3.}3}Sprint 2: Database Design and Implementation}{64}{section.3.3}%
+\contentsline {subsection}{\numberline {\if@rl \I {1.3.3}\else \textLR {3.3.1}\fi }Database Architecture}{64}{subsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.3.3}\else \textLR {3.3.1}\fi .1}Entity-Relationship Model}{64}{subsubsection.3.3.1.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.3.3}\else \textLR {3.3.1}\fi .2}Core Tables}{64}{subsubsection.3.3.1.2}%
+\contentsline {paragraph}{Agency Table}{64}{paragraph*.63}%
+\contentsline {paragraph}{Car (Voiture) Table}{65}{paragraph*.64}%
+\contentsline {paragraph}{Booking Table}{66}{paragraph*.65}%
+\contentsline {paragraph}{Customer Table}{67}{paragraph*.66}%
+\contentsline {paragraph}{Blog Table}{67}{paragraph*.67}%
+\contentsline {paragraph}{Follower Table}{68}{paragraph*.68}%
+\contentsline {paragraph}{Chat Message Table}{68}{paragraph*.69}%
+\contentsline {paragraph}{Notification Table}{68}{paragraph*.70}%
+\contentsline {subsection}{\numberline {\if@rl \I {2.3.3}\else \textLR {3.3.2}\fi }Database Relationships Summary}{69}{subsection.3.3.2}%
+\contentsline {section}{\numberline {\filterminitoc {3.}4}Sprint 3: Core CRUD Operations}{69}{section.3.4}%
+\contentsline {subsection}{\numberline {\if@rl \I {1.4.3}\else \textLR {3.4.1}\fi }Backend REST API Structure}{69}{subsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.4.3}\else \textLR {3.4.1}\fi .1}Architecture Layers}{69}{subsubsection.3.4.1.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.4.3}\else \textLR {3.4.1}\fi .2}REST API Endpoints}{69}{subsubsection.3.4.1.2}%
+\contentsline {paragraph}{Car Management Endpoints}{69}{paragraph*.73}%
+\contentsline {paragraph}{Agency Management Endpoints}{69}{paragraph*.75}%
+\contentsline {subsection}{\numberline {\if@rl \I {2.4.3}\else \textLR {3.4.2}\fi }Frontend Angular Components}{70}{subsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {2.4.3}\else \textLR {3.4.2}\fi .1}Module Structure}{70}{subsubsection.3.4.2.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {2.4.3}\else \textLR {3.4.2}\fi .2}Key Components}{71}{subsubsection.3.4.2.2}%
+\contentsline {subsection}{\numberline {\if@rl \I {3.4.3}\else \textLR {3.4.3}\fi }Intelligent Car Filtering Service}{71}{subsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {3.4.3}\else \textLR {3.4.3}\fi .1}Filtering Algorithm Logic}{71}{subsubsection.3.4.3.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {3.4.3}\else \textLR {3.4.3}\fi .2}Backend Implementation}{71}{subsubsection.3.4.3.2}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {3.4.3}\else \textLR {3.4.3}\fi .3}Filter DTO Structure}{73}{subsubsection.3.4.3.3}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {3.4.3}\else \textLR {3.4.3}\fi .4}Frontend Filter Component}{73}{subsubsection.3.4.3.4}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {3.4.3}\else \textLR {3.4.3}\fi .5}API Endpoint for Filtering}{75}{subsubsection.3.4.3.5}%
+\contentsline {section}{\numberline {\filterminitoc {3.}5}Système de Réservation}{75}{section.3.5}%
+\contentsline {subsection}{\numberline {\if@rl \I {1.5.3}\else \textLR {3.5.1}\fi }Aperçu du Workflow de Réservation}{75}{subsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.5.3}\else \textLR {3.5.1}\fi .1}États de Réservation}{75}{subsubsection.3.5.1.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.5.3}\else \textLR {3.5.1}\fi .2}Algorithme de Vérification de Disponibilité}{77}{subsubsection.3.5.1.2}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.5.3}\else \textLR {3.5.1}\fi .3}Soumission de Demande de Réservation}{77}{subsubsection.3.5.1.3}%
+\contentsline {subsection}{\numberline {\if@rl \I {2.5.3}\else \textLR {3.5.2}\fi }Gestion des Demandes par l'Agence}{77}{subsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {2.5.3}\else \textLR {3.5.2}\fi .1}Tableau de Bord Agence - Vue des Demandes}{78}{subsubsection.3.5.2.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {2.5.3}\else \textLR {3.5.2}\fi .2}Processus d'Approbation/Rejet}{78}{subsubsection.3.5.2.2}%
+\contentsline {section}{\numberline {\filterminitoc {3.}6}Système d'Email et de Notifications}{79}{section.3.6}%
+\contentsline {subsection}{\numberline {\if@rl \I {1.6.3}\else \textLR {3.6.1}\fi }Architecture du Service d'Email}{79}{subsection.3.6.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.6.3}\else \textLR {3.6.1}\fi .1}Configuration Email}{79}{subsubsection.3.6.1.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.6.3}\else \textLR {3.6.1}\fi .2}Implémentation du Service Email}{80}{subsubsection.3.6.1.2}%
+\contentsline {subsection}{\numberline {\if@rl \I {2.6.3}\else \textLR {3.6.2}\fi }Génération de Contrat PDF}{81}{subsection.3.6.2}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {2.6.3}\else \textLR {3.6.2}\fi .1}Structure du Contenu PDF}{81}{subsubsection.3.6.2.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {2.6.3}\else \textLR {3.6.2}\fi .2}Génération du QR Code}{81}{subsubsection.3.6.2.2}%
+\contentsline {subsection}{\numberline {\if@rl \I {3.6.3}\else \textLR {3.6.3}\fi }Système de Notifications In-App}{82}{subsection.3.6.3}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {3.6.3}\else \textLR {3.6.3}\fi .1}Entité Notification}{82}{subsubsection.3.6.3.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {3.6.3}\else \textLR {3.6.3}\fi .2}Types de Notifications}{82}{subsubsection.3.6.3.2}%
+\contentsline {section}{\numberline {\filterminitoc {3.}7}Système de Chat en Temps Réel}{83}{section.3.7}%
+\contentsline {subsection}{\numberline {\if@rl \I {1.7.3}\else \textLR {3.7.1}\fi }Architecture du Chat}{83}{subsection.3.7.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.7.3}\else \textLR {3.7.1}\fi .1}Stack Technologique}{83}{subsubsection.3.7.1.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.7.3}\else \textLR {3.7.1}\fi .2}Service de Polling Angular}{83}{subsubsection.3.7.1.2}%
+\contentsline {subsection}{\numberline {\if@rl \I {2.7.3}\else \textLR {3.7.2}\fi }Fonctionnalités du Chat}{84}{subsection.3.7.2}%
+\contentsline {subsection}{\numberline {\if@rl \I {3.7.3}\else \textLR {3.7.3}\fi }Entité Message Chat}{85}{subsection.3.7.3}%
+\contentsline {section}{\numberline {\filterminitoc {3.}8}Système d'Abonnement Followers}{85}{section.3.8}%
+\contentsline {subsection}{\numberline {\if@rl \I {1.8.3}\else \textLR {3.8.1}\fi }Comment ça Fonctionne}{85}{subsection.3.8.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.8.3}\else \textLR {3.8.1}\fi .1}Flux d'Abonnement}{85}{subsubsection.3.8.1.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.8.3}\else \textLR {3.8.1}\fi .2}Entité Follower}{85}{subsubsection.3.8.1.2}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.8.3}\else \textLR {3.8.1}\fi .3}Déclencheur d'Alerte Nouvelle Voiture}{86}{subsubsection.3.8.1.3}%
+\contentsline {section}{\numberline {\filterminitoc {3.}9}Livrables de cette Phase}{87}{section.3.9}%
+\contentsline {subsection}{\numberline {\if@rl \I {1.9.3}\else \textLR {3.9.1}\fi }User Stories Complétées}{87}{subsection.3.9.1}%
+\contentsline {subsection}{\numberline {\if@rl \I {2.9.3}\else \textLR {3.9.2}\fi }Captures d'Écran}{87}{subsection.3.9.2}%
+\contentsline {section}{\numberline {\filterminitoc {3.}10}Conclusion}{87}{section.3.10}%
 \select@language {french}
-\contentsline {chapter}{\numberline {\textLR {4}}\bgroup \beginL \latintext Implementation and Results\endL \egroup }{65}{chapter.4}%
-\contentsline {section}{\numberline {\filterminitoc {4.}1}Introduction}{66}{section.4.1}%
-\contentsline {section}{\numberline {\filterminitoc {4.}2}System Modules Implementation}{66}{section.4.2}%
-\contentsline {subsection}{\numberline {\if@rl \I {1.2.4}\else \textLR {4.2.1}\fi }Authentication and Authorization Module (Keycloak)}{66}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {\if@rl \I {2.2.4}\else \textLR {4.2.2}\fi }Admin Module}{66}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {\if@rl \I {3.2.4}\else \textLR {4.2.3}\fi }Agency Module}{66}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {\if@rl \I {4.2.4}\else \textLR {4.2.4}\fi }Customer Module}{67}{subsection.4.2.4}%
-\contentsline {subsection}{\numberline {\if@rl \I {5.2.4}\else \textLR {4.2.5}\fi }Chatbot Module (FastAPI + ChatGPT)}{67}{subsection.4.2.5}%
-\contentsline {subsection}{\numberline {\if@rl \I {6.2.4}\else \textLR {4.2.6}\fi }Online Payment Module}{67}{subsection.4.2.6}%
-\contentsline {subsection}{\numberline {\if@rl \I {7.2.4}\else \textLR {4.2.7}\fi }Notification and Email System}{67}{subsection.4.2.7}%
-\contentsline {section}{\numberline {\filterminitoc {4.}3}Database Implementation}{67}{section.4.3}%
-\contentsline {section}{\numberline {\filterminitoc {4.}4}Screenshots of the Application}{68}{section.4.4}%
-\contentsline {section}{\numberline {\filterminitoc {4.}5}Testing and Validation}{69}{section.4.5}%
-\contentsline {subsection}{\numberline {\if@rl \I {1.5.4}\else \textLR {4.5.1}\fi }Unit Testing}{69}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {\if@rl \I {2.5.4}\else \textLR {4.5.2}\fi }Integration Testing}{69}{subsection.4.5.2}%
-\contentsline {subsection}{\numberline {\if@rl \I {3.5.4}\else \textLR {4.5.3}\fi }CI/CD Pipeline Validation}{69}{subsection.4.5.3}%
-\contentsline {section}{\numberline {\filterminitoc {4.}6}Conclusion}{69}{section.4.6}%
+\contentsline {chapter}{\numberline {\textLR {4}}\bgroup \beginL \latintext Implémentation Avancée: Chatbot IA, Blog et DevOps\endL \egroup }{91}{chapter.4}%
+\contentsline {section}{\numberline {\filterminitoc {4.}1}Introduction}{92}{section.4.1}%
+\contentsline {section}{\numberline {\filterminitoc {4.}2}Récapitulatif des Modules Implémentés}{92}{section.4.2}%
+\contentsline {subsection}{\numberline {\if@rl \I {1.2.4}\else \textLR {4.2.1}\fi }Module d'Authentification (Keycloak)}{92}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {\if@rl \I {2.2.4}\else \textLR {4.2.2}\fi }Module Administrateur}{92}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {\if@rl \I {3.2.4}\else \textLR {4.2.3}\fi }Module Agence}{92}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {\if@rl \I {4.2.4}\else \textLR {4.2.4}\fi }Module Client}{93}{subsection.4.2.4}%
+\contentsline {section}{\numberline {\filterminitoc {4.}3}Sprint 6: Intégration du Chatbot IA}{93}{section.4.3}%
+\contentsline {subsection}{\numberline {\if@rl \I {1.3.4}\else \textLR {4.3.1}\fi }Architecture du Chatbot}{93}{subsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.3.4}\else \textLR {4.3.1}\fi .1}Stack Technologique}{93}{subsubsection.4.3.1.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.3.4}\else \textLR {4.3.1}\fi .2}Implémentation Flask du Chatbot}{93}{subsubsection.4.3.1.2}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.3.4}\else \textLR {4.3.1}\fi .3}Intégration Angular du Chatbot}{95}{subsubsection.4.3.1.3}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.3.4}\else \textLR {4.3.1}\fi .4}Exemples de Conversations}{96}{subsubsection.4.3.1.4}%
+\contentsline {section}{\numberline {\filterminitoc {4.}4}Sprint 7: Système de Blog et Commentaires}{96}{section.4.4}%
+\contentsline {subsection}{\numberline {\if@rl \I {1.4.4}\else \textLR {4.4.1}\fi }Module Blog}{96}{subsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.4.4}\else \textLR {4.4.1}\fi .1}Entité Blog}{97}{subsubsection.4.4.1.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.4.4}\else \textLR {4.4.1}\fi .2}API Endpoints Blog}{97}{subsubsection.4.4.1.2}%
+\contentsline {subsection}{\numberline {\if@rl \I {2.4.4}\else \textLR {4.4.2}\fi }Système de Commentaires}{98}{subsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {2.4.4}\else \textLR {4.4.2}\fi .1}Entité Comment}{98}{subsubsection.4.4.2.1}%
+\contentsline {subsection}{\numberline {\if@rl \I {3.4.4}\else \textLR {4.4.3}\fi }Module de Paiement en Ligne}{98}{subsection.4.4.3}%
+\contentsline {section}{\numberline {\filterminitoc {4.}5}Système d'Emails et Notifications}{99}{section.4.5}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {0.5.4}\else \textLR {4.5.0}\fi .1}Système de Confirmation par Email}{99}{subsubsection.4.5.0.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {0.5.4}\else \textLR {4.5.0}\fi .2}Rejection Email Example}{100}{subsubsection.4.5.0.2}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {0.5.4}\else \textLR {4.5.0}\fi .3}Email d'Alerte Nouvelle Voiture (Pour les Followers)}{101}{subsubsection.4.5.0.3}%
+\contentsline {section}{\numberline {\filterminitoc {4.}6}Sprint 8: DevOps - Docker, Kubernetes et CI/CD}{101}{section.4.6}%
+\contentsline {subsection}{\numberline {\if@rl \I {1.6.4}\else \textLR {4.6.1}\fi }Containerisation avec Docker}{101}{subsection.4.6.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.6.4}\else \textLR {4.6.1}\fi .1}Dockerfile Backend (Spring Boot)}{101}{subsubsection.4.6.1.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.6.4}\else \textLR {4.6.1}\fi .2}Dockerfile Frontend (Angular)}{102}{subsubsection.4.6.1.2}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.6.4}\else \textLR {4.6.1}\fi .3}Dockerfile Chatbot (Flask)}{102}{subsubsection.4.6.1.3}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {1.6.4}\else \textLR {4.6.1}\fi .4}Docker Compose}{102}{subsubsection.4.6.1.4}%
+\contentsline {subsection}{\numberline {\if@rl \I {2.6.4}\else \textLR {4.6.2}\fi }Déploiement Kubernetes (Minikube)}{104}{subsection.4.6.2}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {2.6.4}\else \textLR {4.6.2}\fi .1}Deployment Backend}{104}{subsubsection.4.6.2.1}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {2.6.4}\else \textLR {4.6.2}\fi .2}Deployment Frontend}{106}{subsubsection.4.6.2.2}%
+\contentsline {subsection}{\numberline {\if@rl \I {3.6.4}\else \textLR {4.6.3}\fi }Pipeline CI/CD avec GitLab}{107}{subsection.4.6.3}%
+\contentsline {subsubsection}{\numberline {\if@rl \I {3.6.4}\else \textLR {4.6.3}\fi .1}Configuration .gitlab-ci.yml}{107}{subsubsection.4.6.3.1}%
+\contentsline {section}{\numberline {\filterminitoc {4.}7}Implémentation Base de Données}{110}{section.4.7}%
+\contentsline {section}{\numberline {\filterminitoc {4.}8}Screenshots of the Application}{110}{section.4.8}%
+\contentsline {section}{\numberline {\filterminitoc {4.}9}Tests et Validation}{110}{section.4.9}%
+\contentsline {subsection}{\numberline {\if@rl \I {1.9.4}\else \textLR {4.9.1}\fi }Tests Unitaires}{110}{subsection.4.9.1}%
+\contentsline {subsection}{\numberline {\if@rl \I {2.9.4}\else \textLR {4.9.2}\fi }Tests d'Intégration}{111}{subsection.4.9.2}%
+\contentsline {subsection}{\numberline {\if@rl \I {3.9.4}\else \textLR {4.9.3}\fi }Validation Pipeline CI/CD}{111}{subsection.4.9.3}%
+\contentsline {subsection}{\numberline {\if@rl \I {4.9.4}\else \textLR {4.9.4}\fi }Témoignages Utilisateurs}{112}{subsection.4.9.4}%
+\contentsline {section}{\numberline {\filterminitoc {4.}10}Livrables de cette Phase}{112}{section.4.10}%
+\contentsline {subsection}{\numberline {\if@rl \I {1.10.4}\else \textLR {4.10.1}\fi }User Stories Complétées}{112}{subsection.4.10.1}%
+\contentsline {section}{\numberline {\filterminitoc {4.}11}Conclusion}{113}{section.4.11}%
 \select@language {french}
-\contentsline {chapter}{\numberline {\textLR {5}}\bgroup \beginL \latintext Conclusion and Future Work\endL \egroup }{70}{chapter.5}%
-\contentsline {section}{\numberline {\filterminitoc {5.}1}Summary of the Project}{71}{section.5.1}%
-\contentsline {section}{\numberline {\filterminitoc {5.}2}Key Achievements}{71}{section.5.2}%
-\contentsline {section}{\numberline {\filterminitoc {5.}3}Limitations}{71}{section.5.3}%
-\contentsline {section}{\numberline {\filterminitoc {5.}4}Future Work}{72}{section.5.4}%
-\contentsline {section}{\numberline {\filterminitoc {5.}5}Final Remarks}{72}{section.5.5}%
-\contentsline {subsection}{\numberline {\if@rl \I {1.5.5}\else \textLR {5.5.1}\fi }User Testimonials}{73}{subsection.5.5.1}%
+\contentsline {chapter}{General Conclusion}{114}{chapter*.98}%
 \select@language {french}
-\contentsline {chapter}{Conclusion générale}{74}{chapter*.62}%
-\select@language {french}
-\contentsline {chapter}{Bibliographie}{75}{chapter*.63}%
+\contentsline {chapter}{Bibliographie}{116}{chapter*.99}%
 \babel@toc {french}{}\relax 
 \babel@toc {english}{}\relax 
 \babel@toc {french}{}\relax 

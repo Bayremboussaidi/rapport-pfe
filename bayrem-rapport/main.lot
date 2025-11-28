@@ -4,36 +4,48 @@
 \contentsline {xchapter}{Project Context}{4}{chapter.1}%
 \contentsline {table}{\numberline {\if@rl \I {1.1}\else \textLR {1.1}\fi }{\ignorespaces Time Savings Comparison: Before vs. After MyLoc}}{10}{table.caption.7}%
 \contentsline {table}{\numberline {\if@rl \I {2.1}\else \textLR {1.2}\fi }{\ignorespaces Identified Gaps in Existing Car Rental Platforms}}{13}{table.caption.8}%
-\contentsline {table}{\numberline {\if@rl \I {3.1}\else \textLR {1.3}\fi }{\ignorespaces Comparative Analysis of Agile Methods: Scrum, Kanban, and XP}}{17}{table.caption.10}%
-\contentsline {table}{\numberline {\if@rl \I {4.1}\else \textLR {1.4}\fi }{\ignorespaces Development Machine Specifications}}{29}{table.caption.29}%
+\contentsline {table}{\numberline {\if@rl \I {3.1}\else \textLR {1.3}\fi }{\ignorespaces Comparative Analysis of Agile Methods: Scrum, Kanban, and XP}}{16}{table.caption.10}%
+\contentsline {table}{\numberline {\if@rl \I {4.1}\else \textLR {1.4}\fi }{\ignorespaces Development Machine Specifications}}{28}{table.caption.29}%
 \addvspace {10\p@ }
-\contentsline {xchapter}{Needs Analysis and Specification}{32}{chapter.2}%
-\contentsline {table}{\numberline {\if@rl \I {1.2}\else \textLR {2.1}\fi }{\ignorespaces Comparison between Traditional and Agile Methods}}{42}{table.caption.35}%
-\contentsline {table}{\numberline {\if@rl \I {2.2}\else \textLR {2.2}\fi }{\ignorespaces Comparison between Agile Methods: Scrum, Kanban, and XP}}{43}{table.caption.36}%
-\contentsline {table}{\numberline {\if@rl \I {3.2}\else \textLR {2.3}\fi }{\ignorespaces Scrum Team Roles and Responsibilities}}{46}{table.caption.38}%
-\contentsline {table}{\numberline {\if@rl \I {4.2}\else \textLR {2.4}\fi }{\ignorespaces Project Scrum Team}}{46}{table.caption.39}%
-\contentsline {table}{\numberline {\if@rl \I {5.2}\else \textLR {2.5}\fi }{\ignorespaces Product Backlog - Part 1: Core Features (Sprints 1-3)}}{49}{table.caption.42}%
-\contentsline {table}{\numberline {\if@rl \I {6.2}\else \textLR {2.6}\fi }{\ignorespaces Product Backlog - Part 2: Advanced Features (Sprints 4-8)}}{50}{table.caption.43}%
-\contentsline {table}{\numberline {\if@rl \I {7.2}\else \textLR {2.7}\fi }{\ignorespaces Product Backlog Summary by Priority}}{50}{table.caption.44}%
-\contentsline {table}{\numberline {\if@rl \I {8.2}\else \textLR {2.8}\fi }{\ignorespaces Sprint Overview - Planned vs Completed Story Points}}{51}{table.caption.45}%
-\contentsline {table}{\numberline {\if@rl \I {9.2}\else \textLR {2.9}\fi }{\ignorespaces Sprint 1 Backlog - Authentication \& Setup}}{51}{table.caption.46}%
-\contentsline {table}{\numberline {\if@rl \I {10.2}\else \textLR {2.10}\fi }{\ignorespaces Sprint 2 Backlog - Car Management}}{52}{table.caption.47}%
-\contentsline {table}{\numberline {\if@rl \I {11.2}\else \textLR {2.11}\fi }{\ignorespaces Sprint 3 Backlog - Booking System}}{52}{table.caption.48}%
-\contentsline {table}{\numberline {\if@rl \I {12.2}\else \textLR {2.12}\fi }{\ignorespaces Sprint 4 Backlog - Communication Features}}{52}{table.caption.49}%
-\contentsline {table}{\numberline {\if@rl \I {13.2}\else \textLR {2.13}\fi }{\ignorespaces Sprint 5 Backlog - Blog \& Subscription}}{53}{table.caption.50}%
-\contentsline {table}{\numberline {\if@rl \I {14.2}\else \textLR {2.14}\fi }{\ignorespaces Sprint 6 Backlog - Contracts \& Payments}}{53}{table.caption.51}%
-\contentsline {table}{\numberline {\if@rl \I {15.2}\else \textLR {2.15}\fi }{\ignorespaces Sprint 7 Backlog - Chatbot \& Admin Panel}}{54}{table.caption.52}%
-\contentsline {table}{\numberline {\if@rl \I {16.2}\else \textLR {2.16}\fi }{\ignorespaces Sprint 8 Backlog - DevOps \& Deployment}}{54}{table.caption.53}%
-\contentsline {table}{\numberline {\if@rl \I {17.2}\else \textLR {2.17}\fi }{\ignorespaces Project Burndown - Story Points per Sprint}}{55}{table.caption.55}%
-\contentsline {table}{\numberline {\if@rl \I {18.2}\else \textLR {2.18}\fi }{\ignorespaces Sprint 3 Daily Burndown Chart Data}}{56}{table.caption.56}%
+\contentsline {xchapter}{Needs Analysis and Specification}{31}{chapter.2}%
+\contentsline {table}{\numberline {\if@rl \I {1.2}\else \textLR {2.1}\fi }{\ignorespaces Comparison between Traditional and Agile Methods}}{45}{table.caption.35}%
+\contentsline {table}{\numberline {\if@rl \I {2.2}\else \textLR {2.2}\fi }{\ignorespaces Comparison between Agile Methods: Scrum, Kanban, and XP}}{45}{table.caption.36}%
+\contentsline {table}{\numberline {\if@rl \I {3.2}\else \textLR {2.3}\fi }{\ignorespaces Scrum Team Roles and Responsibilities}}{47}{table.caption.38}%
+\contentsline {table}{\numberline {\if@rl \I {4.2}\else \textLR {2.4}\fi }{\ignorespaces Project Scrum Team}}{48}{table.caption.39}%
+\contentsline {table}{\numberline {\if@rl \I {5.2}\else \textLR {2.5}\fi }{\ignorespaces Product Backlog - Part 1: Core Features (Sprints 1-3)}}{51}{table.caption.42}%
+\contentsline {table}{\numberline {\if@rl \I {6.2}\else \textLR {2.6}\fi }{\ignorespaces Product Backlog - Part 2: Advanced Features (Sprints 4-8)}}{52}{table.caption.43}%
+\contentsline {table}{\numberline {\if@rl \I {7.2}\else \textLR {2.7}\fi }{\ignorespaces Product Backlog Summary by Priority}}{52}{table.caption.44}%
+\contentsline {table}{\numberline {\if@rl \I {8.2}\else \textLR {2.8}\fi }{\ignorespaces Sprint Overview - Planned vs Completed Story Points}}{53}{table.caption.45}%
+\contentsline {table}{\numberline {\if@rl \I {9.2}\else \textLR {2.9}\fi }{\ignorespaces Sprint 1 Backlog - Authentication \& Setup}}{53}{table.caption.46}%
+\contentsline {table}{\numberline {\if@rl \I {10.2}\else \textLR {2.10}\fi }{\ignorespaces Sprint 2 Backlog - Car Management}}{53}{table.caption.47}%
+\contentsline {table}{\numberline {\if@rl \I {11.2}\else \textLR {2.11}\fi }{\ignorespaces Sprint 3 Backlog - Booking System}}{54}{table.caption.48}%
+\contentsline {table}{\numberline {\if@rl \I {12.2}\else \textLR {2.12}\fi }{\ignorespaces Sprint 4 Backlog - Communication Features}}{54}{table.caption.49}%
+\contentsline {table}{\numberline {\if@rl \I {13.2}\else \textLR {2.13}\fi }{\ignorespaces Sprint 5 Backlog - Blog \& Subscription}}{54}{table.caption.50}%
+\contentsline {table}{\numberline {\if@rl \I {14.2}\else \textLR {2.14}\fi }{\ignorespaces Sprint 6 Backlog - Contracts \& Payments}}{55}{table.caption.51}%
+\contentsline {table}{\numberline {\if@rl \I {15.2}\else \textLR {2.15}\fi }{\ignorespaces Sprint 7 Backlog - Chatbot \& Admin Panel}}{55}{table.caption.52}%
+\contentsline {table}{\numberline {\if@rl \I {16.2}\else \textLR {2.16}\fi }{\ignorespaces Sprint 8 Backlog - DevOps \& Deployment}}{55}{table.caption.53}%
+\contentsline {table}{\numberline {\if@rl \I {17.2}\else \textLR {2.17}\fi }{\ignorespaces Project Burndown - Story Points per Sprint}}{56}{table.caption.55}%
+\contentsline {table}{\numberline {\if@rl \I {18.2}\else \textLR {2.18}\fi }{\ignorespaces Sprint 3 Daily Burndown Chart Data}}{57}{table.caption.56}%
 \contentsline {table}{\numberline {\if@rl \I {19.2}\else \textLR {2.19}\fi }{\ignorespaces Team Velocity per Sprint}}{57}{table.caption.58}%
-\contentsline {table}{\numberline {\if@rl \I {20.2}\else \textLR {2.20}\fi }{\ignorespaces Scrum Ceremonies Overview}}{58}{table.caption.59}%
+\contentsline {table}{\numberline {\if@rl \I {20.2}\else \textLR {2.20}\fi }{\ignorespaces Scrum Ceremonies Overview}}{59}{table.caption.59}%
 \addvspace {10\p@ }
-\contentsline {xchapter}{System Development and Implementation}{61}{chapter.3}%
+\contentsline {xchapter}{Réalisation: Core Platform et Système de Réservation}{61}{chapter.3}%
+\contentsline {table}{\numberline {\if@rl \I {1.3}\else \textLR {3.1}\fi }{\ignorespaces Development Tools and Their Purposes}}{62}{table.caption.60}%
+\contentsline {table}{\numberline {\if@rl \I {2.3}\else \textLR {3.2}\fi }{\ignorespaces Database Relationship Summary}}{69}{table.caption.71}%
+\contentsline {table}{\numberline {\if@rl \I {3.3}\else \textLR {3.3}\fi }{\ignorespaces Car Management API Endpoints}}{69}{table.caption.74}%
+\contentsline {table}{\numberline {\if@rl \I {4.3}\else \textLR {3.4}\fi }{\ignorespaces Agency Management API Endpoints}}{70}{table.caption.76}%
+\contentsline {table}{\numberline {\if@rl \I {5.3}\else \textLR {3.5}\fi }{\ignorespaces Key Angular Components}}{71}{table.caption.77}%
+\contentsline {table}{\numberline {\if@rl \I {6.3}\else \textLR {3.6}\fi }{\ignorespaces Car Filtering API Endpoints}}{75}{table.caption.78}%
+\contentsline {table}{\numberline {\if@rl \I {7.3}\else \textLR {3.7}\fi }{\ignorespaces États de Réservation et leurs Descriptions}}{76}{table.caption.80}%
+\contentsline {table}{\numberline {\if@rl \I {8.3}\else \textLR {3.8}\fi }{\ignorespaces Champs de Données de Demande de Réservation}}{78}{table.caption.81}%
+\contentsline {table}{\numberline {\if@rl \I {9.3}\else \textLR {3.9}\fi }{\ignorespaces Types de Notifications et Déclencheurs}}{82}{table.caption.83}%
+\contentsline {table}{\numberline {\if@rl \I {10.3}\else \textLR {3.10}\fi }{\ignorespaces User Stories Complétées - Sprints 1-5}}{87}{table.caption.85}%
 \addvspace {10\p@ }
-\contentsline {xchapter}{Implementation and Results}{66}{chapter.4}%
-\addvspace {10\p@ }
-\contentsline {xchapter}{Conclusion and Future Work}{71}{chapter.5}%
+\contentsline {xchapter}{Implémentation Avancée: Chatbot IA, Blog et DevOps}{92}{chapter.4}%
+\contentsline {table}{\numberline {\if@rl \I {1.4}\else \textLR {4.1}\fi }{\ignorespaces Exemples de Conversations avec le Chatbot}}{96}{table.caption.89}%
+\contentsline {table}{\numberline {\if@rl \I {2.4}\else \textLR {4.2}\fi }{\ignorespaces API Endpoints du Système de Blog}}{97}{table.caption.90}%
+\contentsline {table}{\numberline {\if@rl \I {3.4}\else \textLR {4.3}\fi }{\ignorespaces Types d'Emails et leur Contenu}}{101}{table.caption.94}%
+\contentsline {table}{\numberline {\if@rl \I {4.4}\else \textLR {4.4}\fi }{\ignorespaces User Stories Complétées - Sprints 6-8}}{112}{table.caption.97}%
 \vspace {3.8mm}
 \babel@toc {french}{}\relax 
 \babel@toc {english}{}\relax 

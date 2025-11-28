@@ -1,16 +1,24 @@
-\chapter{Release 1: Core Platform Development}
+\chapter{Réalisation: Core Platform et Système de Réservation}
 
 \section{Introduction}
-This chapter details the first release of the MyLoc platform, focusing on the foundational components: development environment setup, database design, authentication system, and core CRUD operations. Following the Scrum methodology, this release corresponds to \textbf{Sprints 1-3}, delivering the essential infrastructure upon which subsequent features are built.
+Ce chapitre détaille la réalisation complète de la plateforme MyLoc, couvrant à la fois les fondations techniques et les fonctionnalités métier essentielles. Conformément à la méthodologie Scrum, cette phase correspond aux \textbf{Sprints 1-5}, délivrant l'infrastructure de base ainsi que le système de réservation complet.
 
-The goals of Release 1 include:
+Les objectifs de cette phase incluent:
 \begin{itemize}
-    \item Setting up the complete development environment and technology stack.
-    \item Designing and implementing the database schema.
-    \item Implementing secure authentication using Keycloak.
-    \item Building the car management module for agencies.
-    \item Creating the basic agency and customer management features.
+    \item Configuration de l'environnement de développement et de la stack technologique.
+    \item Conception et implémentation du schéma de base de données.
+    \item Implémentation de l'authentification sécurisée via Keycloak.
+    \item Construction du module de gestion des voitures pour les agences.
+    \item Création des fonctionnalités de gestion des agences et des clients.
+    \item Implémentation du workflow complet de réservation.
+    \item Développement du système de notifications par email.
+    \item Génération de contrats PDF avec QR codes.
+    \item Mise en place du système de chat en temps réel.
 \end{itemize}
+
+%% ===========================================
+%% PART 1: CORE PLATFORM DEVELOPMENT
+%% ===========================================
 
 \section{Sprint 1: Development Environment and Authentication}
 
@@ -52,10 +60,11 @@ The development environment was carefully configured to support a modern microse
 \end{itemize}
 
 \subsubsection{Development Tools}
-\begin{table}[h!]
+\begin{table}[H]
 \centering
+\small
 \renewcommand{\arraystretch}{1.3}
-\begin{tabular}{|l|l|p{6cm}|}
+\begin{tabularx}{\textwidth}{|l|l|X|}
 \hline
 \rowcolor{gray!20}
 \textbf{Tool} & \textbf{Version} & \textbf{Purpose} \\
@@ -72,7 +81,7 @@ Git & Latest & Version control \\
 \hline
 Docker Desktop & Latest & Container management \\
 \hline
-\end{tabular}
+\end{tabularx}
 \caption{Development Tools and Their Purposes}
 \end{table}
 
@@ -426,11 +435,11 @@ The Angular frontend is organized into feature modules for maintainability.
 \end{itemize}
 
 \subsubsection{Key Components}
-\begin{table}[h!]
+\begin{table}[H]
 \centering
-\footnotesize
+\small
 \renewcommand{\arraystretch}{1.3}
-\begin{tabular}{|l|p{8cm}|}
+\begin{tabularx}{\textwidth}{|l|X|}
 \hline
 \rowcolor{gray!20}
 \textbf{Component} & \textbf{Description} \\
@@ -447,15 +456,597 @@ AdminDashboardComponent & Platform administration interface \\
 \hline
 LoginComponent & User authentication form \\
 \hline
-\end{tabular}
+\end{tabularx}
 \caption{Key Angular Components}
 \end{table}
 
-\section{Release 1 Deliverables}
+\subsection{Intelligent Car Filtering Service}
+One of the key business features of the MyLoc platform is the intelligent filtering service that prioritizes MyLoc agency cars in search results, providing a competitive advantage.
 
-\subsection{Completed User Stories}
-By the end of Release 1, the following user stories were completed:
+\subsubsection{Filtering Algorithm Logic}
+The car listing service implements a custom sorting algorithm that ensures MyLoc agency vehicles always appear first in search results, regardless of other filtering criteria applied by the user.
 
+\textbf{Business Logic:}
+\begin{enumerate}
+    \item Retrieve all cars matching the user's filter criteria (type, price range, city, availability).
+    \item Identify cars belonging to "MyLoc" agency (primary agency).
+    \item Sort results: MyLoc cars first, then other agencies alphabetically.
+    \item Within each group, sort by relevance score (rating, price, availability).
+    \item Return paginated results to the frontend.
+\end{enumerate}
+
+\subsubsection{Backend Implementation}
+\begin{verbatim}
+@Service
+public class CarFilterService {
+    
+    private static final String PRIORITY_AGENCY = "MyLoc";
+    
+    @Autowired
+    private VoitureRepository voitureRepository;
+    
+    public List<Voiture> getFilteredCars(CarFilterDTO filters) {
+        // Get all cars matching basic criteria
+        List<Voiture> allCars = voitureRepository.findByFilters(
+            filters.getType(),
+            filters.getMinPrice(),
+            filters.getMaxPrice(),
+            filters.getCity(),
+            filters.getStartDate(),
+            filters.getEndDate()
+        );
+        
+        // Separate MyLoc cars from others
+        List<Voiture> mylocCars = allCars.stream()
+            .filter(car -> PRIORITY_AGENCY.equalsIgnoreCase(
+                car.getAgence().getAgencyName()))
+            .sorted(Comparator.comparing(Voiture::getPrice))
+            .collect(Collectors.toList());
+        
+        List<Voiture> otherCars = allCars.stream()
+            .filter(car -> !PRIORITY_AGENCY.equalsIgnoreCase(
+                car.getAgence().getAgencyName()))
+            .sorted(Comparator.comparing(
+                v -> v.getAgence().getAgencyName()))
+            .collect(Collectors.toList());
+        
+        // Combine: MyLoc first, then others
+        List<Voiture> result = new ArrayList<>();
+        result.addAll(mylocCars);
+        result.addAll(otherCars);
+        
+        return result;
+    }
+    
+    public Page<Voiture> getFilteredCarsPaginated(
+            CarFilterDTO filters, Pageable pageable) {
+        List<Voiture> allFiltered = getFilteredCars(filters);
+        
+        int start = (int) pageable.getOffset();
+        int end = Math.min(start + pageable.getPageSize(), 
+                          allFiltered.size());
+        
+        List<Voiture> pageContent = allFiltered.subList(start, end);
+        return new PageImpl<>(pageContent, pageable, 
+                             allFiltered.size());
+    }
+}
+\end{verbatim}
+
+\subsubsection{Filter DTO Structure}
+\begin{verbatim}
+public class CarFilterDTO {
+    private String type;        // SUV, Sedan, Compact, etc.
+    private Double minPrice;
+    private Double maxPrice;
+    private String city;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private String sortBy;      // price, rating, name
+    private String sortOrder;   // ASC, DESC
+    
+    // Getters and Setters
+}
+\end{verbatim}
+
+\subsubsection{Frontend Filter Component}
+\begin{verbatim}
+// car-filter.component.ts
+@Component({
+  selector: 'app-car-filter',
+  templateUrl: './car-filter.component.html'
+})
+export class CarFilterComponent implements OnInit {
+  filters: CarFilter = {
+    type: '',
+    minPrice: 0,
+    maxPrice: 1000,
+    city: '',
+    startDate: null,
+    endDate: null
+  };
+  
+  carTypes = ['SUV', 'Sedan', 'Compact', 'Luxury', 'Van'];
+  cities = ['Tunis', 'Sousse', 'Sfax', 'Monastir', 'Hammamet'];
+  
+  constructor(private carService: CarService) {}
+  
+  applyFilters() {
+    this.carService.getFilteredCars(this.filters)
+      .subscribe(cars => {
+        // Cars are already sorted with MyLoc first
+        this.filteredCars = cars;
+      });
+  }
+  
+  resetFilters() {
+    this.filters = { type: '', minPrice: 0, maxPrice: 1000, 
+                     city: '', startDate: null, endDate: null };
+    this.applyFilters();
+  }
+}
+\end{verbatim}
+
+\subsubsection{API Endpoint for Filtering}
+\begin{table}[h!]
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|l|p{5cm}|}
+\hline
+\rowcolor{gray!20}
+\textbf{Method} & \textbf{Endpoint} & \textbf{Description} \\
+\hline
+GET & /api/cars/filter & Get filtered cars (MyLoc priority) \\
+\hline
+GET & /api/cars/filter?type=SUV & Filter by car type \\
+\hline
+GET & /api/cars/filter?city=Tunis & Filter by city \\
+\hline
+GET & /api/cars/filter?minPrice=50\&maxPrice=200 & Filter by price range \\
+\hline
+\end{tabular}
+\caption{Car Filtering API Endpoints}
+\end{table}
+
+\textbf{Key Benefits of Priority Filtering:}
+\begin{itemize}
+    \item \textbf{Business Advantage}: MyLoc agency cars get maximum visibility.
+    \item \textbf{User Experience}: Customers see premium options first.
+    \item \textbf{Flexibility}: Other agencies still appear in results.
+    \item \textbf{Transparency}: Users can still apply their own sorting preferences.
+\end{itemize}
+
+%% Section transition
+\vspace{1cm}
+La première partie de cette réalisation a établi les fondations de la plateforme MyLoc. L'environnement de développement a été configuré avec des outils modernes, un schéma de base de données robuste a été implémenté, l'authentification sécurisée a été intégrée via Keycloak, et les opérations CRUD de base pour les voitures et les agences ont été complétées.
+
+La méthodologie Scrum a assuré une livraison itérative avec des retours réguliers, permettant une amélioration continue. Toutes les 12 user stories planifiées pour les Sprints 1-3 ont été complétées, atteignant 100\% des objectifs de cette phase.
+
+%% ===========================================
+%% PART 2: BOOKING SYSTEM AND COMMUNICATION
+%% ===========================================
+
+\section{Système de Réservation}
+
+\subsection{Aperçu du Workflow de Réservation}
+Le système de réservation est le processus métier central de la plateforme MyLoc. Il gère l'ensemble du cycle de vie d'une demande de location, de la soumission à la finalisation.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=16cm]{img/booking-workflow-diagram.png}
+    \caption{Diagramme Complet du Workflow de Réservation}
+    \label{fig:booking_workflow_ch3}
+\end{figure}
+
+\subsubsection{États de Réservation}
+Une demande de réservation traverse plusieurs états durant son cycle de vie:
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+\rowcolor{gray!20}
+\textbf{État} & \textbf{Description} \\
+\hline
+PENDING & Demande soumise, en attente de revue par l'agence \\
+\hline
+APPROVED & L'agence a accepté la demande, en attente de paiement \\
+\hline
+REJECTED & L'agence a refusé la demande \\
+\hline
+CONFIRMED & Paiement reçu, contrat généré \\
+\hline
+IN\_PROGRESS & La période de location a commencé \\
+\hline
+COMPLETED & Véhicule retourné, location terminée \\
+\hline
+CANCELLED & Le client a annulé avant approbation \\
+\hline
+\end{tabularx}
+\caption{États de Réservation et leurs Descriptions}
+\end{table}
+
+\subsubsection{Algorithme de Vérification de Disponibilité}
+Avant qu'un client puisse soumettre une demande de réservation, le système vérifie si la voiture est disponible pour les dates sélectionnées.
+
+\textbf{Logique de l'Algorithme:}
+\begin{enumerate}
+    \item Le client sélectionne une date de début et une date de fin.
+    \item Le système interroge toutes les réservations existantes pour la voiture sélectionnée.
+    \item Pour chaque réservation existante, vérification du chevauchement de dates:
+    \begin{itemize}
+        \item Si (nouveau\_début $\leq$ existant\_fin) ET (nouveau\_fin $\geq$ existant\_début) $\rightarrow$ Chevauchement détecté.
+    \end{itemize}
+    \item Si chevauchement avec réservations APPROVED, CONFIRMED ou IN\_PROGRESS $\rightarrow$ Voiture indisponible.
+    \item Si aucun chevauchement $\rightarrow$ Voiture disponible, procéder à la réservation.
+\end{enumerate}
+
+\textbf{Implémentation Backend (Spring Boot):}
+\begin{verbatim}
+@GetMapping("/unavailable-dates/{carId}")
+public ResponseEntity<List<DateRange>> getUnavailableDates(
+        @PathVariable Long carId) {
+    List<Booking> bookings = bookingRepository
+        .findByVoitureIdAndStatusIn(carId, 
+            Arrays.asList("APPROVED", "CONFIRMED", "IN_PROGRESS"));
+    
+    List<DateRange> unavailableDates = bookings.stream()
+        .map(b -> new DateRange(b.getStartDate(), b.getEndDate()))
+        .collect(Collectors.toList());
+    
+    return ResponseEntity.ok(unavailableDates);
+}
+\end{verbatim}
+
+\subsubsection{Soumission de Demande de Réservation}
+Lorsqu'un client soumet une demande de réservation, les données suivantes sont capturées:
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|l|p{5cm}|}
+\hline
+\rowcolor{gray!20}
+\textbf{Champ} & \textbf{Type} & \textbf{Description} \\
+\hline
+username & String & Nom complet du client \\
+\hline
+user\_email & String & Adresse email du client \\
+\hline
+phone & String & Numéro de téléphone \\
+\hline
+start\_date & Date & Date de début de location \\
+\hline
+end\_date & Date & Date de fin de location \\
+\hline
+pickup\_location & String & Lieu de prise en charge \\
+\hline
+dropoff\_location & String & Lieu de retour \\
+\hline
+voiture\_id & Long & ID de la voiture sélectionnée \\
+\hline
+description & String & Notes/demandes additionnelles \\
+\hline
+\end{tabular}
+\caption{Champs de Données de Demande de Réservation}
+\end{table}
+
+\subsection{Gestion des Demandes par l'Agence}
+Les agences reçoivent des notifications lorsque de nouvelles demandes de réservation arrivent pour leurs voitures.
+
+\subsubsection{Tableau de Bord Agence - Vue des Demandes}
+Le tableau de bord de l'agence affiche toutes les demandes en attente avec les informations suivantes:
+\begin{itemize}
+    \item Nom et coordonnées du client
+    \item Détails de la voiture demandée
+    \item Dates et durée de location
+    \item Prix total calculé
+    \item Horodatage de soumission de la demande
+    \item Boutons d'action: Approuver / Rejeter
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=14cm]{img/agency-requests-dashboard.png}
+    \caption{Tableau de Bord Agence - Vue des Demandes en Attente}
+    \label{fig:agency_requests_ch3}
+\end{figure}
+
+\subsubsection{Processus d'Approbation/Rejet}
+Lorsqu'une agence clique sur "Approuver" ou "Rejeter":
+
+\textbf{Flux d'Approbation:}
+\begin{enumerate}
+    \item Le statut de réservation passe à "APPROVED"
+    \item Le système génère un contrat PDF avec QR code
+    \item Email de confirmation envoyé au client avec pièce jointe PDF
+    \item Notification in-app créée pour le client
+    \item Disponibilité de la voiture mise à jour pour les dates sélectionnées
+\end{enumerate}
+
+\textbf{Flux de Rejet:}
+\begin{enumerate}
+    \item Le statut de réservation passe à "REJECTED"
+    \item Email de notification simple envoyé au client
+    \item Notification in-app créée pour le client
+    \item La voiture reste disponible pour d'autres réservations
+\end{enumerate}
+
+\section{Système d'Email et de Notifications}
+
+\subsection{Architecture du Service d'Email}
+Le système d'email est construit en utilisant le starter mail de Spring Boot avec configuration SMTP.
+
+\subsubsection{Configuration Email}
+\begin{verbatim}
+# application.properties
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=${EMAIL_USERNAME}
+spring.mail.password=${EMAIL_PASSWORD}
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+\end{verbatim}
+
+\subsubsection{Implémentation du Service Email}
+La classe EmailService gère toutes les opérations d'email:
+
+\begin{verbatim}
+@Service
+public class EmailService {
+    
+    @Autowired
+    private JavaMailSender mailSender;
+    
+    public void sendConfirmationEmail(Booking booking, byte[] pdfBytes) {
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+        
+        helper.setTo(booking.getUserEmail());
+        helper.setSubject("Confirmation de Réservation - MyLoc");
+        helper.setText(buildConfirmationBody(booking));
+        
+        // Attacher le contrat PDF
+        helper.addAttachment("contrat.pdf", 
+            new ByteArrayResource(pdfBytes));
+        
+        mailSender.send(message);
+    }
+    
+    public void sendRejectionEmail(Booking booking) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(booking.getUserEmail());
+        message.setSubject("Notification de Réservation - MyLoc");
+        message.setText("Votre réservation pour " + 
+            booking.getCarName() + " a été refusée.");
+        mailSender.send(message);
+    }
+}
+\end{verbatim}
+
+\subsection{Génération de Contrat PDF}
+Lorsqu'une réservation est approuvée, le système génère un contrat PDF professionnel utilisant la bibliothèque iText.
+
+\subsubsection{Structure du Contenu PDF}
+Le PDF généré inclut:
+\begin{itemize}
+    \item \textbf{En-tête}: Logo MyLoc Agency et coordonnées
+    \item \textbf{Titre du Contrat}: "Contrat de Location de Véhicule"
+    \item \textbf{Informations Client}: Nom, email, téléphone
+    \item \textbf{Détails du Véhicule}: Nom, modèle, type, agence
+    \item \textbf{Période de Location}: Date début, date fin, durée
+    \item \textbf{Tarification}: Tarif journalier, prix total, taxes le cas échéant
+    \item \textbf{Conditions Générales}: Termes standards de location
+    \item \textbf{QR Code}: Code unique de vérification de réservation
+    \item \textbf{Pied de page}: Lignes de signature et date
+\end{itemize}
+
+\subsubsection{Génération du QR Code}
+Le QR code est généré en utilisant la bibliothèque ZXing et contient:
+\begin{itemize}
+    \item ID de réservation
+    \item Email du client
+    \item ID de la voiture
+    \item Dates de location
+    \item Hash de vérification
+\end{itemize}
+
+\begin{verbatim}
+public byte[] generateQRCode(String content, int width, int height) {
+    QRCodeWriter qrCodeWriter = new QRCodeWriter();
+    BitMatrix bitMatrix = qrCodeWriter.encode(
+        content, BarcodeFormat.QR_CODE, width, height);
+    
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    MatrixToImageWriter.writeToStream(bitMatrix, "PNG", outputStream);
+    
+    return outputStream.toByteArray();
+}
+\end{verbatim}
+
+\subsection{Système de Notifications In-App}
+En plus des emails, les utilisateurs reçoivent des notifications in-app affichées dans la plateforme.
+
+\subsubsection{Entité Notification}
+\begin{verbatim}
+@Entity
+public class Notification {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private Long userId;
+    private String userType; // CUSTOMER, AGENCY, ADMIN
+    private String title;
+    private String message;
+    private String type; // BOOKING, SYSTEM, ALERT
+    private boolean readStatus;
+    private LocalDateTime createdAt;
+}
+\end{verbatim}
+
+\subsubsection{Types de Notifications}
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\rowcolor{gray!20}
+\textbf{Type} & \textbf{Destinataire} & \textbf{Déclencheur} \\
+\hline
+BOOKING\_RECEIVED & Agence & Nouvelle demande de réservation soumise \\
+\hline
+BOOKING\_APPROVED & Client & L'agence a approuvé la demande \\
+\hline
+BOOKING\_REJECTED & Client & L'agence a rejeté la demande \\
+\hline
+NEW\_CAR & Followers & Nouvelle voiture ajoutée à la plateforme \\
+\hline
+NEW\_MESSAGE & Admin/Agence & Message chat reçu \\
+\hline
+SYSTEM & Tous & Annonces de la plateforme \\
+\hline
+\end{tabularx}
+\caption{Types de Notifications et Déclencheurs}
+\end{table}
+
+\section{Système de Chat en Temps Réel}
+
+\subsection{Architecture du Chat}
+Le système de chat permet une communication quasi temps réel entre administrateurs et agences en utilisant un mécanisme de \textbf{HTTP Polling} avec un service de rafraîchissement automatique.
+
+\subsubsection{Stack Technologique}
+\begin{itemize}
+    \item \textbf{Backend}: Spring Boot REST API avec endpoints de messagerie
+    \item \textbf{Frontend}: Angular avec service de polling natif (HttpClient + RxJS)
+    \item \textbf{Mécanisme}: HTTP Polling toutes les 30 secondes
+    \item \textbf{Persistance}: MySQL pour l'historique des messages
+\end{itemize}
+
+\subsubsection{Service de Polling Angular}
+\begin{verbatim}
+@Injectable({ providedIn: 'root' })
+export class ChatPollingService {
+    private readonly POLLING_INTERVAL = 30000; // 30 seconds
+    private pollingSubscription: Subscription;
+    
+    constructor(private http: HttpClient) {}
+    
+    startPolling(conversationId: number): Observable<Message[]> {
+        return interval(this.POLLING_INTERVAL).pipe(
+            startWith(0),
+            switchMap(() => this.fetchMessages(conversationId)),
+            distinctUntilChanged((prev, curr) => 
+                JSON.stringify(prev) === JSON.stringify(curr))
+        );
+    }
+    
+    private fetchMessages(conversationId: number): Observable<Message[]> {
+        return this.http.get<Message[]>(
+            `/api/messages/conversation/${conversationId}`
+        );
+    }
+    
+    stopPolling(): void {
+        this.pollingSubscription?.unsubscribe();
+    }
+}
+\end{verbatim}
+
+\subsection{Fonctionnalités du Chat}
+\begin{itemize}
+    \item \textbf{Messagerie quasi temps réel}: Les messages sont récupérés toutes les 30 secondes via polling automatique
+    \item \textbf{Historique des messages}: Toutes les conversations sont stockées et récupérables
+    \item \textbf{Notifications visuelles}: Indicateur de nouveaux messages non lus
+    \item \textbf{Rafraîchissement manuel}: Possibilité de rafraîchir manuellement les messages
+    \item \textbf{Persistance}: Les messages sont sauvegardés en base de données MySQL
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=14cm]{img/chat-interface.png}
+    \caption{Interface de Chat en Temps Réel entre Admin et Agence}
+    \label{fig:chat_interface_ch3}
+\end{figure}
+
+\subsection{Entité Message Chat}
+\begin{verbatim}
+@Entity
+public class ChatMessage {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private Long senderId;
+    private String senderType; // ADMIN or AGENCY
+    private Long receiverId;
+    private String receiverType;
+    
+    @Column(columnDefinition = "TEXT")
+    private String content;
+    
+    private LocalDateTime sentAt;
+    private boolean readStatus;
+}
+\end{verbatim}
+
+\section{Système d'Abonnement Followers}
+
+\subsection{Comment ça Fonctionne}
+Le système de followers permet aux visiteurs de s'abonner aux alertes de nouvelles voitures sans créer un compte complet.
+
+\subsubsection{Flux d'Abonnement}
+\begin{enumerate}
+    \item Le visiteur entre son email dans le formulaire d'abonnement du footer
+    \item Le système valide le format de l'email
+    \item L'email est stocké dans la table followers
+    \item Message de confirmation affiché à l'utilisateur
+    \item Quand une nouvelle voiture est ajoutée, tous les followers actifs reçoivent un email
+\end{enumerate}
+
+\subsubsection{Entité Follower}
+\begin{verbatim}
+@Entity
+public class Follower {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @Column(unique = true)
+    private String email;
+    
+    private LocalDateTime subscribedAt;
+    private boolean active;
+}
+\end{verbatim}
+
+\subsubsection{Déclencheur d'Alerte Nouvelle Voiture}
+Quand une agence ajoute une nouvelle voiture, le système notifie automatiquement tous les followers:
+
+\begin{verbatim}
+@PostMapping("/cars")
+public ResponseEntity<Car> addCar(@RequestBody Car car) {
+    Car savedCar = carRepository.save(car);
+    
+    // Notifier tous les followers actifs
+    List<Follower> followers = followerRepository
+        .findByActiveTrue();
+    
+    for (Follower follower : followers) {
+        emailService.sendNewCarAlert(follower.getEmail(), savedCar);
+    }
+    
+    return ResponseEntity.ok(savedCar);
+}
+\end{verbatim}
+
+\section{Livrables de cette Phase}
+
+\subsection{User Stories Complétées}
 \begin{table}[h!]
 \centering
 \small
@@ -463,62 +1054,92 @@ By the end of Release 1, the following user stories were completed:
 \begin{tabular}{|c|l|c|}
 \hline
 \rowcolor{gray!20}
-\textbf{ID} & \textbf{User Story} & \textbf{Status} \\
+\textbf{ID} & \textbf{User Story} & \textbf{Statut} \\
 \hline
-US-01 & Visitor registers an account & Done \\
+\multicolumn{3}{|c|}{\cellcolor{gray!10}\textbf{Sprint 1-3: Core Platform}} \\
 \hline
-US-02 & User logs in securely & Done \\
+US-01 & Le visiteur crée un compte & Fait \\
 \hline
-US-03 & Admin manages user roles & Done \\
+US-02 & L'utilisateur se connecte de manière sécurisée & Fait \\
 \hline
-US-04 & User resets password & Done \\
+US-03 & L'admin gère les rôles utilisateurs & Fait \\
 \hline
-US-05 & User updates profile & Done \\
+US-04 & L'utilisateur réinitialise son mot de passe & Fait \\
 \hline
-US-06 & Agency adds new cars & Done \\
+US-05 & L'utilisateur met à jour son profil & Fait \\
 \hline
-US-07 & Agency edits car details & Done \\
+US-06 & L'agence ajoute de nouvelles voitures & Fait \\
 \hline
-US-08 & Agency deletes cars & Done \\
+US-07 & L'agence modifie les détails des voitures & Fait \\
 \hline
-US-09 & Agency uploads car photos & Done \\
+US-08 & L'agence supprime des voitures & Fait \\
 \hline
-US-10 & Customer browses cars & Done \\
+US-09 & L'agence télécharge des photos de voitures & Fait \\
 \hline
-US-11 & Customer filters cars by criteria & Done \\
+US-10 & Le client parcourt les voitures & Fait \\
 \hline
-US-12 & Customer views car details & Done \\
+US-11 & Le client filtre les voitures par critères & Fait \\
+\hline
+US-12 & Le client consulte les détails d'une voiture & Fait \\
+\hline
+\multicolumn{3}{|c|}{\cellcolor{gray!10}\textbf{Sprint 4-5: Booking \& Communication}} \\
+\hline
+US-13 & Le client vérifie la disponibilité d'une voiture & Fait \\
+\hline
+US-14 & Le client soumet une demande de location & Fait \\
+\hline
+US-15 & L'agence consulte les demandes de location & Fait \\
+\hline
+US-16 & L'agence approuve/rejette les demandes & Fait \\
+\hline
+US-17 & Le client reçoit des notifications par email & Fait \\
+\hline
+US-18 & Le client consulte son historique de réservations & Fait \\
+\hline
+US-19 & Le client annule les demandes en attente & Fait \\
+\hline
+US-20 & L'admin discute avec les agences & Fait \\
+\hline
+US-21 & L'agence reçoit des messages en temps réel & Fait \\
+\hline
+US-22 & L'utilisateur reçoit des notifications in-app & Fait \\
+\hline
+US-28 & Le visiteur devient Follower & Fait \\
+\hline
+US-29 & Le client reçoit un contrat PDF & Fait \\
+\hline
+US-30 & Le contrat inclut un QR code & Fait \\
 \hline
 \end{tabular}
-\caption{Release 1 Completed User Stories}
+\caption{User Stories Complétées - Sprints 1-5}
 \end{table}
 
-\subsection{Screenshots}
+\subsection{Captures d'Écran}
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=14cm]{img/screenshot-login.png}
-    \caption{Login Page with Keycloak Integration}
+    \caption{Page de Connexion avec Intégration Keycloak}
     \label{fig:screenshot_login}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=14cm]{img/screenshot-car-list.png}
-    \caption{Car Listing Page with Filtering Options}
+    \caption{Page de Liste des Voitures avec Options de Filtrage}
     \label{fig:screenshot_cars}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=14cm]{img/screenshot-agency-dashboard.png}
-    \caption{Agency Dashboard for Fleet Management}
+    \caption{Tableau de Bord Agence pour la Gestion de Flotte}
     \label{fig:screenshot_agency}
 \end{figure}
 
 \section{Conclusion}
-Release 1 successfully established the foundation of the MyLoc platform. The development environment was configured with modern tools and frameworks, a robust database schema was implemented, secure authentication was integrated using Keycloak, and core CRUD operations for cars and agencies were completed.
+Ce chapitre a couvert la réalisation complète de la plateforme MyLoc, depuis les fondations techniques jusqu'aux fonctionnalités métier essentielles. L'environnement de développement a été configuré avec des outils modernes, un schéma de base de données robuste a été implémenté, l'authentification sécurisée via Keycloak a été intégrée, et toutes les opérations CRUD pour les voitures et les agences ont été complétées.
 
-The Scrum methodology ensured iterative delivery with regular feedback, allowing for continuous improvement. All 12 user stories planned for Sprints 1-3 were completed, achieving 100\% of the release goals.
+Le système de réservation fournit un workflow complet de la soumission de demande à la génération de contrat. Le système de notifications par email tient les clients informés à chaque étape. Le système de chat en temps réel permet une communication efficace entre administrateurs et agences. Le système d'abonnement follower aide les agences à atteindre des clients potentiels avec de nouvelles offres.
 
-The next chapter will cover Release 2, focusing on the booking system, email notifications, PDF contract generation, and real-time chat functionality.
+Le prochain chapitre couvrira l'implémentation avancée, incluant l'intégration du chatbot IA, le système de blog, et les aspects DevOps de la plateforme.

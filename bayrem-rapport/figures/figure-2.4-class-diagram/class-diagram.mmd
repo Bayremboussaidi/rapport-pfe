@@ -83,17 +83,6 @@ classDiagram
         +cancelBooking()
     }
     
-    class Payment {
-        +Long id
-        +Double amount
-        +PaymentMethod method
-        +PaymentStatus status
-        +Date paidAt
-        +String transactionId
-        +processPayment()
-        +refund()
-    }
-    
     %% Content Management
     class BlogPost {
         +Long id
@@ -143,7 +132,6 @@ classDiagram
     
     Customer "1" --> "*" Booking : creates
     Booking "*" --> "1" Vehicle : books
-    Booking "1" --> "1" Payment : has
     
     Customer "1" --> "*" Review : writes
     Review "*" --> "1" Vehicle : reviews
@@ -160,4 +148,4 @@ classDiagram
     classDef domainClass fill:#F8F9FA,stroke:#424242,stroke-width:2px,color:#000
     
     class User,Customer,Agency,Admin userClass
-    class Vehicle,VehicleCategory,Booking,Payment,BlogPost,Review,Chat,Message domainClass
+    class Vehicle,VehicleCategory,Booking,BlogPost,Review,Chat,Message domainClass

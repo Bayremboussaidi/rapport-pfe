@@ -4,29 +4,39 @@
 \contentsline {xchapter}{Project Context}{4}{chapter.1}%
 \contentsline {figure}{\numberline {\if@rl \I {1.1}\else \textLR {1.1}\fi }{\ignorespaces System Architecture Overview - Myloc Agency Car Rental Platform}}{14}{figure.caption.9}%
 \contentsline {figure}{\numberline {\if@rl \I {2.1}\else \textLR {1.2}\fi }{\ignorespaces Scrum Methodology Framework}}{18}{figure.caption.11}%
-\contentsline {figure}{\numberline {\if@rl \I {3.1}\else \textLR {1.3}\fi }{\ignorespaces Scrum Team Structure and Interactions}}{21}{figure.caption.15}%
+\contentsline {figure}{\numberline {\if@rl \I {3.1}\else \textLR {1.3}\fi }{\ignorespaces Scrum Team Structure and Interactions}}{20}{figure.caption.15}%
 \contentsline {figure}{\numberline {\if@rl \I {4.1}\else \textLR {1.4}\fi }{\ignorespaces Example Sprint Burndown Chart}}{27}{figure.caption.26}%
 \contentsline {figure}{\numberline {\if@rl \I {5.1}\else \textLR {1.5}\fi }{\ignorespaces Team Velocity Chart Across Sprints}}{28}{figure.caption.28}%
 \addvspace {10\p@ }
-\contentsline {xchapter}{Needs Analysis and Specification}{32}{chapter.2}%
-\contentsline {figure}{\numberline {\if@rl \I {1.2}\else \textLR {2.1}\fi }{\ignorespaces Actor Hierarchy and Permission Inheritance}}{35}{figure.caption.30}%
-\contentsline {figure}{\numberline {\if@rl \I {2.2}\else \textLR {2.2}\fi }{\ignorespaces Use Case Diagram for Customer - Myloc Agency Platform}}{41}{figure.caption.31}%
-\contentsline {figure}{\numberline {\if@rl \I {3.2}\else \textLR {2.3}\fi }{\ignorespaces Use Case Diagram for Agency - Fleet and Booking Management}}{42}{figure.caption.32}%
-\contentsline {figure}{\numberline {\if@rl \I {4.2}\else \textLR {2.4}\fi }{\ignorespaces Use Case Diagram for Administrator - System Management}}{43}{figure.caption.33}%
+\contentsline {xchapter}{Needs Analysis and Specification}{31}{chapter.2}%
+\contentsline {figure}{\numberline {\if@rl \I {1.2}\else \textLR {2.1}\fi }{\ignorespaces Actor Hierarchy and Permission Inheritance}}{34}{figure.caption.30}%
+\contentsline {figure}{\numberline {\if@rl \I {2.2}\else \textLR {2.2}\fi }{\ignorespaces Use Case Diagram for Customer - Myloc Agency Platform}}{40}{figure.caption.31}%
+\contentsline {figure}{\numberline {\if@rl \I {3.2}\else \textLR {2.3}\fi }{\ignorespaces Use Case Diagram for Agency - Fleet and Booking Management}}{41}{figure.caption.32}%
+\contentsline {figure}{\numberline {\if@rl \I {4.2}\else \textLR {2.4}\fi }{\ignorespaces Use Case Diagram for Administrator - System Management}}{42}{figure.caption.33}%
 \contentsline {figure}{\numberline {\if@rl \I {5.2}\else \textLR {2.5}\fi }{\ignorespaces Global Class Diagram Representing Car Rental Platform Architecture}}{44}{figure.caption.34}%
-\contentsline {figure}{\numberline {\if@rl \I {6.2}\else \textLR {2.6}\fi }{\ignorespaces Scrum Methodology Overview}}{45}{figure.caption.37}%
-\contentsline {figure}{\numberline {\if@rl \I {7.2}\else \textLR {2.7}\fi }{\ignorespaces Scrum Team Structure - Myloc Agency Project}}{47}{figure.caption.40}%
-\contentsline {figure}{\numberline {\if@rl \I {8.2}\else \textLR {2.8}\fi }{\ignorespaces Scrum Process Flow}}{48}{figure.caption.41}%
-\contentsline {figure}{\numberline {\if@rl \I {9.2}\else \textLR {2.9}\fi }{\ignorespaces Project Burndown Chart - Story Points Remaining Over Sprints}}{55}{figure.caption.54}%
-\contentsline {figure}{\numberline {\if@rl \I {10.2}\else \textLR {2.10}\fi }{\ignorespaces Team Velocity Chart - Story Points Completed per Sprint}}{57}{figure.caption.57}%
+\contentsline {figure}{\numberline {\if@rl \I {6.2}\else \textLR {2.6}\fi }{\ignorespaces Scrum Methodology Overview}}{46}{figure.caption.37}%
+\contentsline {figure}{\numberline {\if@rl \I {7.2}\else \textLR {2.7}\fi }{\ignorespaces Scrum Team Structure - Myloc Agency Project}}{48}{figure.caption.40}%
+\contentsline {figure}{\numberline {\if@rl \I {8.2}\else \textLR {2.8}\fi }{\ignorespaces Scrum Process Flow}}{49}{figure.caption.41}%
+\contentsline {figure}{\numberline {\if@rl \I {9.2}\else \textLR {2.9}\fi }{\ignorespaces Project Burndown Chart - Story Points Remaining Over Sprints}}{56}{figure.caption.54}%
+\contentsline {figure}{\numberline {\if@rl \I {10.2}\else \textLR {2.10}\fi }{\ignorespaces Team Velocity Chart - Story Points Completed per Sprint}}{58}{figure.caption.57}%
 \addvspace {10\p@ }
-\contentsline {xchapter}{System Development and Implementation}{61}{chapter.3}%
+\contentsline {xchapter}{Réalisation: Core Platform et Système de Réservation}{61}{chapter.3}%
+\contentsline {figure}{\numberline {\if@rl \I {1.3}\else \textLR {3.1}\fi }{\ignorespaces Authentication Flow with Keycloak}}{63}{figure.caption.61}%
+\contentsline {figure}{\numberline {\if@rl \I {2.3}\else \textLR {3.2}\fi }{\ignorespaces Entity-Relationship Diagram for MyLoc Database}}{65}{figure.caption.62}%
+\contentsline {figure}{\numberline {\if@rl \I {3.3}\else \textLR {3.3}\fi }{\ignorespaces Spring Boot Layered Architecture}}{70}{figure.caption.72}%
+\contentsline {figure}{\numberline {\if@rl \I {4.3}\else \textLR {3.4}\fi }{\ignorespaces Diagramme Complet du Workflow de Réservation}}{76}{figure.caption.79}%
+\contentsline {figure}{\numberline {\if@rl \I {5.3}\else \textLR {3.5}\fi }{\ignorespaces Tableau de Bord Agence - Vue des Demandes en Attente}}{79}{figure.caption.82}%
+\contentsline {figure}{\numberline {\if@rl \I {6.3}\else \textLR {3.6}\fi }{\ignorespaces Interface de Chat en Temps Réel entre Admin et Agence}}{84}{figure.caption.84}%
+\contentsline {figure}{\numberline {\if@rl \I {7.3}\else \textLR {3.7}\fi }{\ignorespaces Page de Connexion avec Intégration Keycloak}}{88}{figure.caption.86}%
+\contentsline {figure}{\numberline {\if@rl \I {8.3}\else \textLR {3.8}\fi }{\ignorespaces Page de Liste des Voitures avec Options de Filtrage}}{89}{figure.caption.87}%
+\contentsline {figure}{\numberline {\if@rl \I {9.3}\else \textLR {3.9}\fi }{\ignorespaces Tableau de Bord Agence pour la Gestion de Flotte}}{90}{figure.caption.88}%
 \addvspace {10\p@ }
-\contentsline {xchapter}{Implementation and Results}{66}{chapter.4}%
-\contentsline {figure}{\numberline {\if@rl \I {1.4}\else \textLR {4.1}\fi }{\ignorespaces Admin Dashboard for Managing Agencies}}{68}{figure.caption.60}%
-\contentsline {figure}{\numberline {\if@rl \I {2.4}\else \textLR {4.2}\fi }{\ignorespaces Chatbot Integration on Homepage}}{68}{figure.caption.61}%
-\addvspace {10\p@ }
-\contentsline {xchapter}{Conclusion and Future Work}{71}{chapter.5}%
+\contentsline {xchapter}{Implémentation Avancée: Chatbot IA, Blog et DevOps}{92}{chapter.4}%
+\contentsline {figure}{\numberline {\if@rl \I {1.4}\else \textLR {4.1}\fi }{\ignorespaces Example of Booking Confirmation Email with QR Code}}{100}{figure.caption.91}%
+\contentsline {figure}{\numberline {\if@rl \I {2.4}\else \textLR {4.2}\fi }{\ignorespaces Example of Booking Rejection Email}}{100}{figure.caption.92}%
+\contentsline {figure}{\numberline {\if@rl \I {3.4}\else \textLR {4.3}\fi }{\ignorespaces Example of New Car Alert Email for Followers}}{101}{figure.caption.93}%
+\contentsline {figure}{\numberline {\if@rl \I {4.4}\else \textLR {4.4}\fi }{\ignorespaces Tableau de Bord Admin pour la Gestion des Agences}}{111}{figure.caption.95}%
+\contentsline {figure}{\numberline {\if@rl \I {5.4}\else \textLR {4.5}\fi }{\ignorespaces Intégration du Chatbot sur la Page d'Accueil}}{111}{figure.caption.96}%
 \vspace {3.8mm}
 \babel@toc {french}{}\relax 
 \babel@toc {english}{}\relax 

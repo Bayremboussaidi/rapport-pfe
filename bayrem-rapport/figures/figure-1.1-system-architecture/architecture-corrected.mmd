@@ -1,0 +1,32 @@
+graph TB
+    subgraph FRONTEND["🖥️ PRESENTATION LAYER"]
+        A["Angular 16 Frontend<br/>Bootstrap • HTTP Polling Chat (30s)<br/>Route Guards • JWT Storage"]
+    end
+    
+    subgraph BACKEND["☕ APPLICATION LAYER"]
+        B["Spring Boot 3.x API<br/>REST Controllers • Business Logic<br/>Spring Security + JWT • Email Service"]
+        C["Flask AI Chatbot<br/>OpenAI GPT • Car Recommendations<br/>DB Context Fetching • FAQ/NLP"]
+    end
+    
+    subgraph SECURITY["🔐 SECURITY LAYER"]
+        D["Keycloak Server<br/>Admin Auth • RBAC<br/>Token Issuing"]
+        S1["Spring Security<br/>JWT Validation<br/>Customer/Agency Auth"]
+    end
+    
+    subgraph DATA["🗄️ DATA LAYER"]
+        E["MySQL 8 Database<br/>Users • Vehicles • Bookings<br/>Chat Messages • Notifications"]
+        AI[("OpenAI GPT API")]
+    end
+    
+    subgraph INFRA["🐳 INFRASTRUCTURE"]
+        F["Docker"] --> G["Kubernetes"] --> H["GitLab CI/CD"]
+    end
+    
+    A -->|"HTTPS REST"| B
+    A -->|"HTTP POST /chat"| C
+    A -->|"Admin OAuth2"| D
+    B -->|"JPA/Hibernate"| E
+    B <-->|"Token Validation"| D
+    B --- S1
+    C -->|"Fetch Context"| E
+    C -->|"API Call"| AI

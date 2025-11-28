@@ -1,5 +1,4 @@
 classDiagram
-    %% Core User Classes
     class User {
         +Long id
         +String email
@@ -7,6 +6,7 @@ classDiagram
         +String firstName
         +String lastName
         +Date createdAt
+        +UserRole role
         +Boolean isActive
         +login()
         +logout()
@@ -34,6 +34,7 @@ classDiagram
         +addVehicle()
         +manageBookings()
         +generateReports()
+        +updateProfile()
     }
     
     class Admin {
@@ -43,15 +44,23 @@ classDiagram
         +viewAnalytics()
         +systemConfiguration()
     }
+
+    class Follower {
+        +Long id
+        +String email
+        +Date subscribedAt
+        +Boolean isActive
+        +subscribe()
+        +unsubscribe()
+    }
     
-    %% Vehicle Management
     class Vehicle {
         +Long id
         +String make
         +String model
         +Integer year
         +String plateNumber
-        +String category
+        +VehicleCategory category
         +Double pricePerDay
         +String description
         +Boolean isAvailable
@@ -67,13 +76,12 @@ classDiagram
         +Double basePrice
     }
     
-    %% Booking System
     class Booking {
         +Long id
         +Date startDate
         +Date endDate
         +Double totalPrice
-        +String status
+        +BookingStatus status
         +String notes
         +Date createdAt
         +calculateTotal()
@@ -81,7 +89,6 @@ classDiagram
         +cancelBooking()
     }
     
-    %% Content Management
     class BlogPost {
         +Long id
         +String title
@@ -103,11 +110,10 @@ classDiagram
         +reject()
     }
     
-    %% Communication
     class Chat {
         +Long id
         +Date startedAt
-        +String status
+        +ChatStatus status
         +sendMessage()
         +endChat()
     }
@@ -117,26 +123,38 @@ classDiagram
         +String content
         +Date sentAt
         +Boolean isRead
-        +String type
+        +MessageType type
+    }
+
+    class Notification {
+        +Long id
+        +String title
+        +String content
+        +NotificationType type
+        +Boolean isRead
+        +Date createdAt
+        +markAsRead()
     }
     
-    %% Relationships
     User <|-- Customer
     User <|-- Agency
     User <|-- Admin
     
-    Agency ||--o{ Vehicle
-    Vehicle }o--|| VehicleCategory
+    Agency "1" --> "*" Vehicle : owns
+    Vehicle "*" --> "1" VehicleCategory : belongs to
     
-    Customer ||--o{ Booking
-    Booking }o--|| Vehicle
+    Customer "1" --> "*" Booking : creates
+    Booking "*" --> "1" Vehicle : books
     
-    Customer ||--o{ Review
-    Review }o--|| Vehicle
+    Customer "1" --> "*" Review : writes
+    Review "*" --> "1" Vehicle : reviews
     
-    Agency ||--o{ BlogPost
+    Admin "1" --> "*" BlogPost : creates
     
-    Customer ||--o{ Chat
-    Agency ||--o{ Chat
-    Chat ||--o{ Message
-    User ||--o{ Message
+    Admin "1" --> "*" Chat : initiates
+    Agency "1" --> "*" Chat : participates
+    Chat "1" --> "*" Message : contains
+    User "1" --> "*" Message : sends
+    
+    User "1" --> "*" Notification : receives
+    Agency "1" --> "*" Follower : has followers
