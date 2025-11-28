@@ -1,0 +1,68 @@
+flowchart LR
+    %% Actor on LEFT side
+    Customer[Customer]
+    
+    %% System boundary - balanced compact layout
+    subgraph Platform ["Car Rental Platform"]
+        direction TB
+        
+        %% Top row: 2 groups only for balance
+        subgraph TopRow [" "]
+            direction LR
+            subgraph AuthGroup ["Authentication & Profile"]
+                Register("Register")
+                Login("Login")
+                Profile("Manage Profile")
+            end
+            
+            subgraph BrowseGroup ["Search & Browse"]
+                Search("Search Vehicles")
+                Filter("Apply Filters")
+                Browse("Browse Catalog")
+                Details("View Details")
+            end
+        end
+        
+        %% Bottom row: 2 groups only for balance
+        subgraph BottomRow [" "]
+            direction LR
+            subgraph BookingGroup ["Booking & Payment"]
+                Book("Book Vehicle")
+                Payment("Make Payment")
+                Receipt("View Receipt")
+                Cancel("Cancel Booking")
+            end
+            
+            subgraph CommGroup ["Communication & History"]
+                Reviews("Write Reviews")
+                Chat("Chat with Agency")
+                History("View History")
+                Blog("Read Blog Posts")
+            end
+        end
+    end
+    
+    %% Clean connections from left actor to groups
+    Customer -.-> AuthGroup
+    Customer -.-> BrowseGroup
+    Customer -.-> BookingGroup
+    Customer -.-> CommGroup
+    
+    %% Include relationships
+    Register -->|includes| Login
+    Search -->|includes| Filter
+    Book -->|includes| Payment
+    Payment -->|includes| Receipt
+    
+    %% Professional styling
+    classDef actor fill:#E3F2FD,stroke:#1976D2,stroke-width:3px,color:#000,font-weight:bold
+    classDef usecase fill:#FFFFFF,stroke:#424242,stroke-width:2px,color:#000
+    classDef system fill:#F8F9FA,stroke:#1976D2,stroke-width:3px,color:#1976D2,font-weight:bold
+    classDef group fill:#FAFAFA,stroke:#BDBDBD,stroke-width:2px,color:#555,font-weight:bold
+    classDef invisible fill:none,stroke:none,color:transparent
+    
+    class Customer actor
+    class Register,Login,Profile,Search,Filter,Browse,Details,Book,Payment,Receipt,Cancel,Reviews,Chat,History,Blog usecase
+    class Platform system
+    class AuthGroup,BrowseGroup,BookingGroup,CommGroup group
+    class TopRow,BottomRow invisible

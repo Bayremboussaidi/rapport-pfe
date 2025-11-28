@@ -1,0 +1,205 @@
+@startuml
+!theme plain
+skinparam backgroundColor white
+skinparam classBackgroundColor white
+skinparam classBorderColor black
+skinparam arrowColor black
+skinparam shadowing false
+skinparam dpi 150
+left to right direction
+
+' Core User Classes
+abstract class User {
+    +id: Long
+    +email: String
+    +password: String
+    +firstName: String
+    +lastName: String
+    +createdAt: Date
+    +isActive: Boolean
+    +login()
+    +logout()
+    +updateProfile()
+}
+
+class Customer {
+    +phone: String
+    +address: String
+    +drivingLicense: String
+    +licenseExpiry: Date
+    +searchVehicles()
+    +bookVehicle()
+    +cancelBooking()
+    +writeReview()
+}
+
+class Agency {
+    +businessName: String
+    +businessLicense: String
+    +address: String
+    +phone: String
+    +description: String
+    +rating: Double
+    +addVehicle()
+    +manageBookings()
+    +generateReports()
+}
+
+class Admin {
+    +department: String
+    +manageUsers()
+    +moderateContent()
+    +viewAnalytics()
+    +systemConfiguration()
+}
+
+' Vehicle Management
+class Vehicle {
+    +id: Long
+    +make: String
+    +model: String
+    +year: Integer
+    +plateNumber: String
+    +pricePerDay: Double
+    +description: String
+    +isAvailable: Boolean
+    +location: String
+    +checkAvailability()
+    +updateStatus()
+}
+
+class VehicleCategory {
+    +id: Long
+    +name: String
+    +description: String
+    +basePrice: Double
+}
+
+' Booking System
+class Booking {
+    +id: Long
+    +startDate: Date
+    +endDate: Date
+    +totalPrice: Double
+    +status: BookingStatus
+    +notes: String
+    +createdAt: Date
+    +calculateTotal()
+    +confirmBooking()
+    +cancelBooking()
+}
+
+class Payment {
+    +id: Long
+    +amount: Double
+    +method: PaymentMethod
+    +status: PaymentStatus
+    +paidAt: Date
+    +transactionId: String
+    +processPayment()
+    +refund()
+}
+
+' Content Management
+class BlogPost {
+    +id: Long
+    +title: String
+    +content: String
+    +publishedAt: Date
+    +isPublished: Boolean
+    +author: String
+    +publish()
+    +unpublish()
+}
+
+class Review {
+    +id: Long
+    +rating: Integer
+    +comment: String
+    +createdAt: Date
+    +isApproved: Boolean
+    +approve()
+    +reject()
+}
+
+' Communication
+class Chat {
+    +id: Long
+    +startedAt: Date
+    +status: ChatStatus
+    +sendMessage()
+    +endChat()
+}
+
+class Message {
+    +id: Long
+    +content: String
+    +sentAt: Date
+    +isRead: Boolean
+    +type: MessageType
+}
+
+' Enumerations
+enum BookingStatus {
+    PENDING
+    CONFIRMED
+    ACTIVE
+    COMPLETED
+    CANCELLED
+}
+
+enum PaymentStatus {
+    PENDING
+    COMPLETED
+    FAILED
+    REFUNDED
+}
+
+enum PaymentMethod {
+    CREDIT_CARD
+    DEBIT_CARD
+    BANK_TRANSFER
+    PAYPAL
+}
+
+enum ChatStatus {
+    ACTIVE
+    CLOSED
+}
+
+enum MessageType {
+    TEXT
+    IMAGE
+    SYSTEM
+}
+
+' Relationships
+User <|-- Customer
+User <|-- Agency
+User <|-- Admin
+
+Agency ||--o{ Vehicle : owns
+Vehicle }o--|| VehicleCategory : belongs to
+
+Customer ||--o{ Booking : creates
+Booking }o--|| Vehicle : books
+Booking ||--|| Payment : has
+
+Customer ||--o{ Review : writes
+Review }o--|| Vehicle : about
+
+Agency ||--o{ BlogPost : creates
+
+Customer ||--o{ Chat : initiates
+Agency ||--o{ Chat : participates
+Chat ||--o{ Message : contains
+User ||--o{ Message : sends
+
+' Enum relationships
+Booking ||--|| BookingStatus
+Payment ||--|| PaymentStatus
+Payment ||--|| PaymentMethod
+Chat ||--|| ChatStatus
+Message ||--|| MessageType
+
+@enduml

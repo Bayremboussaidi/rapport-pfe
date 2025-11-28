@@ -1,0 +1,58 @@
+---
+title: "Figure 2.1: Customer Use Case Diagram"
+---
+graph LR
+    %% Actor on LEFT side
+    Customer[Customer]
+    
+    %% Use cases in compact layout - 3 columns for balance
+    subgraph System ["Car Rental Platform"]
+        %% Authentication column
+        Register["Register"]
+        Login["Login"] 
+        Profile["Manage Profile"]
+        
+        %% Core functions column
+        Search["Search Vehicles"]
+        Filter["Apply Filters"]
+        Browse["Browse Catalog"]
+        Book["Book Vehicle"]
+        
+        %% Management column  
+        Payment["Make Payment"]
+        Receipt["View Receipt"]
+        Cancel["Cancel Booking"]
+        Chat["Chat with Agency"]
+        History["View History"]
+        Reviews["Write Reviews"]
+    end
+    
+    %% Clean connections
+    Customer -.-> Register
+    Customer -.-> Login
+    Customer -.-> Profile
+    Customer -.-> Search
+    Customer -.-> Filter
+    Customer -.-> Browse
+    Customer -.-> Book
+    Customer -.-> Payment
+    Customer -.-> Receipt
+    Customer -.-> Cancel
+    Customer -.-> Chat
+    Customer -.-> History
+    Customer -.-> Reviews
+    
+    %% Include relationships
+    Register -->|includes| Login
+    Search -->|includes| Filter
+    Book -->|includes| Payment
+    Payment -->|includes| Receipt
+    
+    %% Compact ellipse-like styling
+    classDef actor fill:#E3F2FD,stroke:#1976D2,stroke-width:3px,color:#000,font-weight:bold
+    classDef usecase fill:#FFFFFF,stroke:#424242,stroke-width:2px,color:#000,font-size:12px
+    classDef system fill:#F8F9FA,stroke:#1976D2,stroke-width:3px,color:#1976D2,font-weight:bold
+    
+    class Customer actor
+    class Register,Login,Profile,Search,Filter,Browse,Book,Payment,Receipt,Cancel,Chat,History,Reviews usecase
+    class System system

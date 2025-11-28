@@ -1,0 +1,65 @@
+flowchart LR
+    %% Actor on LEFT side
+    Admin[Administrator]
+    
+    %% System boundary - balanced layout
+    subgraph System ["Platform Administration System"]
+        direction TB
+        
+        %% Top section: User & Content Management
+        subgraph TopSection [" "]
+            direction LR
+            subgraph UserGroup ["User Management"]
+                ManageUsers("Manage Users")
+                ViewUsers("View User Profiles")
+                BanUsers("Ban/Suspend Users")
+            end
+            
+            subgraph ContentGroup ["Content Management"]
+                ApproveBlog("Approve Blog Posts")
+                ManageContent("Manage Content")
+                Moderate("Moderate Reviews")
+            end
+        end
+        
+        %% Bottom section: Platform Operations
+        subgraph BottomSection [" "]
+            direction LR
+            subgraph SystemGroup ["System Management"]
+                Analytics("View Analytics")
+                Reports("Generate Reports")
+                Config("System Configuration")
+            end
+            
+            subgraph MonitorGroup ["Monitoring & Support"]
+                MonitorTrans("Monitor Transactions")
+                Support("Handle Support Tickets")
+                Backup("Manage Backups")
+                Security("Security Management")
+            end
+        end
+    end
+    
+    %% Clean left-to-right connections
+    Admin -.-> UserGroup
+    Admin -.-> ContentGroup
+    Admin -.-> SystemGroup
+    Admin -.-> MonitorGroup
+    
+    %% Include relationships
+    ManageUsers -->|includes| ViewUsers
+    Analytics -->|includes| Reports
+    Support -->|includes| Config
+    
+    %% Professional balanced styling
+    classDef actor fill:#E3F2FD,stroke:#1976D2,stroke-width:3px,color:#000,font-weight:bold
+    classDef usecase fill:#FFFFFF,stroke:#424242,stroke-width:2px,color:#000
+    classDef system fill:#F8F9FA,stroke:#1976D2,stroke-width:3px,color:#1976D2,font-weight:bold
+    classDef group fill:#FAFAFA,stroke:#BDBDBD,stroke-width:2px,color:#555,font-weight:bold
+    classDef invisible fill:none,stroke:none,color:transparent
+    
+    class Admin actor
+    class ManageUsers,ViewUsers,BanUsers,ApproveBlog,ManageContent,Moderate,Analytics,Reports,Config,MonitorTrans,Support,Backup,Security usecase
+    class System system
+    class UserGroup,ContentGroup,SystemGroup,MonitorGroup group
+    class TopSection,BottomSection invisible

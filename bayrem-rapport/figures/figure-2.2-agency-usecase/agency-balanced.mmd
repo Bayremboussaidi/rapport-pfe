@@ -1,0 +1,65 @@
+flowchart LR
+    %% Actor on LEFT side
+    Agency[Agency]
+    
+    %% System boundary - balanced layout
+    subgraph System ["Agency Management System"]
+        direction TB
+        
+        %% Top section: Core Management
+        subgraph TopSection [" "]
+            direction LR
+            subgraph ProfileGroup ["Authentication & Profile"]
+                Login("Login")
+                Profile("Manage Profile")
+            end
+            
+            subgraph VehicleGroup ["Vehicle Management"]
+                Add("Add Vehicle")
+                Edit("Edit Vehicle")
+                Delete("Delete Vehicle")
+                Price("Set Pricing")
+            end
+        end
+        
+        %% Bottom section: Operations & Communication
+        subgraph BottomSection [" "]
+            direction LR
+            subgraph RequestGroup ["Request Management"]
+                ViewReq("View Requests")
+                Accept("Accept Booking")
+                Reject("Reject Booking")
+            end
+            
+            subgraph CommGroup ["Communication & Reports"]
+                Reports("Generate Reports")
+                Chat("Chat with Customer")
+                Notify("Send Notifications")
+                BlogPost("Create Blog Post")
+            end
+        end
+    end
+    
+    %% Clean left-to-right connections
+    Agency -.-> ProfileGroup
+    Agency -.-> VehicleGroup
+    Agency -.-> RequestGroup
+    Agency -.-> CommGroup
+    
+    %% Include relationships
+    Login -->|includes| Profile
+    Add -->|includes| Price
+    Accept -->|includes| Notify
+    
+    %% Professional balanced styling
+    classDef actor fill:#E3F2FD,stroke:#1976D2,stroke-width:3px,color:#000,font-weight:bold
+    classDef usecase fill:#FFFFFF,stroke:#424242,stroke-width:2px,color:#000
+    classDef system fill:#F8F9FA,stroke:#1976D2,stroke-width:3px,color:#1976D2,font-weight:bold
+    classDef group fill:#FAFAFA,stroke:#BDBDBD,stroke-width:2px,color:#555,font-weight:bold
+    classDef invisible fill:none,stroke:none,color:transparent
+    
+    class Agency actor
+    class Login,Profile,Add,Edit,Delete,Price,ViewReq,Accept,Reject,Reports,Chat,Notify,BlogPost usecase
+    class System system
+    class ProfileGroup,VehicleGroup,RequestGroup,CommGroup group
+    class TopSection,BottomSection invisible

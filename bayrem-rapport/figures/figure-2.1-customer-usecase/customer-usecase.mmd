@@ -1,0 +1,91 @@
+---
+title: "Figure 2.1: Customer Use Case Diagram"
+---
+flowchart TD
+    %% Actors
+    Customer[👤 Customer]
+    Visitor[👤 Visitor]
+    
+    %% System boundary with organized groups
+    subgraph Platform ["🏢 Car Rental Platform"]
+        direction TB
+        
+        %% Authentication group
+        subgraph AuthGroup ["🔐 Authentication"]
+            direction TB
+            Login("Login")
+            Register("Register") 
+            Profile("Manage Profile")
+        end
+        
+        %% Vehicle browsing group  
+        subgraph BrowseGroup ["🚗 Vehicle Operations"]
+            direction TB
+            Browse("Browse Cars")
+            Search("Search Vehicles")
+            Check("Check Availability")
+        end
+        
+        %% Booking process group
+        subgraph BookingGroup ["📋 Booking Process"]
+            direction TB
+            Book("Book Vehicle")
+            Payment("Make Payment")
+            Contract("Download Contract")
+        end
+        
+        %% Management group
+        subgraph ManageGroup ["📊 Booking Management"]
+            direction TB
+            ViewBookings("View Bookings")
+            ModifyBooking("Modify Booking")
+            CancelBooking("Cancel Booking")
+        end
+        
+        %% Communication group
+        subgraph CommGroup ["💬 Communication"]
+            direction TB
+            Chat("Chat with Agency")
+            Chatbot("Use Chatbot")
+            Notifications("Receive Notifications")
+        end
+        
+        %% Content group
+        subgraph ContentGroup ["📰 Content & Social"]
+            direction TB
+            Blog("Read Blog")
+            Comments("Leave Comments")
+            Follow("Follow Agency")
+        end
+    end
+    
+    %% Clean organized connections - Customer to groups
+    Customer -.-> AuthGroup
+    Customer -.-> BrowseGroup
+    Customer -.-> BookingGroup
+    Customer -.-> ManageGroup
+    Customer -.-> CommGroup
+    Customer -.-> ContentGroup
+    
+    %% Limited Visitor connections
+    Visitor -.-> Register
+    Visitor -.-> Browse
+    Visitor -.-> Chatbot
+    Visitor -.-> Blog
+    
+    %% Include relationships (within groups)
+    Login -->|includes| Profile
+    Check -->|includes| Book
+    Book -->|includes| Payment
+    Payment -->|includes| Contract
+    
+    %% Professional UML styling
+    classDef actor fill:#E3F2FD,stroke:#1976D2,stroke-width:3px,color:#000,font-weight:bold
+    classDef usecase fill:#FFFFFF,stroke:#424242,stroke-width:2px,color:#000
+    classDef system fill:#F8F9FA,stroke:#1976D2,stroke-width:3px,color:#1976D2,font-weight:bold
+    classDef group fill:#FAFAFA,stroke:#BDBDBD,stroke-width:2px,color:#555,font-weight:bold
+    
+    class Customer,Visitor actor
+    class Login,Register,Profile,Browse,Search,Check,Book,Payment,Contract,ViewBookings,ModifyBooking,CancelBooking,Chat,Chatbot,Notifications,Blog,Comments,Follow usecase
+    class Platform system
+    class AuthGroup,BrowseGroup,BookingGroup,ManageGroup,CommGroup,ContentGroup group

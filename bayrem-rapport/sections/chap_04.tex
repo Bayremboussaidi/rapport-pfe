@@ -1,0 +1,131 @@
+\chapter{Implementation and Results}
+
+\section{Introduction}
+This chapter presents the practical implementation of the Car Rental Platform. It details how the system architecture, design decisions, and core functionalities have been translated into a working product. The chapter is organized by module, describing role-specific components, backend logic, frontend interaction, security integration, third-party service connections, and test scenarios. Screenshots and results are included to illustrate the platform’s functionalities.
+
+\section{System Modules Implementation}
+The application is organized into modular components corresponding to specific functionalities, user roles, and workflows. Each module is independently testable, scalable, and maintained in alignment with the microservice architecture.
+
+\subsection{Authentication and Authorization Module (Keycloak)}
+\begin{itemize}
+    \item Role-based access control is implemented using Keycloak.
+    \item Users are authenticated via OAuth2 and issued JWT tokens.
+    \item Angular AuthGuard protects Admin, Agency, and Customer dashboards.
+    \item Spring Boot backend routes are secured with role-based annotations (e.g., \texttt{@PreAuthorize}, \texttt{@RolesAllowed}).
+\end{itemize}
+
+\subsection{Admin Module}
+\begin{itemize}
+    \item Add, update, and delete agencies.
+    \item Manage customers and blogs (CRUD operations).
+    \item View and manage all bookings.
+    \item Communicate with agencies via real-time chat.
+\end{itemize}
+
+\subsection{Agency Module}
+\begin{itemize}
+    \item Add, edit, and delete cars.
+    \item Upload photos for existing cars.
+    \item Manage availability and booking requests.
+    \item Accept or decline rental requests, triggering email and notification.
+    \item Communicate with admin via real-time chat interface.
+\end{itemize}
+
+\subsection{Customer Module}
+\begin{itemize}
+    \item Browse available cars and blogs.
+    \item Register and log in with Keycloak (or browse as a visitor).
+    \item Submit rental requests for available cars.
+    \item Receive notifications and emails upon status changes.
+    \item View rental history and delete unconfirmed or declined requests.
+    \item Comment on car listings and blogs.
+    \item Receive PDF contract with QR code after payment confirmation.
+\end{itemize}
+
+\subsection{Chatbot Module (FastAPI + ChatGPT)}
+\begin{itemize}
+    \item FastAPI backend receives questions from the frontend.
+    \item OpenAI’s ChatGPT API generates responses.
+    \item Replies are displayed to customers and visitors.
+    \item Supports multilingual queries (French and English).
+\end{itemize}
+
+\subsection{Online Payment Module}
+\begin{itemize}
+    \item Upon booking acceptance, a payment link is sent to the user’s email.
+    \item Payment is processed and validated through the Spring Boot backend.
+    \item A PDF with QR code is generated and sent after payment confirmation.
+    \item Booking status updated to “confirmed”.
+\end{itemize}
+
+\subsection{Notification and Email System}
+\begin{itemize}
+    \item Customers receive emails for new cars, booking decisions, or updates.
+    \item Followers (visitors who submit emails) receive notifications for new car listings.
+    \item Notifications are stored in the database and displayed in-app.
+\end{itemize}
+
+\section{Database Implementation}
+The platform uses a MySQL relational database. Entities are mapped via JPA annotations and structured around key objects:
+
+\begin{itemize}
+    \item \textbf{Agence Table:} Stores agency profiles and login credentials.
+    \item \textbf{Booking Table:} Stores rental requests, dates, customer info, price, and car details.
+    \item \textbf{Blog Table:} Contains articles, authors, multimedia content.
+    \item \textbf{Voiture Table:} Stores car details (name, type, price, photos).
+    \item \textbf{User Table:} Stores customer information and login references.
+    \item \textbf{Notification Table:} Stores in-app messages and alert statuses.
+\end{itemize}
+
+\section{Screenshots of the Application}
+Screenshots illustrate the platform’s functionalities for different user roles:
+
+\begin{itemize}
+    \item Admin dashboard with agency management.
+    \item Agency dashboard with car CRUD operations.
+    \item Customer booking page and rental history view.
+    \item Real-time chat interface between admin and agencies.
+    \item Generated PDF contract with QR code.
+    \item Chatbot interface integrated on the homepage.
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=14cm]{assets/admin-dashboard.png}
+    \caption{Admin Dashboard for Managing Agencies}
+    \label{admin-dash}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=14cm]{assets/chatbot-demo.png}
+    \caption{Chatbot Integration on Homepage}
+    \label{chatbot}
+\end{figure}
+
+\section{Testing and Validation}
+The system has been validated through manual and automated testing.
+
+\subsection{Unit Testing}
+\begin{itemize}
+    \item Spring Boot unit tests for services and controllers.
+    \item REST API endpoints tested with Postman.
+    \item Angular unit tests using Jasmine and Karma.
+\end{itemize}
+
+\subsection{Integration Testing}
+\begin{itemize}
+    \item End-to-end testing of booking flow from customer request to agency validation.
+    \item Payment processing, PDF generation, and email dispatch tested with mock gateways.
+    \item Real-time chat functionality tested between admin and agencies.
+\end{itemize}
+
+\subsection{CI/CD Pipeline Validation}
+\begin{itemize}
+    \item GitLab CI pipelines test build processes, run unit tests, and deploy to Kubernetes.
+    \item Docker containers tested locally and in staging environments.
+    \item Rollback and hotfix procedures validated.
+\end{itemize}
+
+\section{Conclusion}
+The implementation phase successfully transformed the design into a robust, functional web platform. All planned modules—from authentication and booking workflows to real-time messaging, automated email notifications, chatbot support, and online payments—have been developed, tested, and deployed. The system is stable, scalable, and provides a seamless digital experience for all user roles.

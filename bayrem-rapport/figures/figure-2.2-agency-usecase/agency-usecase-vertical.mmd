@@ -1,0 +1,70 @@
+---
+title: "Figure 2.2: Agency Use Case Diagram"
+---
+flowchart TB
+    %% Actor using stick figure asset
+    Agency["<img src='../../assets/icons/agency.png' width='40' height='40'/><br/>Agency"]
+    
+    %% System boundary - vertical layout
+    subgraph System ["Agency Management System"]
+        direction TB
+        
+        %% Row 1: Profile & Vehicle Management
+        subgraph Row1 [" "]
+            direction LR
+            subgraph ProfileGroup ["Profile & Authentication"]
+                direction TB
+                Login("Login")
+                Profile("Manage Profile")
+            end
+            
+            subgraph VehicleGroup ["Vehicle Management"]
+                direction TB
+                Add("Add Vehicle")
+                Edit("Edit Vehicle")
+                Delete("Delete Vehicle")
+                Price("Set Pricing")
+            end
+        end
+        
+        %% Row 2: Requests & Communication
+        subgraph Row2 [" "]
+            direction LR
+            subgraph RequestGroup ["Request Management"]
+                direction TB
+                ViewReq("View Requests")
+                Accept("Accept Booking")
+                Reject("Reject Booking")
+            end
+            
+            subgraph CommGroup ["Communication & Reports"]
+                direction TB
+                Reports("Generate Reports")
+                Chat("Chat with Customer")
+                Notify("Send Notifications")
+                BlogPost("Create Blog Post")
+            end
+        end
+    end
+    
+    %% Clean vertical connections
+    Agency -.-> Row1
+    Agency -.-> Row2
+    
+    %% Include relationships
+    Login -->|includes| Profile
+    Add -->|includes| Price
+    Accept -->|includes| Notify
+    
+    %% Clean professional styling
+    classDef actor fill:#E3F2FD,stroke:#1976D2,stroke-width:3px,color:#000,font-weight:bold
+    classDef usecase fill:#FFFFFF,stroke:#424242,stroke-width:2px,color:#000
+    classDef system fill:#F8F9FA,stroke:#1976D2,stroke-width:3px,color:#1976D2,font-weight:bold
+    classDef group fill:#FAFAFA,stroke:#BDBDBD,stroke-width:2px,color:#555,font-weight:bold
+    classDef invisible fill:none,stroke:none,color:transparent
+    
+    class Agency actor
+    class Login,Profile,Add,Edit,Delete,Price,ViewReq,Accept,Reject,Reports,Chat,Notify,BlogPost usecase
+    class System system
+    class ProfileGroup,VehicleGroup,RequestGroup,CommGroup group
+    class Row1,Row2 invisible

@@ -1,0 +1,59 @@
+@startuml
+!theme plain
+skinparam backgroundColor white
+skinparam actorBackgroundColor white
+skinparam usecaseBackgroundColor white
+skinparam actorBorderColor black
+skinparam usecaseBorderColor black
+skinparam arrowColor black
+skinparam shadowing false
+skinparam dpi 150
+left to right direction
+
+' Agency Actor positioned on left
+actor Agency
+
+' System boundary with horizontal group layout
+package "Agency Management System" {
+    rectangle "Authentication & Profile" {
+        usecase (Login) as UC1
+        usecase (Manage Profile) as UC2
+    }
+    
+    rectangle "Vehicle Management" {
+        usecase (Add Vehicle) as UC3
+        usecase (Edit Vehicle) as UC4
+        usecase (Delete Vehicle) as UC5
+        usecase (Set Pricing) as UC6
+    }
+    
+    rectangle "Request Management" {
+        usecase (View Requests) as UC7
+        usecase (Accept Booking) as UC8
+        usecase (Reject Booking) as UC9
+    }
+    
+    rectangle "Communication & Reports" {
+        usecase (Generate Reports) as UC10
+        usecase (Chat with Customer) as UC11
+        usecase (Send Notifications) as UC12
+        usecase (Create Blog Post) as UC13
+    }
+}
+
+' Force horizontal arrangement of groups
+"Authentication & Profile" -down[hidden]-> "Request Management"
+"Vehicle Management" -down[hidden]-> "Communication & Reports"
+
+' Agency associations to groups
+Agency --> "Authentication & Profile"
+Agency --> "Vehicle Management"
+Agency --> "Request Management"
+Agency --> "Communication & Reports"
+
+' Include relationships
+UC1 .> UC2 : <<include>>
+UC3 .> UC6 : <<include>>
+UC8 .> UC12 : <<include>>
+
+@enduml

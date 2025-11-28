@@ -1,0 +1,72 @@
+---
+title: Customer Use Case Diagram - Myloc Car Rental Platform
+---
+flowchart TD
+    subgraph System ["📦 Myloc Car Rental Platform"]
+        direction TB
+        
+        %% Authentication Use Cases
+        UC1(("🔐 Login/Register"))
+        UC2(("👤 Manage Profile"))
+        
+        %% Vehicle & Booking Use Cases  
+        UC3(("🔍 Browse Cars"))
+        UC4(("📅 Check Availability"))
+        UC5(("🚗 Book Vehicle"))
+        UC6(("💳 Make Payment"))
+        
+        %% Booking Management
+        UC7(("📋 View Bookings"))
+        UC8(("✏️ Modify Booking"))
+        UC9(("📄 Download Contract"))
+        
+        %% Communication
+        UC10(("💬 Chat with Agency"))
+        UC11(("🤖 Use AI Chatbot"))
+        
+        %% Content Interaction
+        UC12(("📖 Read Blog Posts"))
+        UC13(("💬 Leave Comments"))
+        UC14(("👥 Follow Agency"))
+    end
+    
+    %% Actors
+    Customer["👤<br/>Customer"]
+    Visitor["🌐<br/>Visitor"]
+    
+    %% Customer connections
+    Customer --- UC1
+    Customer --- UC2
+    Customer --- UC3
+    Customer --- UC4
+    Customer --- UC5
+    Customer --- UC6
+    Customer --- UC7
+    Customer --- UC8
+    Customer --- UC9
+    Customer --- UC10
+    Customer --- UC11
+    Customer --- UC12
+    Customer --- UC13
+    Customer --- UC14
+    
+    %% Visitor connections (limited access)
+    Visitor --- UC3
+    Visitor --- UC11
+    Visitor --- UC12
+    Visitor --- UC1
+    
+    %% Dependencies
+    UC4 --> UC5
+    UC5 --> UC6
+    UC6 --> UC9
+    UC1 -.-> UC2
+    
+    %% Styling
+    classDef actor fill:#FFE0B2,stroke:#FF8C00,stroke-width:3px,color:#000
+    classDef usecase fill:#E3F2FD,stroke:#1976D2,stroke-width:2px,color:#000
+    classDef system fill:#F5F5F5,stroke:#424242,stroke-width:3px,color:#000
+    
+    class Customer,Visitor actor
+    class UC1,UC2,UC3,UC4,UC5,UC6,UC7,UC8,UC9,UC10,UC11,UC12,UC13,UC14 usecase
+    class System system

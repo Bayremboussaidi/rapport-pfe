@@ -1,0 +1,171 @@
+\chapter{Project Context} % Chapter 1
+
+\section{Introduction}
+This chapter presents the general context of the project. It introduces the host organization, \textbf{Myloc Agency}, analyzes existing methods, and describes the proposed solution. Additionally, it outlines the project architecture, design approaches, management methodology, and development environment.
+
+\section{Presentation of the Host Organization: Myloc Agency}
+This section provides an overview of the host organization, its mission, activities, and products, highlighting its innovative approach and global impact.
+
+\subsection{Host Organization}
+Myloc Agency leverages expertise in car rental services to offer customized solutions that provide reliable and affordable transportation options for clients. Founded by Amine Ben Chaabane, it consists of a passionate and dedicated team of skilled professionals who work closely with clients to deliver transportation solutions tailored to their specific needs.
+
+\subsection{Activities and Products}
+As part of this project, I developed a full-featured car rental web application that supports three main user roles: Admin, Agencies, and Customers, with additional functionalities for visitors and followers. The application includes a secure, role-based system powered by Keycloak for authentication and route protection. It was built using Spring Boot (backend), Angular (frontend), FastAPI (chatbot backend), and a separate payment microservice, all containerized with Docker, orchestrated with Docker Compose, deployed on Kubernetes (K8s), and integrated with GitLab CI/CD pipelines for continuous deployment.
+
+\section{Project Frame}
+This section delves into the framework of the project, starting with an analysis of existing systems to identify their strengths and weaknesses. By understanding gaps and opportunities in current solutions, we propose an innovative approach that addresses these shortcomings and enhances the overall user experience.
+
+\subsection{Study of Existing Systems}
+This section explores existing car rental platforms to identify their functionalities, strengths, and limitations. The aim is to evaluate how current systems handle administrative, agency, and customer interactions, and to highlight areas where improvements can be made.
+
+\begin{itemize}
+\item \textbf{Traditional Car Rental Websites}: Many companies offer web platforms where users can search and book vehicles. These platforms often lack real-time availability checks, multi-role management, or automated document generation. Interaction between customers and agencies is usually limited or entirely missing.
+
+\item \textbf{Aggregator Platforms (e.g., Kayak, Rentalcars)}: These platforms centralize listings from multiple rental agencies, allowing users to compare prices and availability. While convenient for users, they do not provide backend control for agencies or real-time request management. Personalized communication is also limited.
+
+\item \textbf{Custom Enterprise Systems}: Some large agencies have internal systems for managing cars, customers, and payments. These solutions are often closed-source, expensive, and not scalable for small or medium-sized agencies. Many lack modularity, chat features, or automated workflows like PDF contract generation and QR code integration.
+
+\item \textbf{Limitations Identified}:
+\begin{itemize}
+\item Lack of real-time communication between agencies and customers.
+\item No integrated notification or email system for status updates.
+\item Limited role-based access (admin, agency, customer).
+\item Absence of automation in rental confirmation workflows (e.g., contract generation, online payment).
+\item Poor support for multi-agency environments within a single system.
+\end{itemize}
+\end{itemize}
+
+\subsection{Gaps and Opportunities}
+This section identifies the key limitations in existing car rental systems and highlights opportunities for technical and functional improvement.
+
+\begin{itemize}
+\item \textbf{Lack of Multi-Role Interaction}: Most platforms do not support smooth interaction between different types of users. A robust role-based system with protected routes and custom dashboards is necessary.
+
+\item \textbf{Insufficient Real-Time Communication}: Many systems lack instant messaging features. Adding a built-in chat system can improve customer service and speed up booking confirmation.
+
+\item \textbf{Limited Automation}: Automated PDF contract generation, QR code creation, and email notifications are rarely offered. These features streamline workflows and enhance user satisfaction.
+
+\item \textbf{Weak Integration of Notifications and Updates}: Timely updates for bookings, new cars, and promotions are missing. An integrated notification system (email + in-app) is essential.
+
+\item \textbf{Lack of Dynamic Availability Checking}: Users can book cars without real-time validation, creating double bookings. Implementing date-based availability checks resolves this.
+
+\item \textbf{Limited Customization for Agencies}: Smaller agencies often lack control over fleet management or platform display. Individual dashboards with CRUD capabilities are an opportunity.
+
+\item \textbf{Underuse of Modern Deployment Practices}: Few platforms use CI/CD pipelines, containerization, or Kubernetes, making scaling and maintenance difficult. Leveraging Docker, Docker Compose, K8s, and GitLab CI/CD ensures stability and faster updates.
+\end{itemize}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{|l|c|}
+  \hline
+  \textbf{Gap} & \textbf{Exists in current platforms} \\
+  \hline
+  Multi-role management with custom permissions & LIMITED \\
+  Real-time messaging between users & RARE \\
+  Automatic notifications and email updates & LIMITED \\
+  Dynamic car availability checking & NO \\
+  PDF contracts with QR code generation & NO \\
+  Online payment integration with validation flow & LIMITED \\
+  Scalable deployment (CI/CD, Docker, K8s) & NO \\
+  \hline
+  \end{tabular}
+  \caption{Identified Gaps in Existing Car Rental Platforms}
+\end{table}
+
+\subsection{Proposed Solution}
+The proposed solution addresses the gaps identified in current rental platforms:
+
+\begin{itemize}
+  \item \textbf{Role-Based System with Secured Access}: Supports multiple roles (admin, agency, customer, visitor) with dashboards and protected routes via Keycloak.
+  \item \textbf{Real-Time Communication}: Built-in chat for agencies and customers.
+  \item \textbf{Automated Notification and Email System}: Sends automatic updates for bookings, new cars, and account activities.
+  \item \textbf{Contract Generation with QR Code}: PDF rental agreements generated and sent via email after successful payment.
+  \item \textbf{Smart Availability Checker}: Validates car availability before confirming bookings.
+  \item \textbf{Modern Infrastructure and Deployment}: Deployed using Docker Compose, Kubernetes, and GitLab CI/CD for scalability and maintainability.
+  \item \textbf{Integrated Chatbot Assistant}: FastAPI-based chatbot using OpenAI for real-time user assistance.
+\end{itemize}
+
+\section{Project Architectures and Design Approaches}
+\subsection{System Architecture: Microservices with Three-Tier Logical Structure}
+
+The system follows a modern microservices architecture with clear separation of concerns across multiple tiers. The architecture ensures scalability, maintainability, and security through containerized deployment and CI/CD practices.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=16cm]{img/system-architecture-overview.png}
+    \caption{System Architecture Overview - Myloc Agency Car Rental Platform}
+    \label{fig:system_architecture}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Presentation Layer}: Angular frontend handling UI and user interactions, communicating with backend via REST APIs.
+    \item \textbf{Business/Application Layer}: Spring Boot and FastAPI microservices for booking, chat, role-based access, notifications, and payment workflows.
+    \item \textbf{Data Layer}: MySQL relational database ensuring data integrity and advanced queries.
+\end{itemize}
+
+\subsection{Design Pattern: RESTful Service-Oriented Architecture (SOA)}
+\begin{itemize}
+    \item Stateless interactions, resource-oriented endpoints, loose coupling, reusability, and clear separation of concerns.
+\end{itemize}
+
+\subsection{Design Pattern: MVC for Payment Service}
+\begin{itemize}
+    \item Model: Data entities and payment logic.
+    \item View: JSON responses and webhook callbacks.
+    \item Controller: API request handling, transaction validation, and workflow triggering (PDF/QR).
+\end{itemize}
+
+\subsection{FastAPI Chatbot Microservice}
+\begin{itemize}
+    \item Lightweight RESTful endpoints for AI-powered chatbot interactions.
+    \item Modular logic for maintenance and scaling.
+    \item Containerized via Docker, deployed with Kubernetes.
+\end{itemize}
+
+\section{Project Management and Design Methodology}
+\subsection{Agile Methodology}
+Development is organized in small iterative cycles, encouraging feedback, team collaboration, and continuous improvement. Scrum is used for sprint planning, daily stand-ups, and iterative delivery.
+
+\subsection{Development Environment}
+\subsubsection{Hardware Environment}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|p{5cm}|p{5cm}|}
+    \hline
+    \textbf{Component} & \textbf{Specification} \\
+    \hline
+    Processor & Intel Core i7 \\
+    RAM & 16 GB DDR4 \\
+    Storage & 512 GB SSD \\
+    Operating System & Windows 10 + WSL2 \\
+    Display & 15.6-inch Full HD \\
+    \hline
+    \end{tabular}
+    \caption{Development Machine Specifications}
+\end{table}
+
+\subsubsection{Software Environment}
+\begin{itemize}
+    \item Programming Languages: Java, Python, TypeScript, HTML/CSS/JS.
+    \item Frameworks: Spring Boot, FastAPI, Angular, Keycloak.
+    \item Containerization: Docker, Docker Compose.
+    \item Orchestration: Kubernetes (K8s).
+    \item CI/CD: GitLab CI/CD.
+    \item Database: MySQL.
+    \item Testing: Postman, XAMPP.
+    \item IDE: Visual Studio Code.
+    \item Version Control: Git, GitLab.
+    \item Project Management: Scrum, Trello/GitLab Issues.
+\end{itemize}
+
+\subsubsection{Deployment Tools}
+\begin{itemize}
+    \item Docker Compose for local service orchestration.
+    \item Kubernetes (K8s) for scalable microservice deployment.
+\end{itemize}
+
+\section{Problematic}
+The main challenge addressed by this project is the absence of a centralized and automated car rental platform capable of supporting multiple user roles, real-time communication, and dynamic availability validation. Existing solutions are fragmented, lack interaction between agencies and customers, and rely on manual processes that hinder efficiency and user satisfaction.
+
+\section{Conclusion}
+The chosen stack and practices enabled efficient development of a scalable, secure, and automated car rental platform with real-time messaging, QR-based contracts, automated notifications, and AI chatbot assistance. This project highlights the benefits of combining modern web technologies, microservice architecture, and agile practices to create a multi-role, interactive, and robust system.

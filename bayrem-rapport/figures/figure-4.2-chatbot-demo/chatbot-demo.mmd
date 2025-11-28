@@ -1,0 +1,88 @@
+graph TB
+    %% Chatbot Integration on Homepage - Professional Design
+    subgraph Homepage ["Myloc Car Rental Platform - Homepage"]
+        direction TB
+        
+        %% Top Navigation
+        subgraph TopNav ["Navigation Bar"]
+            Logo[Myloc - Car Rental Platform]
+            NavMenu[Home - Cars - Agencies - About - Contact - Login]
+        end
+        
+        %% Hero Section
+        subgraph HeroSection ["Hero Banner"]
+            HeroTitle[Find Your Perfect Car Rental]
+            HeroSubtitle[Rent from trusted local agencies across the country]
+            SearchBar[Search: Location - Pickup Date - Return Date - Search Button]
+        end
+        
+        %% Main Content
+        subgraph MainContent ["Homepage Content"]
+            direction LR
+            
+            %% Left Content
+            subgraph LeftContent ["Featured Cars"]
+                FeaturedTitle[Popular Vehicles]
+                Car1[BMW X5 - 89 EUR per day - Available Now]
+                Car2[Volkswagen Golf - 45 EUR per day - Book Today] 
+                Car3[Mercedes C-Class - 75 EUR per day - Premium Choice]
+            end
+            
+            %% Right Content  
+            subgraph RightContent ["Quick Actions"]
+                QuickBooking[Quick Booking]
+                AgencyList[Browse Agencies]
+                BlogPosts[Latest Blog Posts]
+                Reviews[Customer Reviews]
+            end
+        end
+        
+        %% Chatbot Integration - Prominent Position
+        subgraph ChatbotSection ["AI Chatbot Assistant"]
+            direction TB
+            
+            ChatbotHeader[Myloc AI Assistant - Need Help?]
+            
+            subgraph ChatWindow ["Chat Interface"]
+                direction TB
+                BotMessage1[Bot: Hello! Welcome to Myloc. How can I help you today?]
+                BotMessage2[Bot: I can help you find cars, check availability, or answer questions.]
+                UserMessage1[User: I need a car for this weekend in Paris]
+                BotMessage3[Bot: Great! I found 12 available cars in Paris for this weekend.]
+                BotMessage4[Bot: Would you like to see economy, standard, or luxury options?]
+                
+                subgraph ChatOptions ["Quick Options"]
+                    Option1[Find Cars]
+                    Option2[Check Availability] 
+                    Option3[Contact Agency]
+                    Option4[View Bookings]
+                end
+            end
+            
+            ChatInput[Type your message here... - Send Button]
+        end
+        
+        %% Footer
+        subgraph Footer ["Footer Information"]
+            FooterContent[About Myloc - Terms of Service - Privacy Policy - Contact Support]
+        end
+    end
+    
+    %% Professional styling following Figure 1 standards
+    classDef headerClass fill:#1976D2,stroke:#1565C0,stroke-width:3px,color:#ffffff,font-weight:bold
+    classDef navClass fill:#E3F2FD,stroke:#1976D2,stroke-width:2px,color:#000,font-weight:bold
+    classDef heroClass fill:#F8F9FA,stroke:#424242,stroke-width:2px,color:#000,font-weight:bold
+    classDef contentClass fill:#FAFAFA,stroke:#BDBDBD,stroke-width:2px,color:#000
+    classDef chatbotClass fill:#E8F5E8,stroke:#4CAF50,stroke-width:3px,color:#000,font-weight:bold
+    classDef messageClass fill:#FFF3E0,stroke:#FF9800,stroke-width:2px,color:#000
+    classDef optionClass fill:#F3E5F5,stroke:#9C27B0,stroke-width:2px,color:#000
+    classDef footerClass fill:#F5F5F5,stroke:#757575,stroke-width:1px,color:#555
+    
+    class Homepage headerClass
+    class TopNav,Logo,NavMenu navClass
+    class HeroSection,HeroTitle,HeroSubtitle,SearchBar heroClass
+    class MainContent,LeftContent,RightContent contentClass
+    class ChatbotSection,ChatbotHeader,ChatWindow,ChatInput chatbotClass
+    class BotMessage1,BotMessage2,BotMessage3,BotMessage4,UserMessage1 messageClass
+    class Option1,Option2,Option3,Option4,ChatOptions optionClass
+    class Footer,FooterContent footerClass

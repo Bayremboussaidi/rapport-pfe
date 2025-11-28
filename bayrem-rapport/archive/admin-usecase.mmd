@@ -1,0 +1,74 @@
+graph TB
+    subgraph "ADMIN ACTOR"
+        Admin["👨‍💼 Administrator<br/>(System Manager)"]
+    end
+    
+    subgraph "SYSTEM ADMINISTRATION"
+        UC1["🏢 Manage Agencies<br/>• Approve New Agencies<br/>• Suspend Accounts<br/>• Monitor Performance"]
+        UC2["👤 Manage Users<br/>• Customer Accounts<br/>• User Verification<br/>• Account Management"]
+        UC3["🔧 System Configuration<br/>• Platform Settings<br/>• Security Policies<br/>• Feature Management"]
+        UC4["📊 Analytics Dashboard<br/>• Platform Metrics<br/>• Usage Statistics<br/>• Performance Reports"]
+    end
+    
+    subgraph "CONTENT MODERATION"
+        UC5["📝 Moderate Content<br/>• Review Blog Posts<br/>• Approve Comments<br/>• Content Guidelines"]
+        UC6["🚫 Handle Reports<br/>• User Complaints<br/>• Policy Violations<br/>• Dispute Resolution"]
+        UC7["📢 Manage Announcements<br/>• Platform Updates<br/>• Policy Changes<br/>• System Notifications"]
+    end
+    
+    subgraph "FINANCIAL OVERSIGHT"
+        UC8["💰 Revenue Management<br/>• Transaction Monitoring<br/>• Commission Tracking<br/>• Payment Disputes"]
+        UC9["📈 Financial Reports<br/>• Revenue Analytics<br/>• Agency Earnings<br/>• Platform Growth"]
+        UC10["💳 Payment System<br/>• Gateway Management<br/>• Transaction Security<br/>• Refund Processing"]
+    end
+    
+    subgraph "SECURITY & COMPLIANCE"
+        UC11["🛡️ Security Monitoring<br/>• Fraud Detection<br/>• Suspicious Activity<br/>• Access Control"]
+        UC12["📋 Compliance Checks<br/>• Regulatory Requirements<br/>• Data Protection<br/>• Legal Compliance"]
+        UC13["🔐 Access Management<br/>• Role Permissions<br/>• System Access<br/>• Security Policies"]
+    end
+    
+    subgraph "SYSTEM MAINTENANCE"
+        UC14["⚙️ Platform Maintenance<br/>• System Updates<br/>• Bug Fixes<br/>• Performance Optimization"]
+        UC15["📊 Database Management<br/>• Data Backup<br/>• Performance Tuning<br/>• Data Integrity"]
+        UC16["🔍 System Monitoring<br/>• Server Health<br/>• Application Performance<br/>• Error Tracking"]
+    end
+    
+    %% Admin Interactions
+    Admin --> UC1
+    Admin --> UC2
+    Admin --> UC3
+    Admin --> UC4
+    Admin --> UC5
+    Admin --> UC6
+    Admin --> UC7
+    Admin --> UC8
+    Admin --> UC9
+    Admin --> UC10
+    Admin --> UC11
+    Admin --> UC12
+    Admin --> UC13
+    Admin --> UC14
+    Admin --> UC15
+    Admin --> UC16
+    
+    %% Dependencies
+    UC3 -.-> UC13
+    UC11 --> UC12
+    UC14 --> UC15
+    UC15 --> UC16
+    UC1 -.-> UC8
+    
+    classDef actor fill:#FFE0B2,stroke:#FF8C00,stroke-width:2px
+    classDef admin fill:#FFEBEE,stroke:#F44336,stroke-width:2px
+    classDef content fill:#E8F5E8,stroke:#4CAF50,stroke-width:2px
+    classDef financial fill:#E3F2FD,stroke:#2196F3,stroke-width:2px
+    classDef security fill:#FFF3E0,stroke:#FF9800,stroke-width:2px
+    classDef maintenance fill:#F3E5F5,stroke:#9C27B0,stroke-width:2px
+    
+    class Admin actor
+    class UC1,UC2,UC3,UC4 admin
+    class UC5,UC6,UC7 content
+    class UC8,UC9,UC10 financial
+    class UC11,UC12,UC13 security
+    class UC14,UC15,UC16 maintenance

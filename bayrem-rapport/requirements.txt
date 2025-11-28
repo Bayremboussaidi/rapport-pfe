@@ -1,0 +1,5 @@
+# Python dependencies for bayrem-rapport
+reportlab>=4.0.0
+fpdf2>=2.7.0
+matplotlib>=3.7.0
+Pillow>=10.0.0

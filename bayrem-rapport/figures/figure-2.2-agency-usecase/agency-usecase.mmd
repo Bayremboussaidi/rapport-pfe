@@ -1,0 +1,70 @@
+---
+title: "Figure 2.2: Agency Use Case Diagram"
+---
+flowchart TD
+    %% Actor
+    Agency[👤 Agency]
+    
+    %% System boundary with organized groups
+    subgraph System ["🏢 Agency Management System"]
+        direction TB
+        
+        %% Profile & Authentication
+        subgraph ProfileGroup ["🔐 Profile & Authentication"]
+            direction TB
+            Login("Login")
+            Profile("Manage Profile")
+        end
+        
+        %% Vehicle Management
+        subgraph VehicleGroup ["🚗 Vehicle Management"]
+            direction TB
+            Add("Add Vehicle")
+            Edit("Edit Vehicle")
+            Delete("Delete Vehicle")
+            Price("Set Pricing")
+            Photos("Upload Photos")
+            Availability("Manage Availability")
+        end
+        
+        %% Request Handling
+        subgraph RequestGroup ["📋 Request Management"]
+            direction TB
+            ViewReq("View Requests")
+            Accept("Accept Booking")
+            Reject("Reject Booking")
+        end
+        
+        %% Communication & Reports
+        subgraph CommGroup ["📊 Communication & Reports"]
+            direction TB
+            Reports("Generate Reports")
+            Chat("Chat with Customer")
+            Notify("Send Notifications")
+            BlogPost("Create Blog Post")
+            Followers("Manage Followers")
+        end
+    end
+    
+    %% Clean organized connections
+    Agency -.-> ProfileGroup
+    Agency -.-> VehicleGroup  
+    Agency -.-> RequestGroup
+    Agency -.-> CommGroup
+    
+    %% Include relationships
+    Login -->|includes| Profile
+    Add -->|includes| Price
+    Add -->|includes| Photos
+    Accept -->|includes| Notify
+    
+    %% Styling
+    classDef actor fill:#E3F2FD,stroke:#1976D2,stroke-width:3px,color:#000,font-weight:bold
+    classDef usecase fill:#FFFFFF,stroke:#424242,stroke-width:2px,color:#000
+    classDef system fill:#F8F9FA,stroke:#1976D2,stroke-width:3px,color:#1976D2,font-weight:bold
+    classDef group fill:#FAFAFA,stroke:#BDBDBD,stroke-width:2px,color:#555,font-weight:bold
+    
+    class Agency actor
+    class Login,Profile,Add,Edit,Delete,Price,Photos,Availability,ViewReq,Accept,Reject,Reports,Chat,Notify,BlogPost,Followers usecase
+    class System system
+    class ProfileGroup,VehicleGroup,RequestGroup,CommGroup group

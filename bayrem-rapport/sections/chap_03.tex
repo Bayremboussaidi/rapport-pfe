@@ -1,0 +1,117 @@
+\chapter{System Development and Implementation}
+
+\section{Introduction}
+This chapter details the development environment, system architecture, database design, and implementation strategies used for the Car Rental Platform. It also explains how functional requirements are translated into working modules and how non-functional requirements such as security, scalability, and real-time communication are implemented.
+
+\section{Development Environment}
+\begin{itemize}
+    \item \textbf{Frontend:} Angular 16, Node.js 20
+    \item \textbf{Backend:} Spring Boot 3.x, Java 17 (REST API)
+    \item \textbf{Database:} MySQL 8
+    \item \textbf{Authentication:} Keycloak (Docker container)
+    \item \textbf{Chatbot:} Flask API (Python) integrated with ChatGPT
+    \item \textbf{Containerization:} Docker Compose
+    \item \textbf{Orchestration:} Kubernetes (Minikube)
+    \item \textbf{IDE:} Visual Studio Code
+    \item \textbf{API Testing:} Postman
+    \item \textbf{Local DB:} XAMPP
+\end{itemize}
+
+\section{Database Design}
+The system uses MySQL as its relational database. Key tables include:
+
+\subsection{Agence Table}
+\begin{verbatim}
+CREATE TABLE agence (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    agency_name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(64) NOT NULL,
+    photo LONGTEXT,
+    phone_number VARCHAR(20) NOT NULL,
+    city VARCHAR(100)
+);
+\end{verbatim}
+
+\subsection{Blog Table}
+\begin{verbatim}
+CREATE TABLE blog (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255),
+    img_url VARCHAR(255),
+    author VARCHAR(255),
+    date VARCHAR(255),
+    time VARCHAR(255),
+    description VARCHAR(1024),
+    quote VARCHAR(255)
+);
+\end{verbatim}
+
+\subsection{Booking Table}
+\begin{verbatim}
+CREATE TABLE booking (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255),
+    user_email VARCHAR(255),
+    phone VARCHAR(255),
+    description VARCHAR(255),
+    start_date DATE,
+    end_date DATE,
+    price DOUBLE,
+    voiture_id BIGINT,
+    nbr_jrs INT,
+    booking_status VARCHAR(255),
+    pickup_location VARCHAR(255),
+    dropoff_location VARCHAR(255),
+    car_name VARCHAR(255),
+    agence TEXT
+);
+\end{verbatim}
+
+\subsection{Other Tables}
+Additional tables include \texttt{customers}, \texttt{roles}, \texttt{notifications}, \texttt{followers}, and \texttt{chat\_messages} to manage users, roles, communications, and subscription updates.
+
+\section{Backend Implementation}
+\begin{itemize}
+    \item \textbf{Spring Boot REST API:} Handles CRUD operations for cars, agencies, bookings, and blogs.
+    \item \textbf{Security:} 
+    \begin{itemize}
+        \item Keycloak handles login and registration for admins and agencies.
+        \item AuthGuard in Angular protects routes based on roles.
+        \item Only authorized users can access admin or agency dashboards.
+    \end{itemize}
+    \item \textbf{Booking Workflow:} 
+    \begin{itemize}
+        \item Customer requests a car rental; the system checks car availability via \texttt{getUnavailableDates()}.
+        \item Request is sent to the responsible agency.
+        \item Agency accepts/declines the request; email notifications are sent accordingly.
+        \item Accepted requests generate PDF contracts with a QR code sent to the customer.
+    \end{itemize}
+    \item \textbf{Real-time Communication:} Admins and agencies communicate via instant messaging.
+    \item \textbf{Chatbot:} Integrated via external Flask API, accessible to visitors and customers for queries.
+\end{itemize}
+
+\section{Frontend Implementation}
+\begin{itemize}
+    \item Angular components handle car listings, rental requests, blogs, notifications, and chat.
+    \item Reactive forms validate inputs for registration, login, booking, and comments.
+    \item Guards ensure route protection according to user roles.
+    \item Email and PDF confirmations are triggered using backend API services.
+\end{itemize}
+
+\section{Deployment Strategy}
+\begin{itemize}
+    \item \textbf{CI/CD:} GitLab pipelines automate build and deployment.
+    \item \textbf{Docker:} Separate containers for Angular frontend, Spring Boot backend, MySQL, and Flask chatbot.
+    \item \textbf{Kubernetes:} Minikube manages deployments with YAML files such as \texttt{mysql-deployment.yml}, \texttt{frontend-deployment.yml}, \texttt{backend-deployment.yml}, \texttt{ai-deployment.yml}.
+\end{itemize}
+
+\section{Development Methodology}
+\begin{itemize}
+    \item Scrum methodology with iterative sprints and backlog management.
+    \item Team roles: Scrum Master, Developers, Product Owner.
+    \item Regular sprint reviews and retrospectives ensure continuous improvement.
+\end{itemize}
+
+\section{Conclusion}
+This chapter demonstrates the technical setup, database design, backend and frontend implementation, deployment strategy, and development methodology for the Car Rental Platform. It ensures secure, real-time, and scalable service delivery to admins, agencies, customers, and visitors.  

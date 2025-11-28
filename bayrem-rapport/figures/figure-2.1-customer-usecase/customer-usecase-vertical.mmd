@@ -1,0 +1,96 @@
+---
+title: "Figure 2.1: Customer Use Case Diagram"
+---
+flowchart TB
+    %% Actors using stick figure assets
+    Customer["<img src='../../assets/icons/customer.png' width='40' height='40'/><br/>Customer"]
+    Visitor["<img src='../../assets/icons/visitor.png' width='40' height='40'/><br/>Visitor"]
+    
+    %% System boundary - vertical layout
+    subgraph Platform ["Car Rental Platform"]
+        direction TB
+        
+        %% Row 1: Authentication & Profile
+        subgraph Row1 [" "]
+            direction LR
+            subgraph AuthGroup ["Authentication"]
+                direction TB
+                Login("Login")
+                Register("Register") 
+                Profile("Manage Profile")
+            end
+            
+            subgraph BrowseGroup ["Vehicle Operations"]
+                direction TB
+                Browse("Browse Cars")
+                Search("Search Vehicles")
+                Check("Check Availability")
+            end
+        end
+        
+        %% Row 2: Booking & Management
+        subgraph Row2 [" "]
+            direction LR
+            subgraph BookingGroup ["Booking Process"]
+                direction TB
+                Book("Book Vehicle")
+                Payment("Make Payment")
+                Contract("Download Contract")
+            end
+            
+            subgraph ManageGroup ["Booking Management"]
+                direction TB
+                ViewBookings("View Bookings")
+                ModifyBooking("Modify Booking")
+                CancelBooking("Cancel Booking")
+            end
+        end
+        
+        %% Row 3: Communication & Content
+        subgraph Row3 [" "]
+            direction LR
+            subgraph CommGroup ["Communication"]
+                direction TB
+                Chat("Chat with Agency")
+                Chatbot("Use Chatbot")
+                Notifications("Receive Notifications")
+            end
+            
+            subgraph ContentGroup ["Content & Social"]
+                direction TB
+                Blog("Read Blog")
+                Comments("Leave Comments")
+                Follow("Follow Agency")
+            end
+        end
+    end
+    
+    %% Clean vertical connections
+    Customer -.-> Row1
+    Customer -.-> Row2
+    Customer -.-> Row3
+    
+    %% Limited Visitor connections
+    Visitor -.-> Register
+    Visitor -.-> Browse
+    Visitor -.-> Chatbot
+    Visitor -.-> Blog
+    
+    %% Include relationships
+    Login -->|includes| Profile
+    Check -->|includes| Book
+    Book -->|includes| Payment
+    Payment -->|includes| Contract
+    
+    %% Clean professional styling - no emojis
+    classDef actor fill:#E3F2FD,stroke:#1976D2,stroke-width:3px,color:#000,font-weight:bold
+    classDef usecase fill:#FFFFFF,stroke:#424242,stroke-width:2px,color:#000
+    classDef system fill:#F8F9FA,stroke:#1976D2,stroke-width:3px,color:#1976D2,font-weight:bold
+    classDef group fill:#FAFAFA,stroke:#BDBDBD,stroke-width:2px,color:#555,font-weight:bold
+    classDef invisible fill:none,stroke:none,color:transparent
+    
+    class Customer,Visitor actor
+    class Login,Register,Profile,Browse,Search,Check,Book,Payment,Contract,ViewBookings,ModifyBooking,CancelBooking,Chat,Chatbot,Notifications,Blog,Comments,Follow usecase
+    class Platform system
+    class AuthGroup,BrowseGroup,BookingGroup,ManageGroup,CommGroup,ContentGroup group
+    class Row1,Row2,Row3 invisible

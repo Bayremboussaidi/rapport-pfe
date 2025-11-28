@@ -1,0 +1,73 @@
+graph TB
+    subgraph "AGENCY ACTOR"
+        Agency["🏢 Agency<br/>(Car Rental Business)"]
+    end
+    
+    subgraph "FLEET MANAGEMENT"
+        UC1["🚗 Manage Fleet<br/>• Add New Vehicles<br/>• Update Car Details<br/>• Set Availability"]
+        UC2["💰 Set Pricing<br/>• Daily Rates<br/>• Seasonal Pricing<br/>• Special Offers"]
+        UC3["📍 Manage Locations<br/>• Pickup Points<br/>• Service Areas<br/>• Geographic Coverage"]
+    end
+    
+    subgraph "BOOKING OPERATIONS"
+        UC4["📋 View Reservations<br/>• Pending Bookings<br/>• Confirmed Rentals<br/>• Booking Calendar"]
+        UC5["✅ Confirm Bookings<br/>• Validate Requests<br/>• Check Availability<br/>• Send Confirmations"]
+        UC6["❌ Reject Bookings<br/>• Unavailable Dates<br/>• Policy Violations<br/>• Fleet Maintenance"]
+        UC7["📊 Generate Reports<br/>• Revenue Analytics<br/>• Fleet Utilization<br/>• Customer Statistics"]
+    end
+    
+    subgraph "CUSTOMER INTERACTION"
+        UC8["💬 Chat with Customers<br/>• Answer Inquiries<br/>• Provide Support<br/>• Resolve Issues"]
+        UC9["📧 Send Notifications<br/>• Booking Updates<br/>• Payment Reminders<br/>• Service Alerts"]
+        UC10["👥 Manage Followers<br/>• Agency Promotions<br/>• Special Announcements<br/>• Loyalty Programs"]
+    end
+    
+    subgraph "CONTENT MANAGEMENT"
+        UC11["📝 Create Blog Posts<br/>• Company Updates<br/>• Vehicle Showcases<br/>• Marketing Content"]
+        UC12["📸 Upload Vehicle Photos<br/>• Car Galleries<br/>• Interior/Exterior Views<br/>• High-Quality Images"]
+        UC13["📱 Update Agency Profile<br/>• Contact Information<br/>• Service Description<br/>• Operating Hours"]
+    end
+    
+    subgraph "AUTHENTICATION & PROFILE"
+        UC14["🔐 Agency Login<br/>• Secure Access<br/>• Role Verification<br/>• Dashboard Access"]
+        UC15["⚙️ Manage Settings<br/>• Agency Preferences<br/>• Notification Settings<br/>• Security Options"]
+    end
+    
+    %% Agency Interactions
+    Agency --> UC1
+    Agency --> UC2
+    Agency --> UC3
+    Agency --> UC4
+    Agency --> UC5
+    Agency --> UC6
+    Agency --> UC7
+    Agency --> UC8
+    Agency --> UC9
+    Agency --> UC10
+    Agency --> UC11
+    Agency --> UC12
+    Agency --> UC13
+    Agency --> UC14
+    Agency --> UC15
+    
+    %% Dependencies
+    UC14 -.-> UC15
+    UC1 --> UC2
+    UC4 --> UC5
+    UC4 --> UC6
+    UC5 -.-> UC9
+    UC1 -.-> UC12
+    
+    classDef actor fill:#FFE0B2,stroke:#FF8C00,stroke-width:2px
+    classDef fleet fill:#E8F5E8,stroke:#4CAF50,stroke-width:2px
+    classDef booking fill:#E3F2FD,stroke:#2196F3,stroke-width:2px
+    classDef interaction fill:#FFF3E0,stroke:#FF9800,stroke-width:2px
+    classDef content fill:#F3E5F5,stroke:#9C27B0,stroke-width:2px
+    classDef auth fill:#F5F5F5,stroke:#757575,stroke-width:2px
+    
+    class Agency actor
+    class UC1,UC2,UC3 fleet
+    class UC4,UC5,UC6,UC7 booking
+    class UC8,UC9,UC10 interaction
+    class UC11,UC12,UC13 content
+    class UC14,UC15 auth

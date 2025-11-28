@@ -1,0 +1,77 @@
+flowchart LR
+    %% Actors on the left
+    Customer["Customer"]
+    Visitor["Visitor"]
+    
+    %% System boundary
+    subgraph System ["Car Rental Platform"]
+        direction TB
+        
+        %% Authentication
+        UC1(("Login"))
+        UC2(("Register"))
+        UC3(("Manage Profile"))
+        
+        %% Vehicle Operations
+        UC4(("Browse Cars"))
+        UC5(("Search Vehicles"))
+        UC6(("Check Availability"))
+        UC7(("Book Vehicle"))
+        UC8(("Make Payment"))
+        
+        %% Booking Management
+        UC9(("View Bookings"))
+        UC10(("Modify Booking"))
+        UC11(("Cancel Booking"))
+        UC12(("Download Contract"))
+        
+        %% Communication
+        UC13(("Chat with Agency"))
+        UC14(("Use Chatbot"))
+        UC15(("Receive Notifications"))
+        
+        %% Content
+        UC16(("Read Blog"))
+        UC17(("Leave Comments"))
+        UC18(("Follow Agency"))
+    end
+    
+    %% Customer connections
+    Customer --- UC1
+    Customer --- UC3
+    Customer --- UC4
+    Customer --- UC5
+    Customer --- UC6
+    Customer --- UC7
+    Customer --- UC8
+    Customer --- UC9
+    Customer --- UC10
+    Customer --- UC11
+    Customer --- UC12
+    Customer --- UC13
+    Customer --- UC14
+    Customer --- UC15
+    Customer --- UC16
+    Customer --- UC17
+    Customer --- UC18
+    
+    %% Visitor connections (limited)
+    Visitor --- UC2
+    Visitor --- UC4
+    Visitor --- UC14
+    Visitor --- UC16
+    
+    %% Include/Extend relationships
+    UC1 -.->|includes| UC3
+    UC6 -.->|includes| UC7
+    UC7 -.->|includes| UC8
+    UC8 -.->|includes| UC12
+    
+    %% Styling - Standard UML colors
+    classDef actor fill:#FFFFFF,stroke:#000000,stroke-width:2px,color:#000000
+    classDef usecase fill:#FFFFFF,stroke:#000000,stroke-width:1px,color:#000000
+    classDef system fill:#FFFFFF,stroke:#000000,stroke-width:2px,color:#000000
+    
+    class Customer,Visitor actor
+    class UC1,UC2,UC3,UC4,UC5,UC6,UC7,UC8,UC9,UC10,UC11,UC12,UC13,UC14,UC15,UC16,UC17,UC18 usecase
+    class System system

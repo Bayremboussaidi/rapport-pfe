@@ -1,0 +1,154 @@
+classDiagram
+    %% Core User Classes
+    class User {
+        +Long id
+        +String email
+        +String password
+        +String firstName
+        +String lastName
+        +Date createdAt
+        +Boolean isActive
+        +login()
+        +logout()
+        +updateProfile()
+    }
+    
+    class Customer {
+        +String phone
+        +String address
+        +String drivingLicense
+        +Date licenseExpiry
+        +searchVehicles()
+        +bookVehicle()
+        +cancelBooking()
+        +writeReview()
+    }
+    
+    class Agency {
+        +String businessName
+        +String businessLicense
+        +String address
+        +String phone
+        +String description
+        +Double rating
+        +addVehicle()
+        +manageBookings()
+        +generateReports()
+    }
+    
+    class Admin {
+        +String department
+        +manageUsers()
+        +moderateContent()
+        +viewAnalytics()
+        +systemConfiguration()
+    }
+    
+    %% Vehicle Management
+    class Vehicle {
+        +Long id
+        +String make
+        +String model
+        +Integer year
+        +String plateNumber
+        +String category
+        +Double pricePerDay
+        +String description
+        +Boolean isAvailable
+        +String location
+        +checkAvailability()
+        +updateStatus()
+    }
+    
+    class VehicleCategory {
+        +Long id
+        +String name
+        +String description
+        +Double basePrice
+    }
+    
+    %% Booking System
+    class Booking {
+        +Long id
+        +Date startDate
+        +Date endDate
+        +Double totalPrice
+        +String status
+        +String notes
+        +Date createdAt
+        +calculateTotal()
+        +confirmBooking()
+        +cancelBooking()
+    }
+    
+    class Payment {
+        +Long id
+        +Double amount
+        +String method
+        +String status
+        +Date paidAt
+        +String transactionId
+        +processPayment()
+        +refund()
+    }
+    
+    %% Content Management
+    class BlogPost {
+        +Long id
+        +String title
+        +String content
+        +Date publishedAt
+        +Boolean isPublished
+        +String author
+        +publish()
+        +unpublish()
+    }
+    
+    class Review {
+        +Long id
+        +Integer rating
+        +String comment
+        +Date createdAt
+        +Boolean isApproved
+        +approve()
+        +reject()
+    }
+    
+    %% Communication
+    class Chat {
+        +Long id
+        +Date startedAt
+        +String status
+        +sendMessage()
+        +endChat()
+    }
+    
+    class Message {
+        +Long id
+        +String content
+        +Date sentAt
+        +Boolean isRead
+        +String type
+    }
+    
+    %% Relationships
+    User <|-- Customer
+    User <|-- Agency
+    User <|-- Admin
+    
+    Agency ||--o{ Vehicle
+    Vehicle }o--|| VehicleCategory
+    
+    Customer ||--o{ Booking
+    Booking }o--|| Vehicle
+    Booking ||--|| Payment
+    
+    Customer ||--o{ Review
+    Review }o--|| Vehicle
+    
+    Agency ||--o{ BlogPost
+    
+    Customer ||--o{ Chat
+    Agency ||--o{ Chat
+    Chat ||--o{ Message
+    User ||--o{ Message

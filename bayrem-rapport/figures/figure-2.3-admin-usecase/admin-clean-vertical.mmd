@@ -1,0 +1,72 @@
+---
+title: "Figure 2.3: Administrator Use Case Diagram"
+---
+flowchart TB
+    %% Actor
+    Admin[Administrator]
+    
+    %% System boundary - clean vertical layout
+    subgraph System ["Platform Administration"]
+        direction TB
+        
+        %% Row 1: User Management & System Config
+        subgraph Row1 [" "]
+            direction LR
+            subgraph UserGroup ["User Management"]
+                direction TB
+                ManageAgencies("Manage Agencies")
+                ManageCustomers("Manage Customers")
+                ManageUsers("Manage Users")
+            end
+            
+            subgraph ConfigGroup ["System Configuration"]
+                direction TB
+                ConfigSys("Configure System")
+                Permissions("Manage Permissions")
+                UpdateSys("Update System")
+            end
+        end
+        
+        %% Row 2: Analytics & Content Management
+        subgraph Row2 [" "]
+            direction LR
+            subgraph AnalyticsGroup ["Analytics & Monitoring"]
+                direction TB
+                Analytics("View Analytics")
+                Monitor("Monitor System")
+                Backup("Backup Data")
+            end
+            
+            subgraph ContentGroup ["Content & Finance"]
+                direction TB
+                Moderate("Moderate Content")
+                Revenue("View Revenue")
+                GenReports("Generate Reports")
+                Payments("Manage Payments")
+            end
+        end
+    end
+    
+    %% Clean connections
+    Admin -.-> UserGroup
+    Admin -.-> ConfigGroup
+    Admin -.-> AnalyticsGroup
+    Admin -.-> ContentGroup
+    
+    %% Include relationships
+    ConfigSys -->|includes| Permissions
+    Analytics -->|includes| GenReports
+    Monitor -->|includes| Backup
+    
+    %% Professional styling
+    classDef actor fill:#E3F2FD,stroke:#1976D2,stroke-width:3px,color:#000,font-weight:bold
+    classDef usecase fill:#FFFFFF,stroke:#424242,stroke-width:2px,color:#000
+    classDef system fill:#F8F9FA,stroke:#1976D2,stroke-width:3px,color:#1976D2,font-weight:bold
+    classDef group fill:#FAFAFA,stroke:#BDBDBD,stroke-width:2px,color:#555,font-weight:bold
+    classDef invisible fill:none,stroke:none,color:transparent
+    
+    class Admin actor
+    class ManageAgencies,ManageCustomers,ManageUsers,ConfigSys,Permissions,UpdateSys,Analytics,Monitor,Backup,Moderate,Revenue,GenReports,Payments usecase
+    class System system
+    class UserGroup,ConfigGroup,AnalyticsGroup,ContentGroup group
+    class Row1,Row2 invisible

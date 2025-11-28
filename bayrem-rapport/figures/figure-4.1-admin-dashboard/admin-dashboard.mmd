@@ -1,0 +1,81 @@
+graph TB
+    %% Admin Dashboard Layout - Professional Design
+    subgraph Dashboard ["Admin Dashboard - Myloc Platform"]
+        direction TB
+        
+        %% Top Navigation Bar
+        subgraph TopNav ["Navigation Bar"]
+            Logo[Myloc Admin]
+            NavItems[Dashboard - Users - Agencies - Vehicles - Analytics - Settings]
+            UserProfile[Admin Profile - Logout]
+        end
+        
+        %% Main Content Area
+        subgraph MainContent ["Main Dashboard Content"]
+            direction LR
+            
+            %% Left Sidebar
+            subgraph Sidebar ["Quick Actions"]
+                direction TB
+                QuickStats[System Status<br/>Users: 1,247<br/>Active Bookings: 89<br/>Total Revenue: 45,620 EUR]
+                QuickActions[Manage Users<br/>Approve Agencies<br/>System Reports<br/>Security Logs]
+            end
+            
+            %% Center Content
+            subgraph CenterArea ["Analytics & Overview"]
+                direction TB
+                
+                subgraph MetricsRow1 ["Key Performance Metrics"]
+                    direction LR
+                    Metric1[Monthly Revenue<br/>12,450 EUR<br/>+15 percent from last month]
+                    Metric2[Active Users<br/>1,247<br/>+8 percent growth]
+                    Metric3[Platform Usage<br/>94.2 percent<br/>Excellent performance]
+                end
+                
+                subgraph ChartsArea ["Analytics Charts"]
+                    direction LR
+                    Chart1[Revenue Trends<br/>Line Chart<br/>Last 6 months]
+                    Chart2[User Growth<br/>Bar Chart<br/>Registration stats]
+                end
+                
+                subgraph RecentActivity ["Recent Platform Activity"]
+                    Activity1[New agency registration: AutoRent Plus]
+                    Activity2[Payment dispute resolved: Booking #2847]
+                    Activity3[System maintenance completed]
+                    Activity4[New admin user added: Sarah Johnson]
+                end
+            end
+            
+            %% Right Panel
+            subgraph RightPanel ["Management Tools"]
+                direction TB
+                PendingApprovals[Pending Approvals<br/>3 new agencies<br/>12 blog posts<br/>5 disputed reviews]
+                SystemHealth[System Health<br/>Server Status - Online<br/>Database - Optimal<br/>API Response - 98ms]
+                RecentAlerts[Security Alerts<br/>Failed login attempts - 2<br/>Suspicious activities - 0<br/>System updates - Available]
+            end
+        end
+        
+        %% Bottom Status Bar
+        subgraph StatusBar ["Status Information"]
+            LastUpdated[Last Updated - 2 minutes ago]
+            SystemVersion[Platform Version - 2.1.4]
+            OnlineUsers[Currently Online - 847 users]
+        end
+    end
+    
+    %% Professional styling following Figure 1 standards
+    classDef headerClass fill:#1976D2,stroke:#1565C0,stroke-width:3px,color:#ffffff,font-weight:bold
+    classDef navClass fill:#E3F2FD,stroke:#1976D2,stroke-width:2px,color:#000,font-weight:bold
+    classDef contentClass fill:#F8F9FA,stroke:#424242,stroke-width:2px,color:#000
+    classDef metricsClass fill:#E8F5E8,stroke:#4CAF50,stroke-width:2px,color:#000,font-weight:bold
+    classDef chartClass fill:#FFF3E0,stroke:#FF9800,stroke-width:2px,color:#000
+    classDef activityClass fill:#F3E5F5,stroke:#9C27B0,stroke-width:2px,color:#000
+    classDef statusClass fill:#FAFAFA,stroke:#BDBDBD,stroke-width:1px,color:#555
+    
+    class Dashboard headerClass
+    class TopNav,Sidebar,RightPanel navClass
+    class MainContent,CenterArea contentClass
+    class Metric1,Metric2,Metric3,QuickStats,SystemHealth metricsClass
+    class Chart1,Chart2,ChartsArea chartClass
+    class RecentActivity,Activity1,Activity2,Activity3,Activity4,PendingApprovals,RecentAlerts activityClass
+    class StatusBar,LastUpdated,SystemVersion,OnlineUsers statusClass

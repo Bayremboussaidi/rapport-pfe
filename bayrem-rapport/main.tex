@@ -1,0 +1,95 @@
+%========= File containing the main LaTex document ========%
+%                                                          %
+% Copyright (C) ISI - All Rights Reserved                  %
+% Proprietary                                              %
+% Written by Med Hossam <med.hossam@gmail.com>, April 2016 %
+%                                                          %
+% @author: HEDHILI Med Houssemeddine                       %
+% @linkedin: http://tn.linkedin.com/in/medhossam           %
+%==========================================================%
+
+%\documentclass[pfe]{./tpl/isipfe}
+\documentclass[]{./tpl/isipfe}
+\graphicspath{{./img/}{./figures/}}
+
+%\usepackage{hyperref}
+
+\input{./tpl/new_commands}
+
+% @author: Stoufa
+% the command `\makeindex` is mandatory to create the index file main.idx
+% https://tex.stackexchange.com/questions/9913/input-index-file-not-found
+\makeindex
+\usepackage{hyperref}
+
+\begin{document}
+    \input{global_config}
+    
+    \frontmatter
+        \input{tpl/cover_page}
+        \include{tpl/cover_page_black}
+        \input{tpl/signatures}
+        
+        \setcounter{page}{1}
+        \input{sections/dedicaces}
+        \thispagestyle{frontmatter}
+        \input{sections/remerciement}
+        \thispagestyle{frontmatter}
+        
+        \setcounter{secnumdepth}{3}
+        \setcounter{tocdepth}{2}
+        \dominitoc
+        \tableofcontents
+        \adjustmtc
+        \thispagestyle{frontmatter}
+        
+        \listoffigures
+        \thispagestyle{frontmatter}
+        \listoftables
+        \thispagestyle{frontmatter}
+        
+        \input{sections/acronymes}
+        \thispagestyle{frontmatter}
+    
+    \mainmatter
+       \input{sections/introduction}
+        \clearpage
+        
+        \input{sections/chap_01}
+        \clearpage
+        \input{sections/chap_02}
+        \clearpage
+         \input{sections/chap_03}
+        \clearpage
+         \input{sections/chap_04}
+        \clearpage
+         \input{sections/chap_05}
+        \clearpage
+         \input{sections/chap_06}
+        \clearpage
+         \input{sections/chap_07}
+        \clearpage
+        
+        
+        \input{sections/conclusion}
+        \clearpage
+        
+        % @author: Stoufa
+		% the command `\nocite{*}` is mandatory to avoid the “no \citation commands” error
+        % https://tex.stackexchange.com/questions/18045/problem-with-compiling-bibtex-no-citation-commands-error
+        %\nocite{*}
+        
+         \input{sections/webo}
+        \clearpage
+        
+        \printbibliography[title={Webographie},heading=bibintoc]
+        
+       
+        
+        % \input{annexes}
+        % \clearpage
+
+    \backmatter
+        \input{./tpl/resume}
+    
+\end{document}

@@ -1,0 +1,59 @@
+---
+title: Administrator Use Case Diagram - Myloc Platform Management
+---
+flowchart TD
+    subgraph System ["📦 Myloc Platform Administration"]
+        direction TB
+        
+        %% System Administration
+        UC1(("🏢 Manage Agencies"))
+        UC2(("👤 Manage Users"))
+        UC3(("🔧 System Config"))
+        UC4(("📊 View Analytics"))
+        
+        %% Content Moderation
+        UC5(("📝 Moderate Content"))
+        UC6(("🚫 Handle Reports"))
+        UC7(("📢 Manage Announcements"))
+        
+        %% Financial Management
+        UC8(("💰 Revenue Management"))
+        UC9(("📈 Financial Reports"))
+        
+        %% Security & Maintenance
+        UC10(("🛡️ Security Monitor"))
+        UC11(("🔐 Access Management"))
+        UC12(("⚙️ System Maintenance"))
+    end
+    
+    %% Actor
+    Admin["👨‍💼<br/>Administrator"]
+    
+    %% Admin connections
+    Admin --- UC1
+    Admin --- UC2
+    Admin --- UC3
+    Admin --- UC4
+    Admin --- UC5
+    Admin --- UC6
+    Admin --- UC7
+    Admin --- UC8
+    Admin --- UC9
+    Admin --- UC10
+    Admin --- UC11
+    Admin --- UC12
+    
+    %% Dependencies
+    UC3 -.-> UC11
+    UC10 --> UC11
+    UC1 -.-> UC8
+    UC4 --> UC9
+    
+    %% Styling
+    classDef actor fill:#FFE0B2,stroke:#FF8C00,stroke-width:3px,color:#000
+    classDef usecase fill:#FFEBEE,stroke:#F44336,stroke-width:2px,color:#000
+    classDef system fill:#F5F5F5,stroke:#424242,stroke-width:3px,color:#000
+    
+    class Admin actor
+    class UC1,UC2,UC3,UC4,UC5,UC6,UC7,UC8,UC9,UC10,UC11,UC12 usecase
+    class System system

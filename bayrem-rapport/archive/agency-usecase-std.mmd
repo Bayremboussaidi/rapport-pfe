@@ -1,0 +1,67 @@
+flowchart LR
+    %% Actor on the left
+    Agency["Agency"]
+    
+    %% System boundary
+    subgraph System ["Agency Management System"]
+        direction TB
+        
+        %% Authentication
+        UC1(("Login"))
+        UC2(("Manage Profile"))
+        
+        %% Fleet Management
+        UC3(("Add Vehicle"))
+        UC4(("Edit Vehicle"))
+        UC5(("Delete Vehicle"))
+        UC6(("Set Pricing"))
+        UC7(("Upload Photos"))
+        UC8(("Manage Availability"))
+        
+        %% Booking Management
+        UC9(("View Requests"))
+        UC10(("Accept Booking"))
+        UC11(("Reject Booking"))
+        UC12(("Generate Reports"))
+        
+        %% Communication
+        UC13(("Chat with Customer"))
+        UC14(("Send Notifications"))
+        
+        %% Content Management
+        UC15(("Create Blog Post"))
+        UC16(("Manage Followers"))
+    end
+    
+    %% Agency connections
+    Agency --- UC1
+    Agency --- UC2
+    Agency --- UC3
+    Agency --- UC4
+    Agency --- UC5
+    Agency --- UC6
+    Agency --- UC7
+    Agency --- UC8
+    Agency --- UC9
+    Agency --- UC10
+    Agency --- UC11
+    Agency --- UC12
+    Agency --- UC13
+    Agency --- UC14
+    Agency --- UC15
+    Agency --- UC16
+    
+    %% Include relationships
+    UC1 -.->|includes| UC2
+    UC3 -.->|includes| UC6
+    UC3 -.->|includes| UC7
+    UC10 -.->|includes| UC14
+    
+    %% Styling - Standard UML colors
+    classDef actor fill:#FFFFFF,stroke:#000000,stroke-width:2px,color:#000000
+    classDef usecase fill:#FFFFFF,stroke:#000000,stroke-width:1px,color:#000000
+    classDef system fill:#FFFFFF,stroke:#000000,stroke-width:2px,color:#000000
+    
+    class Agency actor
+    class UC1,UC2,UC3,UC4,UC5,UC6,UC7,UC8,UC9,UC10,UC11,UC12,UC13,UC14,UC15,UC16 usecase
+    class System system

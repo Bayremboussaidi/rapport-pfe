@@ -1,0 +1,81 @@
+graph TB
+    subgraph "CUSTOMER ACTOR"
+        Customer["👤 Customer<br/>(Registered User)"]
+        Guest["🌐 Visitor<br/>(Guest User)"]
+    end
+    
+    subgraph "AUTHENTICATION SYSTEM"
+        UC1["🔐 Login/Register<br/>• Email/Password<br/>• Profile Management<br/>• Account Verification"]
+        UC2["👤 Manage Profile<br/>• Update Information<br/>• Change Password<br/>• Upload Photo"]
+    end
+    
+    subgraph "VEHICLE SEARCH & BOOKING"
+        UC3["🔍 Browse Cars<br/>• Filter by Category<br/>• Search by Location<br/>• View Availability"]
+        UC4["📅 Check Availability<br/>• Select Dates<br/>• Compare Prices<br/>• Real-time Updates"]
+        UC5["🚗 Book Vehicle<br/>• Choose Car<br/>• Set Pickup/Dropoff<br/>• Confirm Details"]
+        UC6["💳 Make Payment<br/>• Online Payment<br/>• Secure Transaction<br/>• Confirmation Receipt"]
+    end
+    
+    subgraph "BOOKING MANAGEMENT"
+        UC7["📋 View Bookings<br/>• Current Reservations<br/>• Booking History<br/>• Status Updates"]
+        UC8["✏️ Modify Booking<br/>• Change Dates<br/>• Update Locations<br/>• Cancel Reservation"]
+        UC9["📄 Generate Contract<br/>• PDF Agreement<br/>• QR Code<br/>• Email Delivery"]
+    end
+    
+    subgraph "COMMUNICATION & SUPPORT"
+        UC10["💬 Chat with Agency<br/>• Real-time Messaging<br/>• Support Queries<br/>• Booking Assistance"]
+        UC11["🤖 AI Chatbot<br/>• Instant Help<br/>• FAQ Responses<br/>• 24/7 Availability"]
+        UC12["📧 Receive Notifications<br/>• Booking Confirmations<br/>• Status Updates<br/>• Promotional Offers"]
+    end
+    
+    subgraph "CONTENT INTERACTION"
+        UC13["📖 Read Blog Posts<br/>• Company News<br/>• Car Reviews<br/>• Travel Tips"]
+        UC14["💬 Leave Comments<br/>• Share Opinions<br/>• Rate Services<br/>• Community Interaction"]
+        UC15["👥 Follow Agency<br/>• Stay Updated<br/>• Special Offers<br/>• New Vehicle Alerts"]
+    end
+    
+    %% Customer Interactions
+    Customer --> UC1
+    Customer --> UC2
+    Customer --> UC3
+    Customer --> UC4
+    Customer --> UC5
+    Customer --> UC6
+    Customer --> UC7
+    Customer --> UC8
+    Customer --> UC9
+    Customer --> UC10
+    Customer --> UC11
+    Customer --> UC12
+    Customer --> UC13
+    Customer --> UC14
+    Customer --> UC15
+    
+    %% Guest Interactions (Limited)
+    Guest --> UC3
+    Guest --> UC1
+    Guest --> UC13
+    Guest --> UC11
+    Guest --> UC15
+    
+    %% Dependencies
+    UC1 -.-> UC2
+    UC4 --> UC5
+    UC5 --> UC6
+    UC6 --> UC9
+    UC5 -.-> UC7
+    UC7 --> UC8
+    
+    classDef actor fill:#FFE0B2,stroke:#FF8C00,stroke-width:2px
+    classDef auth fill:#E8F5E8,stroke:#4CAF50,stroke-width:2px
+    classDef booking fill:#E3F2FD,stroke:#2196F3,stroke-width:2px
+    classDef management fill:#F3E5F5,stroke:#9C27B0,stroke-width:2px
+    classDef communication fill:#FFF3E0,stroke:#FF9800,stroke-width:2px
+    classDef content fill:#F5F5F5,stroke:#757575,stroke-width:2px
+    
+    class Customer,Guest actor
+    class UC1,UC2 auth
+    class UC3,UC4,UC5,UC6 booking
+    class UC7,UC8,UC9 management
+    class UC10,UC11,UC12 communication
+    class UC13,UC14,UC15 content

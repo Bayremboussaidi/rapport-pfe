@@ -1,0 +1,227 @@
+\chapter{Needs Analysis and Specification}
+
+\section{Introduction}
+This chapter formally defines and analyzes the functional and non-functional needs of the car rental platform. By identifying limitations in existing systems, this section translates user expectations into specific system requirements, focusing on secure, real-time, and scalable services for car rentals, including role-based interactions, authentication, booking workflows, communication, and deployment. Following the context and problem analysis outlined in Chapter 1, this chapter ensures that the platform meets real user needs efficiently and securely.
+
+\section{Actors Identification}
+The platform supports the following primary actors:
+
+\begin{itemize}
+    \item \textbf{Administrator}: Manages agencies, blogs, customers, and system security. Has access to all system functionalities.
+    \item \textbf{Agency}: Manages cars, responds to rental requests, communicates with the admin, and handles customer interactions.
+    \item \textbf{Customer}: Can view public content, submit rental requests, interact with agencies, and track requests post-login.
+    \item \textbf{Visitor}: Unauthenticated user who can view public content and access the chatbot.
+    \item \textbf{Chatbot (System)}: AI-powered assistant via a FastAPI service connected to ChatGPT, available for visitors and registered users.
+\end{itemize}
+
+\section{Needs Identification}
+
+\subsection{Functional Needs}
+\begin{itemize}
+    \item \textbf{Customers:}
+    \begin{itemize}
+        \item Browse available cars and blogs without logging in.
+        \item Register, log in securely, and manage their profiles.
+        \item Search and filter cars based on availability and specifications.
+        \item Submit rental requests for cars with date availability checked.
+        \item Receive email notifications on rental request status (accepted/declined).
+        \item Access notifications and view rental request history.
+        \item Delete rental requests that are declined or not confirmed.
+        \item Comment and provide reviews on cars and blog posts.
+        \item Receive updates via email when new cars are added or blogs published.
+        \item Contact admin directly via email within the app.
+        \item Interact with the chatbot for support and inquiries.
+    \end{itemize}
+
+    \item \textbf{Agencies:}
+    \begin{itemize}
+        \item Register, log in securely, and manage agency profiles.
+        \item Add, edit, or delete cars and their features (name, model, type, photos).
+        \item Accept or decline rental requests from customers.
+        \item Send automated email responses to customers based on request status.
+        \item Communicate with admin via instant chat within the app.
+        \item Manage car availability and scheduling.
+        \item Receive notifications of new rental requests.
+    \end{itemize}
+
+    \item \textbf{Administrators:}
+    \begin{itemize}
+        \item Manage agency accounts: add, edit, and delete agencies.
+        \item Manage customers: add, edit, and delete customer accounts.
+        \item Manage blog posts: add, edit, and delete blog content.
+        \item Oversee platform-wide notifications and communications.
+        \item Monitor system health and enforce security via secured route access (using Keycloak and AuthGuard).
+        \item Engage in chat with agencies for operational coordination.
+        \item Configure system settings and roles for access control.
+    \end{itemize}
+
+    \item \textbf{System-wide Functionalities:}
+    \begin{itemize}
+        \item Secure authentication and role-based authorization via Keycloak.
+        \item Instant messaging system enabling admin-agency communication.
+        \item Email notification system for updates, rental request status, and confirmations.
+        \item PDF generation with QR codes for confirmed rental contracts.
+        \item Integration of chatbot powered by an external Flask API for user assistance.
+        \item Deployment automation using GitLab CI/CD pipelines, Docker Compose, and Kubernetes.
+        \item Real-time availability checking for cars during rental request submission.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Non-Functional Needs}
+\begin{itemize}
+    \item \textbf{Performance:}
+    \begin{itemize}
+        \item The system must respond to user actions (e.g., browsing cars, submitting rental requests) within 2 seconds under normal load.
+        \item Rental availability checks must provide real-time feedback during request submission.
+        \item Email notifications and PDF generation should be triggered within 2 minutes after any change in request status.
+    \end{itemize}
+
+    \item \textbf{Security:}
+    \begin{itemize}
+        \item Authentication and authorization must be enforced using Keycloak, with role-based access control (Admin, Agency, Customer).
+        \item All sensitive data (e.g., passwords, personal information) must be securely stored and transmitted using encryption protocols (HTTPS, password hashing).
+        \item All API endpoints must be protected from unauthorized access using AuthGuard and secure access control mechanisms.
+        \item The application must defend against common security threats such as SQL injection, cross-site scripting (XSS), and cross-site request forgery (CSRF).
+    \end{itemize}
+
+    \item \textbf{Usability:}
+    \begin{itemize}
+        \item The user interface must be intuitive, user-friendly, and responsive across desktop, tablet, and mobile devices.
+        \item Customers must be able to easily browse, search for cars, submit rental requests, and track their status.
+        \item Agencies and administrators should have dedicated dashboards for managing cars, requests, blogs, and communication.
+    \end{itemize}
+
+    \item \textbf{Reliability and Availability:}
+    \begin{itemize}
+        \item The system should ensure 99.9\% uptime, with robust error handling and recovery mechanisms.
+        \item All rental and user data must be reliably saved and backed up regularly.
+    \end{itemize}
+
+    \item \textbf{Maintainability and Extensibility:}
+    \begin{itemize}
+        \item The codebase must follow clean architecture principles and separation of concerns to facilitate future updates.
+        \item Continuous integration and deployment (CI/CD) pipelines using GitLab must support automated testing and deployment.
+        \item Comprehensive documentation should be maintained for the API, deployment process, and system usage.
+    \end{itemize}
+
+    \item \textbf{Scalability:}
+    \begin{itemize}
+        \item The system must support increased user traffic and rental activity without performance degradation.
+        \item Kubernetes-based deployment must allow for horizontal scaling of services as demand grows.
+    \end{itemize}
+
+    \item \textbf{Interoperability:}
+    \begin{itemize}
+        \item The system must integrate seamlessly with external services, including the Flask-based chatbot API and payment gateways.
+        \item Email services must be compatible with SMTP or third-party providers to ensure reliable communication.
+    \end{itemize}
+\end{itemize}
+
+\section{System Design}
+
+\subsection{Global Use Case Diagram}
+The global use case diagram represents the overall interactions between primary actors (Customer, Agency, Administrator, Visitor) and the car rental platform. It highlights the key functionalities accessible to each actor, offering a high-level overview of the system's capabilities.
+
+\subsubsection{Customer Use Case Diagram}
+The customer use case diagram illustrates the primary interactions between customers and the car rental platform. It shows how registered customers can manage their profiles, search and book vehicles, interact with the AI chatbot, and engage with the platform's content system.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=16cm]{img/customer-usecase-diagram.png}
+    \caption{Use Case Diagram for Customer - Myloc Agency Platform}
+    \label{fig:customer_interactions}
+\end{figure}
+
+\subsubsection{Agency Use Case Diagram}
+The agency use case diagram demonstrates how car rental agencies interact with the platform to manage their fleet, handle customer bookings, and maintain their business operations through the comprehensive agency dashboard.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=16cm]{img/agency-usecase-diagram.png}
+    \caption{Use Case Diagram for Agency - Fleet and Booking Management}
+    \label{fig:agency_interactions}
+\end{figure}
+
+\subsubsection{Administrator Use Case Diagram}
+The administrator use case diagram showcases the comprehensive system management capabilities available to platform administrators, including user management, content moderation, financial oversight, and system maintenance operations.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=16cm]{img/admin-usecase-diagram.png}
+    \caption{Use Case Diagram for Administrator - System Management}
+    \label{fig:admin_interactions}
+\end{figure}
+
+\subsection{Global Class Diagram}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{img/class-diagram.png}
+    \caption{Global Class Diagram Representing Car Rental Platform Architecture}
+    \label{fig:class_diagram}
+\end{figure}
+
+\section{Specification}
+
+\subsection{Role Allocation}
+\subsubsection*{Scrum Master (SM)}
+\begin{itemize}
+    \item \textbf{Responsibility:} Facilitates Scrum ceremonies, removes impediments, and ensures Agile principles are followed.
+    \item \textbf{Interaction:} Acts as a servant leader between Product Owner and development team, maintaining productivity and team alignment.
+\end{itemize}
+
+\subsubsection*{Development Team (DT)}
+\begin{itemize}
+    \item \textbf{Responsibility:} Design, implement, test, and deliver functional features of the platform within each sprint.
+    \item \textbf{Interaction:} Collaborate with Scrum Master and Product Owner to select tasks, implement solutions, validate outcomes, and deliver high-quality increments of the product.
+\end{itemize}
+
+\subsection{Scrum Planning}
+\begin{itemize}
+    \item \textbf{Sprint Goal Definition:} Each sprint starts with a clearly defined goal contributing to project progress.
+    \item \textbf{Backlog Refinement:} Regular review and prioritization of the product backlog.
+    \item \textbf{Sprint Backlog Creation:} Select prioritized tasks and break them into actionable items.
+    \item \textbf{Task Estimation:} Estimate tasks using story points or time-based measures.
+    \item \textbf{Daily Stand-ups:} Short meetings to share progress, blockers, and daily goals.
+    \item \textbf{Sprint Review and Retrospective:} Review completed features and reflect internally on improvements.
+\end{itemize}
+
+\subsection{Sprint Planning Overview}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{2cm}|>{\raggedright\arraybackslash}p{13cm}|}
+\hline
+\textbf{ID} & \textbf{Sprint} \\
+\hline
+\endfirsthead
+\hline
+\textbf{ID} & \textbf{Sprint} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\caption{Sprint Planning Overview} \\
+\endlastfoot
+1 & Platform Setup, Environment Configuration, and Project Initialization (Angular, Spring Boot, Keycloak) \\
+\hline
+2 & User Registration, Login, and Role-Based Access Control (Admin, Agency, Customer) \\
+\hline
+3 & Car Management Module: Add, Edit, Delete, List Cars (Admin & Agency) \\
+\hline
+4 & Rental Request Flow: Submit, Approve/Reject, Email Notifications \\
+\hline
+5 & Real-Time Chat Between Admin and Agencies + Notification System \\
+\hline
+6 & Blog Module: Create, View, Comment on Blogs + Email Updates \\
+\hline
+7 & PDF Generation with QR Code for Confirmed Rentals + Car Availability Checking \\
+\hline
+8 & Chatbot Integration via Flask API for Visitors and Customers \\
+\hline
+9 & Final Integrations: Booking History, Contact Admin, Dashboard Statistics \\
+\hline
+10 & Testing, CI/CD with GitLab Pipelines, Docker/Kubernetes Deployment \\
+\end{longtable}
+
+\subsection{Conclusion}
+In this chapter, we explored the functional and non-functional requirements for the car rental platform. We identified the different user roles (Admin, Agency, Customer, Visitor), their needs, and outlined the system features accordingly. We also established the development methodology using Scrum, assigned team roles, and laid out the sprint plan and product backlog. This structured specification ensures the platform is developed efficiently, securely, and in alignment with user needs.
+
+In the next chapter, we will focus on the **first sprint**, dedicated to platform setup, secure authentication using Keycloak, and user role management.

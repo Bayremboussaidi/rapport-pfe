@@ -1,0 +1,59 @@
+@startuml
+!theme plain
+skinparam backgroundColor white
+skinparam actorBackgroundColor white
+skinparam usecaseBackgroundColor white
+skinparam actorBorderColor black
+skinparam usecaseBorderColor black
+skinparam arrowColor black
+skinparam shadowing false
+skinparam dpi 150
+left to right direction
+
+' Administrator Actor positioned on left
+actor Administrator
+
+' System boundary with horizontal group layout
+package "Platform Administration System" {
+    rectangle "User Management" {
+        usecase (Manage Users) as UC1
+        usecase (View User Profiles) as UC2
+        usecase (Ban/Suspend Users) as UC3
+    }
+    
+    rectangle "Content Management" {
+        usecase (Approve Blog Posts) as UC4
+        usecase (Manage Content) as UC5
+        usecase (Moderate Reviews) as UC6
+    }
+    
+    rectangle "System Management" {
+        usecase (View Analytics) as UC7
+        usecase (Generate Reports) as UC8
+        usecase (System Configuration) as UC9
+    }
+    
+    rectangle "Monitoring & Support" {
+        usecase (Monitor Transactions) as UC10
+        usecase (Handle Support Tickets) as UC11
+        usecase (Manage Backups) as UC12
+        usecase (Security Management) as UC13
+    }
+}
+
+' Force horizontal arrangement of groups
+"User Management" -down[hidden]-> "System Management"
+"Content Management" -down[hidden]-> "Monitoring & Support"
+
+' Administrator associations to groups
+Administrator --> "User Management"
+Administrator --> "Content Management"
+Administrator --> "System Management"
+Administrator --> "Monitoring & Support"
+
+' Include relationships
+UC1 .> UC2 : <<include>>
+UC7 .> UC8 : <<include>>
+UC11 .> UC9 : <<include>>
+
+@enduml

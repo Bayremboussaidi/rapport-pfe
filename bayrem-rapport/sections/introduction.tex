@@ -1,0 +1,25 @@
+\chapter*{General Introduction}
+\addcontentsline{toc}{chapter}{Introduction générale} % to include the introduction to the table of content
+\markboth{Introduction générale}{} % To redefine the section page head
+
+The development of our Car Rental Comparator Platform aims to address the growing demand for digitalization and optimization in the car rental sector. Our application offers an integrated solution for agencies to list, manage, and rent out their vehicles in a dynamic and efficient ecosystem. It enables agencies to maximize the visibility and value of their services while minimizing administrative overhead.
+
+Our platform stands out by facilitating seamless communication between agencies and administrators, providing a space where agencies can create, update, and remove their listings effortlessly. Agencies are now directly responsible for managing rental requests for their listed vehicles — they can approve or decline requests submitted by customers. Upon agency approval, a secure payment link is sent to the customer's email, allowing them to finalize the transaction online. Once payment is confirmed, the platform automatically generates and sends a PDF rental contract to the customer's email, including the rental details and a uniquely generated QR code.
+
+Additionally, the platform features a blogging space for special offers and events, enhancing customer engagement.
+
+To enrich the customer experience, we introduced a subscription system for premium clients, keeping them updated with the latest offers and news. Clients can easily reserve cars online, check real-time vehicle availability, and enjoy a streamlined booking process.
+
+Our application is developed using \textbf{Angular} for the front-end, \textbf{Spring Boot} for the back-end, and \textbf{MySQL} for the database. The entire infrastructure is containerized using \textbf{Docker} and orchestrated with \textbf{Docker Compose}, ensuring consistency across development and production environments.
+
+The platform is hosted on a virtual server provided by \textbf{AWS EC2}, offering high availability and scalability. Infrastructure provisioning — including instance creation, networking, security groups, and database setup — is fully automated using \textbf{Terraform}, enabling reproducible and secure deployments. To streamline development and deployment cycles, we have set up a complete \textbf{CI/CD pipeline} using \textbf{GitLab}, which automates code integration, Docker image builds, and deployment to the AWS environment.
+
+This report will detail the design and development approaches adopted, the technologies and tools utilized, and the potential impacts and advantages of this platform for its users. We will also discuss prospects for similar future projects. The report will be organized as follows:
+
+\begin{itemize}
+    \item In the first chapter, we will introduce the project framework and its general context, followed by a state-of-the-art study analyzing three similar applications. The project management methodology adopted will also be presented.
+    \item The second chapter will focus on the analysis and specification of project requirements, identifying actors, functional and non-functional needs, and presenting use case and class diagrams, along with release planning, application architecture, and the working environment.
+    \item The third chapter will detail the first release of the platform, including three sprints: profile and car listing management, advertisement management, and request handling, outlining the implementation stages and features delivered.
+    \item The fourth chapter will present the second release, which includes the management of rental requests, rental contracts, and customer complaints, thus enriching the platform’s functionalities and enhancing the overall user experience.
+    \item The fifth chapter will cover the realization of the third release, integrating features for maintenance request management, payment invoice generation, and the establishment of the CI/CD pipeline, ensuring continuous delivery and service improvement.
+\end{itemize}

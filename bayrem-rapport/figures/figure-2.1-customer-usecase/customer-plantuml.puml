@@ -1,0 +1,62 @@
+@startuml
+!theme plain
+skinparam backgroundColor white
+skinparam actorBackgroundColor white
+skinparam usecaseBackgroundColor white
+skinparam actorBorderColor black
+skinparam usecaseBorderColor black
+skinparam arrowColor black
+skinparam shadowing false
+skinparam dpi 150
+left to right direction
+
+' Customer Actor positioned on left
+actor Customer
+
+' System boundary with horizontal group layout
+package "Car Rental Platform" {
+    rectangle "Authentication" {
+        usecase (Login) as UC1
+        usecase (Register) as UC2 
+        usecase (Manage Profile) as UC3
+    }
+    
+    rectangle "Vehicle Search" {
+        usecase (Search Vehicles) as UC4
+        usecase (Apply Filters) as UC5
+        usecase (Browse Catalog) as UC6
+        usecase (View Details) as UC7
+    }
+    
+    rectangle "Booking Process" {
+        usecase (Book Vehicle) as UC8
+        usecase (Make Payment) as UC9
+        usecase (View Receipt) as UC10
+        usecase (Cancel Booking) as UC11
+    }
+    
+    rectangle "Communication" {
+        usecase (Write Reviews) as UC12
+        usecase (Chat with Agency) as UC13
+        usecase (View History) as UC14
+        usecase (Read Blog Posts) as UC15
+    }
+}
+
+' Force horizontal arrangement of groups
+"Authentication" -down[hidden]-> "Booking Process"
+"Vehicle Search" -down[hidden]-> "Communication"
+
+' Customer associations to groups
+Customer --> "Authentication"
+Customer --> "Vehicle Search"
+Customer --> "Booking Process"
+Customer --> "Communication"
+
+' Include relationships
+UC2 .> UC1 : <<include>>
+UC4 .> UC5 : <<include>>
+UC8 .> UC9 : <<include>>
+UC9 .> UC10 : <<include>>
+
+@enduml

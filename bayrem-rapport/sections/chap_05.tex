@@ -1,0 +1,50 @@
+\chapter{Conclusion and Future Work}
+
+\section{Summary of the Project}
+This project developed a comprehensive Car Rental Platform that integrates multiple user roles, real-time communication, online payment processing, automated notifications, and AI-powered assistance. The platform enables:
+
+\begin{itemize}
+    \item Admins to manage agencies, customers, blogs, and oversee bookings.
+    \item Agencies to manage cars, accept or decline rental requests, and communicate with admins.
+    \item Customers to browse cars, make rental requests, view history, comment, and receive automated emails and PDF confirmations.
+    \item Visitors and customers to interact with a chatbot powered by ChatGPT for assistance.
+\end{itemize}
+
+The platform is developed using Angular for the frontend, Spring Boot for the backend, MySQL for the database, Keycloak for authentication, and FastAPI for the chatbot service. The system is containerized with Docker and deployed on Kubernetes using a CI/CD pipeline.
+
+\section{Key Achievements}
+\begin{itemize}
+    \item Successful implementation of role-based access control and secure authentication using Keycloak.
+    \item Development of a real-time chat system for admin-agency communication.
+    \item Automated booking workflow with email notifications and PDF contract generation.
+    \item Integration of a multilingual AI chatbot for user assistance.
+    \item Deployment of a scalable microservices architecture using Docker and Kubernetes, including:
+    \begin{itemize}
+        \item Separate containers for frontend, backend, database, and AI services.
+        \item YAML deployment files for Minikube (\texttt{frontend-deployment.yml}, \texttt{backend-deployment.yml}, \texttt{mysql-deployment.yml}, \texttt{ai-deployment.yml}).
+        \item CI/CD pipeline using GitLab for automated builds, testing, and deployment.
+    \end{itemize}
+    \item Implementation of unit, integration, and end-to-end testing to ensure system reliability.
+\end{itemize}
+
+\section{Limitations}
+\begin{itemize}
+    \item Online payment module relies on mock gateways in the current implementation; full integration with external payment providers is not yet complete.
+    \item Chatbot responses may depend on external API latency and internet connectivity.
+    \item Mobile responsiveness and offline capabilities can be further enhanced.
+    \item Some modules could be optimized for performance under high concurrent user loads.
+\end{itemize}
+
+\section{Future Work}
+\begin{itemize}
+    \item Integrate real payment gateways for live transactions and invoicing.
+    \item Enhance the chatbot with advanced NLP capabilities and additional languages.
+    \item Implement push notifications for mobile devices.
+    \item Add analytics dashboards for admins and agencies to track usage, bookings, and revenue.
+    \item Introduce recommendation systems to suggest cars to customers based on preferences and history.
+    \item Optimize microservices performance and scalability for large-scale deployment.
+    \item Improve deployment automation and monitoring using Kubernetes tools such as Helm, Prometheus, and Grafana.
+\end{itemize}
+
+\section{Final Remarks}
+The Car Rental Platform provides a robust, secure, and user-friendly system that automates key rental workflows and integrates modern technologies such as AI and microservices. The deployment process demonstrates the ability to manage containerized applications, orchestrate them with Kubernetes, and use CI/CD pipelines for seamless updates. This platform serves as a solid foundation for future enhancements and real-world deployment in the car rental industry.

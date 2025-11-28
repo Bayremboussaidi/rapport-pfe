@@ -1,0 +1,55 @@
+flowchart LR
+    %% Actor
+    Admin[Administrator]
+    
+    %% System boundary
+    subgraph System [" Platform Administration "]
+        direction TB
+        
+        UC1("Manage Agencies")
+        UC2("Manage Customers")
+        UC3("Manage Users")
+        UC4("Configure System")
+        UC5("Manage Permissions")
+        UC6("View Analytics")
+        UC7("Moderate Content")
+        UC8("Manage Blog Posts")
+        UC9("Handle Reports")
+        UC10("View Revenue")
+        UC11("Generate Reports")
+        UC12("Manage Payments")
+        UC13("Monitor System")
+        UC14("Backup Data")
+        UC15("Update System")
+    end
+    
+    %% Admin associations
+    Admin -.-> UC1
+    Admin -.-> UC2
+    Admin -.-> UC3
+    Admin -.-> UC4
+    Admin -.-> UC5
+    Admin -.-> UC6
+    Admin -.-> UC7
+    Admin -.-> UC8
+    Admin -.-> UC9
+    Admin -.-> UC10
+    Admin -.-> UC11
+    Admin -.-> UC12
+    Admin -.-> UC13
+    Admin -.-> UC14
+    Admin -.-> UC15
+    
+    %% Include relationships
+    UC4 -->|includes| UC5
+    UC6 -->|includes| UC11
+    UC13 -->|includes| UC14
+    
+    %% Professional UML styling
+    classDef actor fill:#FFFFFF,stroke:#000000,stroke-width:2px,color:#000000,font-weight:bold
+    classDef usecase fill:#FFFFFF,stroke:#000000,stroke-width:1px,color:#000000
+    classDef system fill:#F8F9FA,stroke:#000000,stroke-width:2px,color:#000000
+    
+    class Admin actor
+    class UC1,UC2,UC3,UC4,UC5,UC6,UC7,UC8,UC9,UC10,UC11,UC12,UC13,UC14,UC15 usecase
+    class System system

@@ -1,0 +1,58 @@
+graph TB
+    %% Core User Classes
+    subgraph Users ["👥 User Management"]
+        User[User<br/>📧 email, password<br/>👤 firstName, lastName<br/>🕒 createdAt, isActive]
+        Customer[Customer<br/>📞 phone, address<br/>🚗 drivingLicense<br/>📅 licenseExpiry]
+        Agency[Agency<br/>🏢 businessName<br/>📄 businessLicense<br/>📍 address, phone<br/>⭐ rating]
+        Admin[Admin<br/>🏛️ department<br/>⚙️ system management]
+    end
+    
+    %% Vehicle Management
+    subgraph Vehicles ["🚗 Vehicle Management"]
+        Vehicle[Vehicle<br/>🔖 make, model, year<br/>🚙 plateNumber, category<br/>💰 pricePerDay<br/>📍 location<br/>✅ isAvailable]
+        VehicleCategory[VehicleCategory<br/>📋 name, description<br/>💰 basePrice]
+    end
+    
+    %% Booking System
+    subgraph Bookings ["📅 Booking System"]
+        Booking[Booking<br/>📅 startDate, endDate<br/>💰 totalPrice<br/>📋 status, notes<br/>🕒 createdAt]
+        Payment[Payment<br/>💳 amount, method<br/>✅ status, paidAt<br/>🔢 transactionId]
+    end
+    
+    %% Content & Communication
+    subgraph Content ["📝 Content & Communication"]
+        BlogPost[BlogPost<br/>📰 title, content<br/>📅 publishedAt<br/>✅ isPublished<br/>👤 author]
+        Review[Review<br/>⭐ rating, comment<br/>📅 createdAt<br/>✅ isApproved]
+        Chat[Chat<br/>🕒 startedAt<br/>📋 status]
+        Message[Message<br/>💬 content, sentAt<br/>👁️ isRead<br/>🏷️ type]
+    end
+    
+    %% Relationships - Inheritance
+    User -.-> Customer
+    User -.-> Agency
+    User -.-> Admin
+    
+    %% Relationships - Associations
+    Agency --> Vehicle
+    Vehicle --> VehicleCategory
+    Customer --> Booking
+    Booking --> Vehicle
+    Booking --> Payment
+    Customer --> Review
+    Review --> Vehicle
+    Agency --> BlogPost
+    Customer --> Chat
+    Agency --> Chat
+    Chat --> Message
+    User --> Message
+    
+    %% Professional styling following Figure 1 standards
+    classDef userClass fill:#E3F2FD,stroke:#1976D2,stroke-width:3px,color:#000,font-weight:bold
+    classDef entityClass fill:#F8F9FA,stroke:#424242,stroke-width:2px,color:#000
+    classDef systemClass fill:#FFF3E0,stroke:#FF9800,stroke-width:2px,color:#000
+    classDef groupClass fill:#FAFAFA,stroke:#BDBDBD,stroke-width:2px,color:#555,font-weight:bold
+    
+    class User,Customer,Agency,Admin userClass
+    class Vehicle,VehicleCategory,Booking,Payment entityClass
+    class BlogPost,Review,Chat,Message systemClass
+    class Users,Vehicles,Bookings,Content groupClass
