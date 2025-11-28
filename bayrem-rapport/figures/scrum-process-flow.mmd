@@ -1,0 +1,39 @@
+%% Scrum Process Flow Diagram
+%% Save as: img/scrum-process-flow.png
+%% 
+%% You can generate this using Mermaid CLI or online tools like:
+%% - https://mermaid.live
+%% - VS Code Mermaid extension
+
+flowchart LR
+    subgraph INPUTS["📋 Inputs"]
+        PB[("🗂️ Product\nBacklog")]
+    end
+    
+    subgraph SPRINT["🔄 Sprint (2 weeks)"]
+        SP["📝 Sprint\nPlanning"]
+        SB[("📋 Sprint\nBacklog")]
+        DEV["⚙️ Development\n& Daily Standups"]
+        REV["👁️ Sprint\nReview"]
+        RET["🔍 Sprint\nRetro"]
+    end
+    
+    subgraph OUTPUT["📦 Output"]
+        INC[("✅ Product\nIncrement")]
+    end
+    
+    PB --> SP
+    SP --> SB
+    SB --> DEV
+    DEV --> REV
+    REV --> INC
+    REV --> RET
+    RET -.-> SP
+    
+    style PB fill:#e1f5fe
+    style SB fill:#fff3e0
+    style INC fill:#e8f5e9
+    style SP fill:#fce4ec
+    style DEV fill:#f3e5f5
+    style REV fill:#e8eaf6
+    style RET fill:#fff8e1

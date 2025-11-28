@@ -2,24 +2,29 @@
 \addcontentsline{toc}{chapter}{Introduction générale} % to include the introduction to the table of content
 \markboth{Introduction générale}{} % To redefine the section page head
 
-The development of our Car Rental Comparator Platform aims to address the growing demand for digitalization and optimization in the car rental sector. Our application offers an integrated solution for agencies to list, manage, and rent out their vehicles in a dynamic and efficient ecosystem. It enables agencies to maximize the visibility and value of their services while minimizing administrative overhead.
+The automotive rental industry has undergone significant transformation in recent years, driven by the increasing demand for digital solutions that streamline operations and enhance user experience. In this context, we developed \textbf{MyLoc}, a comprehensive car rental platform designed to connect administrators, rental agencies, and customers in a seamless digital ecosystem.
 
-Our platform stands out by facilitating seamless communication between agencies and administrators, providing a space where agencies can create, update, and remove their listings effortlessly. Agencies are now directly responsible for managing rental requests for their listed vehicles — they can approve or decline requests submitted by customers. Upon agency approval, a secure payment link is sent to the customer's email, allowing them to finalize the transaction online. Once payment is confirmed, the platform automatically generates and sends a PDF rental contract to the customer's email, including the rental details and a uniquely generated QR code.
+Our platform provides a complete solution for car rental management, enabling agencies to list their vehicles, manage their inventory, and process rental requests efficiently. Administrators oversee the entire platform, managing agencies, customers, and content while maintaining direct communication with agencies through an integrated real-time chat system.
 
-Additionally, the platform features a blogging space for special offers and events, enhancing customer engagement.
+The rental workflow is streamlined: when a customer submits a rental request for a specific vehicle, the responsible agency receives the request and can either approve or decline it. Upon approval, the customer receives an email containing a PDF rental contract with all booking details and a unique QR code for verification. In case of rejection, a notification email is sent to inform the customer of the decision. Additionally, in-app notifications keep customers informed of their request status in real-time.
 
-To enrich the customer experience, we introduced a subscription system for premium clients, keeping them updated with the latest offers and news. Clients can easily reserve cars online, check real-time vehicle availability, and enjoy a streamlined booking process.
+The platform also features a blog section where administrators can publish news and special offers, with customers able to comment and engage with the content. A \textbf{Follower subscription system} allows visitors to enter their email in the website footer to receive automatic email notifications whenever new cars are added to the platform.
 
-Our application is developed using \textbf{Angular} for the front-end, \textbf{Spring Boot} for the back-end, and \textbf{MySQL} for the database. The entire infrastructure is containerized using \textbf{Docker} and orchestrated with \textbf{Docker Compose}, ensuring consistency across development and production environments.
+To enhance customer support, we integrated an AI-powered chatbot using \textbf{Flask API} (Python) connected to ChatGPT, providing instant answers to visitor and customer inquiries in multiple languages.
 
-The platform is hosted on a virtual server provided by \textbf{AWS EC2}, offering high availability and scalability. Infrastructure provisioning — including instance creation, networking, security groups, and database setup — is fully automated using \textbf{Terraform}, enabling reproducible and secure deployments. To streamline development and deployment cycles, we have set up a complete \textbf{CI/CD pipeline} using \textbf{GitLab}, which automates code integration, Docker image builds, and deployment to the AWS environment.
+Our application is built with modern technologies: \textbf{Angular} for the frontend, \textbf{Spring Boot} (REST architecture) for the backend, and \textbf{MySQL} for data persistence. Security is managed through \textbf{Keycloak} for authentication, with AuthGuard protecting admin and agency routes based on user roles.
 
-This report will detail the design and development approaches adopted, the technologies and tools utilized, and the potential impacts and advantages of this platform for its users. We will also discuss prospects for similar future projects. The report will be organized as follows:
+For deployment, the entire infrastructure is containerized using \textbf{Docker} and \textbf{Docker Compose}, then orchestrated on \textbf{Kubernetes} (Minikube) with dedicated deployment files for each service. A complete \textbf{CI/CD pipeline} using \textbf{GitLab CI} automates the build, test, and deployment processes.
+
+Development was conducted using \textbf{Visual Studio Code} as the IDE, \textbf{XAMPP} for local database management, and \textbf{Postman} for API testing. The project followed the \textbf{Scrum} methodology with organized sprints and backlogs to ensure iterative and reliable delivery.
+
+This report details the design, development, and deployment approaches adopted for the MyLoc platform. It is organized as follows:
 
 \begin{itemize}
-    \item In the first chapter, we will introduce the project framework and its general context, followed by a state-of-the-art study analyzing three similar applications. The project management methodology adopted will also be presented.
-    \item The second chapter will focus on the analysis and specification of project requirements, identifying actors, functional and non-functional needs, and presenting use case and class diagrams, along with release planning, application architecture, and the working environment.
-    \item The third chapter will detail the first release of the platform, including three sprints: profile and car listing management, advertisement management, and request handling, outlining the implementation stages and features delivered.
-    \item The fourth chapter will present the second release, which includes the management of rental requests, rental contracts, and customer complaints, thus enriching the platform’s functionalities and enhancing the overall user experience.
-    \item The fifth chapter will cover the realization of the third release, integrating features for maintenance request management, payment invoice generation, and the establishment of the CI/CD pipeline, ensuring continuous delivery and service improvement.
+    \item \textbf{Chapter 1}: Presents the project framework and general context, analyzes existing car rental solutions, and introduces the Scrum methodology adopted for project management.
+    \item \textbf{Chapter 2}: Covers requirements analysis and specification, including actor identification, functional and non-functional requirements, use case diagrams, class diagrams, and system architecture.
+    \item \textbf{Chapter 3}: Details the first release implementation focusing on user authentication (Keycloak integration), car management, and agency management features.
+    \item \textbf{Chapter 4}: Presents the second release with rental request processing, email notifications, PDF contract generation with QR codes, and the real-time chat system.
+    \item \textbf{Chapter 5}: Covers the third release including the AI chatbot integration, blog management, customer reviews, and notification system.
+    \item \textbf{Chapter 6}: Describes the DevOps implementation with Docker containerization, Kubernetes deployment, and GitLab CI/CD pipeline setup.
 \end{itemize}

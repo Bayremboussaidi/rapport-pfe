@@ -1,0 +1,83 @@
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {1.}1}Introduction}{\reset@font\mtcSfont 4}{section.1.1}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {1.}2}Project Problematic}{\reset@font\mtcSfont 4}{section.1.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.2.1}\else \textLR {1.2.1}\fi }Challenges Faced by Agencies Before This Project}{\reset@font\mtcSSfont 4}{subsection.1.2.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.2.1}\else \textLR {1.2.1}\fi .1}Manual and Time-Consuming Processes}{\reset@font\mtcSSSfont 4}{subsubsection.1.2.1.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.2.1}\else \textLR {1.2.1}\fi .2}Poor Communication Channels}{\reset@font\mtcSSSfont 4}{subsubsection.1.2.1.2}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.2.1}\else \textLR {1.2.1}\fi .3}Inefficient Request Management}{\reset@font\mtcSSSfont 5}{subsubsection.1.2.1.3}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.2.1}\else \textLR {1.2.1}\fi .4}Lack of Digital Presence}{\reset@font\mtcSSSfont 5}{subsubsection.1.2.1.4}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.2.1}\else \textLR {1.2.1}\fi .5}Administrative Overhead}{\reset@font\mtcSSSfont 5}{subsubsection.1.2.1.5}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.2.1}\else \textLR {1.2.2}\fi }Impact of These Problems}{\reset@font\mtcSSfont 5}{subsection.1.2.2}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {1.}3}Project Objectives}{\reset@font\mtcSfont 6}{section.1.3}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.3.1}\else \textLR {1.3.1}\fi }Primary Objectives}{\reset@font\mtcSSfont 6}{subsection.1.3.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.3.1}\else \textLR {1.3.1}\fi .1}Digitize the Car Rental Process}{\reset@font\mtcSSSfont 6}{subsubsection.1.3.1.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.3.1}\else \textLR {1.3.1}\fi .2}Facilitate Communication Between Stakeholders}{\reset@font\mtcSSSfont 6}{subsubsection.1.3.1.2}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.3.1}\else \textLR {1.3.1}\fi .3}Streamline Request Management}{\reset@font\mtcSSSfont 6}{subsubsection.1.3.1.3}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.3.1}\else \textLR {1.3.1}\fi .4}Enhance Customer Experience}{\reset@font\mtcSSSfont 6}{subsubsection.1.3.1.4}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.3.1}\else \textLR {1.3.1}\fi .5}Empower Agency Management}{\reset@font\mtcSSSfont 7}{subsubsection.1.3.1.5}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.3.1}\else \textLR {1.3.1}\fi .6}Centralize Administration}{\reset@font\mtcSSSfont 7}{subsubsection.1.3.1.6}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.3.1}\else \textLR {1.3.2}\fi }Technical Objectives}{\reset@font\mtcSSfont 7}{subsection.1.3.2}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.3.1}\else \textLR {1.3.2}\fi .1}Security and Authentication}{\reset@font\mtcSSSfont 7}{subsubsection.1.3.2.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.3.1}\else \textLR {1.3.2}\fi .2}Modern Architecture}{\reset@font\mtcSSSfont 7}{subsubsection.1.3.2.2}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.3.1}\else \textLR {1.3.2}\fi .3}DevOps and Deployment}{\reset@font\mtcSSSfont 7}{subsubsection.1.3.2.3}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {1.}4}Solutions Provided by MyLoc Platform}{\reset@font\mtcSfont 7}{section.1.4}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.4.1}\else \textLR {1.4.1}\fi }Transforming Communication}{\reset@font\mtcSSfont 8}{subsection.1.4.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.4.1}\else \textLR {1.4.1}\fi .1}Real-Time Admin-Agency Chat}{\reset@font\mtcSSSfont 8}{subsubsection.1.4.1.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.4.1}\else \textLR {1.4.1}\fi .2}Automated Email Notifications}{\reset@font\mtcSSSfont 8}{subsubsection.1.4.1.2}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.4.1}\else \textLR {1.4.1}\fi .3}AI-Powered Chatbot}{\reset@font\mtcSSSfont 8}{subsubsection.1.4.1.3}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.4.1}\else \textLR {1.4.1}\fi .4}In-App Notifications}{\reset@font\mtcSSSfont 8}{subsubsection.1.4.1.4}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.4.1}\else \textLR {1.4.2}\fi }Streamlining the Booking Process}{\reset@font\mtcSSfont 8}{subsection.1.4.2}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.4.1}\else \textLR {1.4.2}\fi .1}Smart Availability Checking}{\reset@font\mtcSSSfont 8}{subsubsection.1.4.2.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.4.1}\else \textLR {1.4.2}\fi .2}One-Click Request Processing}{\reset@font\mtcSSSfont 9}{subsubsection.1.4.2.2}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.4.1}\else \textLR {1.4.2}\fi .3}Automated Contract Generation}{\reset@font\mtcSSSfont 9}{subsubsection.1.4.2.3}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {3.4.1}\else \textLR {1.4.3}\fi }Enhancing Car Discovery}{\reset@font\mtcSSfont 9}{subsection.1.4.3}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {3.4.1}\else \textLR {1.4.3}\fi .1}Advanced Filtering System}{\reset@font\mtcSSSfont 9}{subsubsection.1.4.3.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {3.4.1}\else \textLR {1.4.3}\fi .2}Rich Car Profiles}{\reset@font\mtcSSSfont 9}{subsubsection.1.4.3.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {4.4.1}\else \textLR {1.4.4}\fi }Saving Time for All Users}{\reset@font\mtcSSfont 10}{subsection.1.4.4}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {5.4.1}\else \textLR {1.4.5}\fi }Empowering Agencies}{\reset@font\mtcSSfont 10}{subsection.1.4.5}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {5.4.1}\else \textLR {1.4.5}\fi .1}Dedicated Agency Dashboard}{\reset@font\mtcSSSfont 10}{subsubsection.1.4.5.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {5.4.1}\else \textLR {1.4.5}\fi .2}Increased Visibility}{\reset@font\mtcSSSfont 10}{subsubsection.1.4.5.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {6.4.1}\else \textLR {1.4.6}\fi }Follower Subscription System}{\reset@font\mtcSSfont 10}{subsection.1.4.6}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {1.}5}Presentation of the Host Organization: Myloc Agency}{\reset@font\mtcSfont 11}{section.1.5}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.5.1}\else \textLR {1.5.1}\fi }Host Organization}{\reset@font\mtcSSfont 11}{subsection.1.5.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.5.1}\else \textLR {1.5.2}\fi }Activities and Products}{\reset@font\mtcSSfont 11}{subsection.1.5.2}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {1.}6}Project Frame}{\reset@font\mtcSfont 11}{section.1.6}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.6.1}\else \textLR {1.6.1}\fi }Study of Existing Systems}{\reset@font\mtcSSfont 11}{subsection.1.6.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.6.1}\else \textLR {1.6.2}\fi }Gaps and Opportunities}{\reset@font\mtcSSfont 12}{subsection.1.6.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {3.6.1}\else \textLR {1.6.3}\fi }Proposed Solution}{\reset@font\mtcSSfont 13}{subsection.1.6.3}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {1.}7}Project Architectures and Design Approaches}{\reset@font\mtcSfont 13}{section.1.7}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.7.1}\else \textLR {1.7.1}\fi }System Architecture: Microservices with Three-Tier Logical Structure}{\reset@font\mtcSSfont 13}{subsection.1.7.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.7.1}\else \textLR {1.7.1}\fi .1}Architecture Layers}{\reset@font\mtcSSSfont 14}{subsubsection.1.7.1.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.7.1}\else \textLR {1.7.1}\fi .2}Service Communication Flow}{\reset@font\mtcSSSfont 15}{subsubsection.1.7.1.2}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.7.1}\else \textLR {1.7.1}\fi .3}Containerization and Deployment}{\reset@font\mtcSSSfont 15}{subsubsection.1.7.1.3}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.7.1}\else \textLR {1.7.2}\fi }Design Pattern: RESTful Service-Oriented Architecture (SOA)}{\reset@font\mtcSSfont 16}{subsection.1.7.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {3.7.1}\else \textLR {1.7.3}\fi }Design Pattern: MVC for Payment Service}{\reset@font\mtcSSfont 16}{subsection.1.7.3}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {4.7.1}\else \textLR {1.7.4}\fi }FastAPI Chatbot Microservice}{\reset@font\mtcSSfont 16}{subsection.1.7.4}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {1.}8}Project Management and Design Methodology}{\reset@font\mtcSfont 16}{section.1.8}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.8.1}\else \textLR {1.8.1}\fi }Traditional vs Agile Approaches}{\reset@font\mtcSSfont 16}{subsection.1.8.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.8.1}\else \textLR {1.8.2}\fi }Methodology Selection: Why Scrum?}{\reset@font\mtcSSfont 16}{subsection.1.8.2}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.8.1}\else \textLR {1.8.2}\fi .1}Comparative Analysis of Agile Methods}{\reset@font\mtcSSSfont 17}{subsubsection.1.8.2.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.8.1}\else \textLR {1.8.2}\fi .2}Justification for Choosing Scrum}{\reset@font\mtcSSSfont 17}{subsubsection.1.8.2.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {3.8.1}\else \textLR {1.8.3}\fi }Scrum Framework Overview}{\reset@font\mtcSSfont 18}{subsection.1.8.3}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {3.8.1}\else \textLR {1.8.3}\fi .1}Scrum Team Roles}{\reset@font\mtcSSSfont 18}{subsubsection.1.8.3.1}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode The Product Owner (PO)}{\reset@font\mtcPfont 19}{paragraph*.12}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode The Scrum Master (SM)}{\reset@font\mtcPfont 19}{paragraph*.13}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode The Development Team}{\reset@font\mtcPfont 20}{paragraph*.14}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {3.8.1}\else \textLR {1.8.3}\fi .2}Scrum Events (Ceremonies)}{\reset@font\mtcSSSfont 20}{subsubsection.1.8.3.2}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Sprint}{\reset@font\mtcPfont 20}{paragraph*.16}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Sprint Planning Meeting}{\reset@font\mtcPfont 22}{paragraph*.17}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Daily Scrum (Stand-up)}{\reset@font\mtcPfont 22}{paragraph*.18}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Sprint Review}{\reset@font\mtcPfont 23}{paragraph*.19}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Sprint Retrospective}{\reset@font\mtcPfont 24}{paragraph*.20}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Backlog Refinement (Grooming)}{\reset@font\mtcPfont 24}{paragraph*.21}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {3.8.1}\else \textLR {1.8.3}\fi .3}Scrum Artifacts}{\reset@font\mtcSSSfont 25}{subsubsection.1.8.3.3}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Product Backlog}{\reset@font\mtcPfont 25}{paragraph*.22}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Sprint Backlog}{\reset@font\mtcPfont 26}{paragraph*.23}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Increment}{\reset@font\mtcPfont 26}{paragraph*.24}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Burndown Chart}{\reset@font\mtcPfont 26}{paragraph*.25}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Velocity Chart}{\reset@font\mtcPfont 27}{paragraph*.27}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {4.8.1}\else \textLR {1.8.4}\fi }Agile Methodology Implementation}{\reset@font\mtcSSfont 28}{subsection.1.8.4}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {5.8.1}\else \textLR {1.8.5}\fi }Development Environment}{\reset@font\mtcSSfont 29}{subsection.1.8.5}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {5.8.1}\else \textLR {1.8.5}\fi .1}Hardware Environment}{\reset@font\mtcSSSfont 29}{subsubsection.1.8.5.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {5.8.1}\else \textLR {1.8.5}\fi .2}Software Environment}{\reset@font\mtcSSSfont 29}{subsubsection.1.8.5.2}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {5.8.1}\else \textLR {1.8.5}\fi .3}Deployment Tools}{\reset@font\mtcSSSfont 29}{subsubsection.1.8.5.3}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {1.}9}Conclusion}{\reset@font\mtcSfont 29}{section.1.9}}

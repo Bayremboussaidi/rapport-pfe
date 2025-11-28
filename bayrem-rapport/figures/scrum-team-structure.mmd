@@ -1,0 +1,30 @@
+%% Scrum Team Structure Diagram
+%% Save as: img/scrum-team-structure.png
+
+flowchart TB
+    subgraph TEAM["🏢 Scrum Team - Myloc Agency Project"]
+        direction TB
+        
+        subgraph PO_BOX["Product Owner"]
+            PO["👔 Amine Ben Chaabane\n(Myloc Agency CEO)"]
+            PO_R["• Defines product vision\n• Manages backlog\n• Prioritizes features\n• Accepts completed work"]
+        end
+        
+        subgraph SM_BOX["Scrum Master"]
+            SM["🎯 Academic Supervisor"]
+            SM_R["• Facilitates ceremonies\n• Removes impediments\n• Coaches on Agile\n• Protects the team"]
+        end
+        
+        subgraph DT_BOX["Development Team"]
+            DT["💻 Bayrem Boussaidi\n(Full-Stack Developer)"]
+            DT_R["• Frontend (Angular)\n• Backend (Spring Boot)\n• Database (MySQL)\n• DevOps (Docker/K8s)"]
+        end
+    end
+    
+    PO <--> SM
+    SM <--> DT
+    PO <-.-> DT
+    
+    style PO fill:#1976d2,color:#fff
+    style SM fill:#388e3c,color:#fff
+    style DT fill:#f57c00,color:#fff

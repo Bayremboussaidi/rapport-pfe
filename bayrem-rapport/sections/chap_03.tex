@@ -1,117 +1,524 @@
-\chapter{System Development and Implementation}
+\chapter{Release 1: Core Platform Development}
 
 \section{Introduction}
-This chapter details the development environment, system architecture, database design, and implementation strategies used for the Car Rental Platform. It also explains how functional requirements are translated into working modules and how non-functional requirements such as security, scalability, and real-time communication are implemented.
+This chapter details the first release of the MyLoc platform, focusing on the foundational components: development environment setup, database design, authentication system, and core CRUD operations. Following the Scrum methodology, this release corresponds to \textbf{Sprints 1-3}, delivering the essential infrastructure upon which subsequent features are built.
 
-\section{Development Environment}
+The goals of Release 1 include:
 \begin{itemize}
-    \item \textbf{Frontend:} Angular 16, Node.js 20
-    \item \textbf{Backend:} Spring Boot 3.x, Java 17 (REST API)
-    \item \textbf{Database:} MySQL 8
-    \item \textbf{Authentication:} Keycloak (Docker container)
-    \item \textbf{Chatbot:} Flask API (Python) integrated with ChatGPT
-    \item \textbf{Containerization:} Docker Compose
-    \item \textbf{Orchestration:} Kubernetes (Minikube)
-    \item \textbf{IDE:} Visual Studio Code
-    \item \textbf{API Testing:} Postman
-    \item \textbf{Local DB:} XAMPP
+    \item Setting up the complete development environment and technology stack.
+    \item Designing and implementing the database schema.
+    \item Implementing secure authentication using Keycloak.
+    \item Building the car management module for agencies.
+    \item Creating the basic agency and customer management features.
 \end{itemize}
 
-\section{Database Design}
-The system uses MySQL as its relational database. Key tables include:
+\section{Sprint 1: Development Environment and Authentication}
 
-\subsection{Agence Table}
+\subsection{Development Environment Setup}
+The development environment was carefully configured to support a modern microservices architecture with multiple technologies working together seamlessly.
+
+\subsubsection{Frontend Environment}
+\begin{itemize}
+    \item \textbf{Angular 16}: Chosen for its robust component-based architecture and TypeScript support.
+    \item \textbf{Node.js 20 LTS}: Runtime environment for Angular CLI and build tools.
+    \item \textbf{npm}: Package manager for frontend dependencies.
+    \item \textbf{Angular CLI}: For project scaffolding, component generation, and build automation.
+\end{itemize}
+
+\textbf{Key Angular Packages:}
+\begin{itemize}
+    \item \texttt{@angular/router}: For single-page application navigation.
+    \item \texttt{@angular/forms}: For reactive form handling and validation.
+    \item \texttt{@angular/common/http}: For REST API communication.
+    \item \texttt{angular-oauth2-oidc}: For Keycloak OAuth2 integration.
+    \item \texttt{ngx-toastr}: For user-friendly notifications.
+\end{itemize}
+
+\subsubsection{Backend Environment}
+\begin{itemize}
+    \item \textbf{Java 17 LTS}: The programming language for backend development.
+    \item \textbf{Spring Boot 3.x}: Framework providing auto-configuration and rapid development.
+    \item \textbf{Maven}: Build tool and dependency management.
+    \item \textbf{MySQL 8}: Relational database for data persistence.
+\end{itemize}
+
+\textbf{Key Spring Dependencies:}
+\begin{itemize}
+    \item \texttt{spring-boot-starter-web}: For REST API development.
+    \item \texttt{spring-boot-starter-data-jpa}: For database operations with Hibernate.
+    \item \texttt{spring-boot-starter-security}: For security configuration.
+    \item \texttt{spring-boot-starter-mail}: For email notification sending.
+    \item \texttt{mysql-connector-java}: MySQL database driver.
+\end{itemize}
+
+\subsubsection{Development Tools}
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|l|p{6cm}|}
+\hline
+\rowcolor{gray!20}
+\textbf{Tool} & \textbf{Version} & \textbf{Purpose} \\
+\hline
+Visual Studio Code & Latest & Primary IDE for frontend and configuration \\
+\hline
+IntelliJ IDEA & Community & Backend Java development \\
+\hline
+XAMPP & 8.x & Local MySQL database server \\
+\hline
+Postman & Latest & API testing and documentation \\
+\hline
+Git & Latest & Version control \\
+\hline
+Docker Desktop & Latest & Container management \\
+\hline
+\end{tabular}
+\caption{Development Tools and Their Purposes}
+\end{table}
+
+\subsection{Authentication System with Keycloak}
+Security is paramount for the MyLoc platform. We implemented a robust authentication system using Keycloak, an open-source identity and access management solution.
+
+\subsubsection{Why Keycloak?}
+\begin{itemize}
+    \item \textbf{Industry Standard}: Implements OAuth2 and OpenID Connect protocols.
+    \item \textbf{Centralized Identity Management}: Single source of truth for all user identities.
+    \item \textbf{Role-Based Access Control (RBAC)}: Easy management of user roles and permissions.
+    \item \textbf{Built-in Features}: Login, registration, password reset, session management.
+    \item \textbf{Docker Support}: Easy deployment in containerized environments.
+\end{itemize}
+
+\subsubsection{Keycloak Configuration}
+The Keycloak server was configured with:
+\begin{itemize}
+    \item \textbf{Realm}: \texttt{myloc-realm} - The security domain for our application.
+    \item \textbf{Clients}: 
+    \begin{itemize}
+        \item \texttt{angular-frontend}: For frontend authentication.
+        \item \texttt{spring-backend}: For backend API protection.
+    \end{itemize}
+    \item \textbf{Roles}:
+    \begin{itemize}
+        \item \texttt{ADMIN}: Full platform access.
+        \item \texttt{AGENCY}: Agency dashboard and car management.
+        \item \texttt{CUSTOMER}: Booking and profile management.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Angular AuthGuard Implementation}
+Route protection in Angular ensures that only authorized users access protected pages.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=14cm]{img/auth-flow-diagram.png}
+    \caption{Authentication Flow with Keycloak}
+    \label{fig:auth_flow}
+\end{figure}
+
+\textbf{Protected Routes:}
+\begin{itemize}
+    \item \texttt{/admin/*}: Requires ADMIN role.
+    \item \texttt{/agency/*}: Requires AGENCY role.
+    \item \texttt{/customer/*}: Requires CUSTOMER role.
+    \item \texttt{/}: Public access for visitors.
+\end{itemize}
+
+\section{Sprint 2: Database Design and Implementation}
+
+\subsection{Database Architecture}
+The system uses MySQL as its relational database. The schema was designed following normalization principles to ensure data integrity and minimize redundancy.
+
+\subsubsection{Entity-Relationship Model}
+The database consists of the following main entities:
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=16cm]{img/database-er-diagram.png}
+    \caption{Entity-Relationship Diagram for MyLoc Database}
+    \label{fig:er_diagram}
+\end{figure}
+
+\subsubsection{Core Tables}
+
+\paragraph{Agency Table}
+Stores information about car rental agencies registered on the platform.
+
 \begin{verbatim}
 CREATE TABLE agence (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     agency_name VARCHAR(100) NOT NULL,
-    email VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(64) NOT NULL,
     photo LONGTEXT,
     phone_number VARCHAR(20) NOT NULL,
-    city VARCHAR(100)
+    city VARCHAR(100),
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 \end{verbatim}
 
-\subsection{Blog Table}
+\textbf{Field Descriptions:}
+\begin{itemize}
+    \item \texttt{id}: Unique identifier (auto-incremented).
+    \item \texttt{agency\_name}: Business name of the agency.
+    \item \texttt{email}: Login email (unique constraint).
+    \item \texttt{password}: Hashed password (bcrypt).
+    \item \texttt{photo}: Base64 encoded agency logo.
+    \item \texttt{phone\_number}: Contact phone number.
+    \item \texttt{city}: Agency location.
+\end{itemize}
+
+\paragraph{Car (Voiture) Table}
+Stores vehicle information listed by agencies.
+
+\begin{verbatim}
+CREATE TABLE voiture (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    model VARCHAR(100),
+    type VARCHAR(50),
+    price DOUBLE NOT NULL,
+    description TEXT,
+    features TEXT,
+    main_image LONGTEXT,
+    additional_images LONGTEXT,
+    agency_id BIGINT NOT NULL,
+    available BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (agency_id) REFERENCES agence(id) ON DELETE CASCADE
+);
+\end{verbatim}
+
+\textbf{Field Descriptions:}
+\begin{itemize}
+    \item \texttt{name}: Car name/brand.
+    \item \texttt{model}: Specific model.
+    \item \texttt{type}: Category (SUV, Sedan, Compact, etc.).
+    \item \texttt{price}: Daily rental price.
+    \item \texttt{features}: JSON or comma-separated features list.
+    \item \texttt{agency\_id}: Foreign key to owning agency.
+\end{itemize}
+
+\paragraph{Booking Table}
+Stores rental requests and their status.
+
+\begin{verbatim}
+CREATE TABLE booking (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    user_email VARCHAR(255) NOT NULL,
+    phone VARCHAR(255),
+    description VARCHAR(255),
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    price DOUBLE,
+    voiture_id BIGINT NOT NULL,
+    nbr_jrs INT,
+    booking_status VARCHAR(50) DEFAULT 'PENDING',
+    pickup_location VARCHAR(255),
+    dropoff_location VARCHAR(255),
+    car_name VARCHAR(255),
+    agence TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (voiture_id) REFERENCES voiture(id)
+);
+\end{verbatim}
+
+\textbf{Booking Status Values:}
+\begin{itemize}
+    \item \texttt{PENDING}: Request submitted, awaiting agency response.
+    \item \texttt{APPROVED}: Agency accepted the request.
+    \item \texttt{REJECTED}: Agency declined the request.
+    \item \texttt{COMPLETED}: Rental period finished.
+    \item \texttt{CANCELLED}: Customer cancelled the request.
+\end{itemize}
+
+\paragraph{Customer Table}
+Stores registered customer information.
+
+\begin{verbatim}
+CREATE TABLE customers (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(64) NOT NULL,
+    phone VARCHAR(20),
+    address TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+\end{verbatim}
+
+\paragraph{Blog Table}
+Stores blog posts created by administrators.
+
 \begin{verbatim}
 CREATE TABLE blog (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(255),
+    title VARCHAR(255) NOT NULL,
     img_url VARCHAR(255),
     author VARCHAR(255),
     date VARCHAR(255),
     time VARCHAR(255),
     description VARCHAR(1024),
-    quote VARCHAR(255)
+    quote VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 \end{verbatim}
 
-\subsection{Booking Table}
+\paragraph{Follower Table}
+Stores email subscriptions for new car notifications.
+
 \begin{verbatim}
-CREATE TABLE booking (
+CREATE TABLE followers (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(255),
-    user_email VARCHAR(255),
-    phone VARCHAR(255),
-    description VARCHAR(255),
-    start_date DATE,
-    end_date DATE,
-    price DOUBLE,
-    voiture_id BIGINT,
-    nbr_jrs INT,
-    booking_status VARCHAR(255),
-    pickup_location VARCHAR(255),
-    dropoff_location VARCHAR(255),
-    car_name VARCHAR(255),
-    agence TEXT
+    email VARCHAR(255) NOT NULL UNIQUE,
+    subscribed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    active BOOLEAN DEFAULT TRUE
 );
 \end{verbatim}
 
-\subsection{Other Tables}
-Additional tables include \texttt{customers}, \texttt{roles}, \texttt{notifications}, \texttt{followers}, and \texttt{chat\_messages} to manage users, roles, communications, and subscription updates.
+\paragraph{Chat Message Table}
+Stores real-time chat messages between admin and agencies.
 
-\section{Backend Implementation}
+\begin{verbatim}
+CREATE TABLE chat_messages (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    sender_id BIGINT NOT NULL,
+    sender_type VARCHAR(20) NOT NULL,
+    receiver_id BIGINT NOT NULL,
+    receiver_type VARCHAR(20) NOT NULL,
+    message TEXT NOT NULL,
+    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    read_status BOOLEAN DEFAULT FALSE
+);
+\end{verbatim}
+
+\paragraph{Notification Table}
+Stores user notifications.
+
+\begin{verbatim}
+CREATE TABLE notifications (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    user_type VARCHAR(20) NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    message TEXT,
+    type VARCHAR(50),
+    read_status BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+\end{verbatim}
+
+\subsection{Database Relationships Summary}
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor{gray!20}
+\textbf{Relationship} & \textbf{Type} & \textbf{Description} \\
+\hline
+Agency $\rightarrow$ Car & One-to-Many & Agency owns multiple cars \\
+\hline
+Car $\rightarrow$ Booking & One-to-Many & Car can have multiple bookings \\
+\hline
+Customer $\rightarrow$ Booking & One-to-Many & Customer can make multiple bookings \\
+\hline
+Admin $\rightarrow$ Blog & One-to-Many & Admin creates multiple blogs \\
+\hline
+User $\rightarrow$ Comment & One-to-Many & Users can post multiple comments \\
+\hline
+\end{tabular}
+\caption{Database Relationship Summary}
+\end{table}
+
+\section{Sprint 3: Core CRUD Operations}
+
+\subsection{Backend REST API Structure}
+The Spring Boot backend follows a layered architecture for maintainability and testability.
+
+\subsubsection{Architecture Layers}
 \begin{itemize}
-    \item \textbf{Spring Boot REST API:} Handles CRUD operations for cars, agencies, bookings, and blogs.
-    \item \textbf{Security:} 
-    \begin{itemize}
-        \item Keycloak handles login and registration for admins and agencies.
-        \item AuthGuard in Angular protects routes based on roles.
-        \item Only authorized users can access admin or agency dashboards.
-    \end{itemize}
-    \item \textbf{Booking Workflow:} 
-    \begin{itemize}
-        \item Customer requests a car rental; the system checks car availability via \texttt{getUnavailableDates()}.
-        \item Request is sent to the responsible agency.
-        \item Agency accepts/declines the request; email notifications are sent accordingly.
-        \item Accepted requests generate PDF contracts with a QR code sent to the customer.
-    \end{itemize}
-    \item \textbf{Real-time Communication:} Admins and agencies communicate via instant messaging.
-    \item \textbf{Chatbot:} Integrated via external Flask API, accessible to visitors and customers for queries.
+    \item \textbf{Controller Layer}: Handles HTTP requests and responses.
+    \item \textbf{Service Layer}: Contains business logic.
+    \item \textbf{Repository Layer}: Interfaces with the database using JPA.
+    \item \textbf{Entity Layer}: Defines data models mapped to database tables.
+    \item \textbf{DTO Layer}: Data Transfer Objects for API communication.
 \end{itemize}
 
-\section{Frontend Implementation}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=12cm]{img/spring-architecture.png}
+    \caption{Spring Boot Layered Architecture}
+    \label{fig:spring_arch}
+\end{figure}
+
+\subsubsection{REST API Endpoints}
+The API follows RESTful conventions with consistent URL patterns.
+
+\paragraph{Car Management Endpoints}
+\begin{table}[h!]
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|l|p{5cm}|}
+\hline
+\rowcolor{gray!20}
+\textbf{Method} & \textbf{Endpoint} & \textbf{Description} \\
+\hline
+GET & /api/cars & Get all cars \\
+\hline
+GET & /api/cars/\{id\} & Get car by ID \\
+\hline
+GET & /api/cars/agency/\{agencyId\} & Get cars by agency \\
+\hline
+POST & /api/cars & Create new car \\
+\hline
+PUT & /api/cars/\{id\} & Update car \\
+\hline
+DELETE & /api/cars/\{id\} & Delete car \\
+\hline
+GET & /api/cars/unavailable-dates/\{id\} & Get unavailable dates \\
+\hline
+\end{tabular}
+\caption{Car Management API Endpoints}
+\end{table}
+
+\paragraph{Agency Management Endpoints}
+\begin{table}[h!]
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|l|p{5cm}|}
+\hline
+\rowcolor{gray!20}
+\textbf{Method} & \textbf{Endpoint} & \textbf{Description} \\
+\hline
+GET & /api/agencies & Get all agencies \\
+\hline
+GET & /api/agencies/\{id\} & Get agency by ID \\
+\hline
+POST & /api/agencies & Register new agency \\
+\hline
+PUT & /api/agencies/\{id\} & Update agency \\
+\hline
+DELETE & /api/agencies/\{id\} & Delete agency \\
+\hline
+POST & /api/agencies/login & Agency login \\
+\hline
+\end{tabular}
+\caption{Agency Management API Endpoints}
+\end{table}
+
+\subsection{Frontend Angular Components}
+The Angular frontend is organized into feature modules for maintainability.
+
+\subsubsection{Module Structure}
 \begin{itemize}
-    \item Angular components handle car listings, rental requests, blogs, notifications, and chat.
-    \item Reactive forms validate inputs for registration, login, booking, and comments.
-    \item Guards ensure route protection according to user roles.
-    \item Email and PDF confirmations are triggered using backend API services.
+    \item \textbf{CoreModule}: Services, interceptors, guards.
+    \item \textbf{SharedModule}: Reusable components, pipes, directives.
+    \item \textbf{AuthModule}: Login, register, password reset.
+    \item \textbf{AdminModule}: Admin dashboard and management.
+    \item \textbf{AgencyModule}: Agency dashboard and car management.
+    \item \textbf{CustomerModule}: Customer profile and bookings.
+    \item \textbf{PublicModule}: Home, car listings, blogs.
 \end{itemize}
 
-\section{Deployment Strategy}
-\begin{itemize}
-    \item \textbf{CI/CD:} GitLab pipelines automate build and deployment.
-    \item \textbf{Docker:} Separate containers for Angular frontend, Spring Boot backend, MySQL, and Flask chatbot.
-    \item \textbf{Kubernetes:} Minikube manages deployments with YAML files such as \texttt{mysql-deployment.yml}, \texttt{frontend-deployment.yml}, \texttt{backend-deployment.yml}, \texttt{ai-deployment.yml}.
-\end{itemize}
+\subsubsection{Key Components}
+\begin{table}[h!]
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|p{8cm}|}
+\hline
+\rowcolor{gray!20}
+\textbf{Component} & \textbf{Description} \\
+\hline
+CarListComponent & Displays all available cars with filtering \\
+\hline
+CarDetailComponent & Shows detailed car information and booking form \\
+\hline
+AgencyDashboardComponent & Agency management interface \\
+\hline
+CarFormComponent & Add/Edit car form with image upload \\
+\hline
+AdminDashboardComponent & Platform administration interface \\
+\hline
+LoginComponent & User authentication form \\
+\hline
+\end{tabular}
+\caption{Key Angular Components}
+\end{table}
 
-\section{Development Methodology}
-\begin{itemize}
-    \item Scrum methodology with iterative sprints and backlog management.
-    \item Team roles: Scrum Master, Developers, Product Owner.
-    \item Regular sprint reviews and retrospectives ensure continuous improvement.
-\end{itemize}
+\section{Release 1 Deliverables}
+
+\subsection{Completed User Stories}
+By the end of Release 1, the following user stories were completed:
+
+\begin{table}[h!]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|l|c|}
+\hline
+\rowcolor{gray!20}
+\textbf{ID} & \textbf{User Story} & \textbf{Status} \\
+\hline
+US-01 & Visitor registers an account & Done \\
+\hline
+US-02 & User logs in securely & Done \\
+\hline
+US-03 & Admin manages user roles & Done \\
+\hline
+US-04 & User resets password & Done \\
+\hline
+US-05 & User updates profile & Done \\
+\hline
+US-06 & Agency adds new cars & Done \\
+\hline
+US-07 & Agency edits car details & Done \\
+\hline
+US-08 & Agency deletes cars & Done \\
+\hline
+US-09 & Agency uploads car photos & Done \\
+\hline
+US-10 & Customer browses cars & Done \\
+\hline
+US-11 & Customer filters cars by criteria & Done \\
+\hline
+US-12 & Customer views car details & Done \\
+\hline
+\end{tabular}
+\caption{Release 1 Completed User Stories}
+\end{table}
+
+\subsection{Screenshots}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=14cm]{img/screenshot-login.png}
+    \caption{Login Page with Keycloak Integration}
+    \label{fig:screenshot_login}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=14cm]{img/screenshot-car-list.png}
+    \caption{Car Listing Page with Filtering Options}
+    \label{fig:screenshot_cars}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=14cm]{img/screenshot-agency-dashboard.png}
+    \caption{Agency Dashboard for Fleet Management}
+    \label{fig:screenshot_agency}
+\end{figure}
 
 \section{Conclusion}
-This chapter demonstrates the technical setup, database design, backend and frontend implementation, deployment strategy, and development methodology for the Car Rental Platform. It ensures secure, real-time, and scalable service delivery to admins, agencies, customers, and visitors.  
+Release 1 successfully established the foundation of the MyLoc platform. The development environment was configured with modern tools and frameworks, a robust database schema was implemented, secure authentication was integrated using Keycloak, and core CRUD operations for cars and agencies were completed.
+
+The Scrum methodology ensured iterative delivery with regular feedback, allowing for continuous improvement. All 12 user stories planned for Sprints 1-3 were completed, achieving 100\% of the release goals.
+
+The next chapter will cover Release 2, focusing on the booking system, email notifications, PDF contract generation, and real-time chat functionality.

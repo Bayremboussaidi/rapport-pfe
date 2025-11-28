@@ -1,50 +1,466 @@
-\chapter{Conclusion and Future Work}
+\chapter{Release 2: Booking System and Communication}
 
-\section{Summary of the Project}
-This project developed a comprehensive Car Rental Platform that integrates multiple user roles, real-time communication, online payment processing, automated notifications, and AI-powered assistance. The platform enables:
+\section{Introduction}
+This chapter covers the second release of the MyLoc platform, focusing on the core business functionality: the booking system, email notifications, PDF contract generation with QR codes, and the real-time chat system. This release corresponds to \textbf{Sprints 4-5} in our Scrum planning.
 
+The goals of Release 2 include:
 \begin{itemize}
-    \item Admins to manage agencies, customers, blogs, and oversee bookings.
-    \item Agencies to manage cars, accept or decline rental requests, and communicate with admins.
-    \item Customers to browse cars, make rental requests, view history, comment, and receive automated emails and PDF confirmations.
-    \item Visitors and customers to interact with a chatbot powered by ChatGPT for assistance.
+    \item Implementing the complete booking workflow from request to confirmation.
+    \item Building the email notification system for booking status updates.
+    \item Generating PDF contracts with embedded QR codes for verification.
+    \item Developing the real-time chat system between administrators and agencies.
+    \item Implementing the follower subscription system for new car alerts.
 \end{itemize}
 
-The platform is developed using Angular for the frontend, Spring Boot for the backend, MySQL for the database, Keycloak for authentication, and FastAPI for the chatbot service. The system is containerized with Docker and deployed on Kubernetes using a CI/CD pipeline.
+\section{Sprint 4: Booking System Implementation}
 
-\section{Key Achievements}
-\begin{itemize}
-    \item Successful implementation of role-based access control and secure authentication using Keycloak.
-    \item Development of a real-time chat system for admin-agency communication.
-    \item Automated booking workflow with email notifications and PDF contract generation.
-    \item Integration of a multilingual AI chatbot for user assistance.
-    \item Deployment of a scalable microservices architecture using Docker and Kubernetes, including:
+\subsection{Booking Workflow Overview}
+The booking system is the core business process of the MyLoc platform. It manages the entire lifecycle of a rental request from submission to completion.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=16cm]{img/booking-workflow-diagram.png}
+    \caption{Complete Booking Workflow Diagram}
+    \label{fig:booking_workflow}
+\end{figure}
+
+\subsubsection{Booking States}
+A booking request transitions through several states during its lifecycle:
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|p{8cm}|}
+\hline
+\rowcolor{gray!20}
+\textbf{State} & \textbf{Description} \\
+\hline
+PENDING & Request submitted, awaiting agency review \\
+\hline
+APPROVED & Agency accepted the request, awaiting payment \\
+\hline
+REJECTED & Agency declined the request \\
+\hline
+CONFIRMED & Payment received, contract generated \\
+\hline
+IN\_PROGRESS & Rental period has started \\
+\hline
+COMPLETED & Vehicle returned, rental finished \\
+\hline
+CANCELLED & Customer cancelled before approval \\
+\hline
+\end{tabular}
+\caption{Booking Status States and Descriptions}
+\end{table}
+
+\subsubsection{Availability Checking Algorithm}
+Before a customer can submit a booking request, the system checks if the car is available for the selected dates.
+
+\textbf{Algorithm Logic:}
+\begin{enumerate}
+    \item Customer selects start date and end date.
+    \item System queries all existing bookings for the selected car.
+    \item For each existing booking, check for date overlap:
     \begin{itemize}
-        \item Separate containers for frontend, backend, database, and AI services.
-        \item YAML deployment files for Minikube (\texttt{frontend-deployment.yml}, \texttt{backend-deployment.yml}, \texttt{mysql-deployment.yml}, \texttt{ai-deployment.yml}).
-        \item CI/CD pipeline using GitLab for automated builds, testing, and deployment.
+        \item If (new\_start $\leq$ existing\_end) AND (new\_end $\geq$ existing\_start) $\rightarrow$ Overlap detected.
     \end{itemize}
-    \item Implementation of unit, integration, and end-to-end testing to ensure system reliability.
-\end{itemize}
+    \item If any overlap with APPROVED, CONFIRMED, or IN\_PROGRESS bookings $\rightarrow$ Car unavailable.
+    \item If no overlap $\rightarrow$ Car available, proceed with booking.
+\end{enumerate}
 
-\section{Limitations}
+\textbf{Backend Implementation (Spring Boot):}
+\begin{verbatim}
+@GetMapping("/unavailable-dates/{carId}")
+public ResponseEntity<List<DateRange>> getUnavailableDates(
+        @PathVariable Long carId) {
+    List<Booking> bookings = bookingRepository
+        .findByVoitureIdAndStatusIn(carId, 
+            Arrays.asList("APPROVED", "CONFIRMED", "IN_PROGRESS"));
+    
+    List<DateRange> unavailableDates = bookings.stream()
+        .map(b -> new DateRange(b.getStartDate(), b.getEndDate()))
+        .collect(Collectors.toList());
+    
+    return ResponseEntity.ok(unavailableDates);
+}
+\end{verbatim}
+
+\subsubsection{Booking Request Submission}
+When a customer submits a booking request, the following data is captured:
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|l|p{5cm}|}
+\hline
+\rowcolor{gray!20}
+\textbf{Field} & \textbf{Type} & \textbf{Description} \\
+\hline
+username & String & Customer's full name \\
+\hline
+user\_email & String & Customer's email address \\
+\hline
+phone & String & Contact phone number \\
+\hline
+start\_date & Date & Rental start date \\
+\hline
+end\_date & Date & Rental end date \\
+\hline
+pickup\_location & String & Where to pick up the car \\
+\hline
+dropoff\_location & String & Where to return the car \\
+\hline
+voiture\_id & Long & Selected car ID \\
+\hline
+description & String & Additional notes/requests \\
+\hline
+\end{tabular}
+\caption{Booking Request Data Fields}
+\end{table}
+
+\subsection{Agency Request Management}
+Agencies receive notifications when new booking requests arrive for their cars.
+
+\subsubsection{Agency Dashboard - Request View}
+The agency dashboard displays all pending requests with the following information:
 \begin{itemize}
-    \item Online payment module relies on mock gateways in the current implementation; full integration with external payment providers is not yet complete.
-    \item Chatbot responses may depend on external API latency and internet connectivity.
-    \item Mobile responsiveness and offline capabilities can be further enhanced.
-    \item Some modules could be optimized for performance under high concurrent user loads.
+    \item Customer name and contact information
+    \item Requested car details
+    \item Rental dates and duration
+    \item Calculated total price
+    \item Request submission timestamp
+    \item Action buttons: Approve / Reject
 \end{itemize}
 
-\section{Future Work}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=14cm]{img/agency-requests-dashboard.png}
+    \caption{Agency Dashboard - Pending Requests View}
+    \label{fig:agency_requests}
+\end{figure}
+
+\subsubsection{Approve/Reject Process}
+When an agency clicks "Approve" or "Reject":
+
+\textbf{Approval Flow:}
+\begin{enumerate}
+    \item Booking status changes to "APPROVED"
+    \item System generates PDF contract with QR code
+    \item Confirmation email sent to customer with PDF attachment
+    \item In-app notification created for customer
+    \item Car availability updated for the selected dates
+\end{enumerate}
+
+\textbf{Rejection Flow:}
+\begin{enumerate}
+    \item Booking status changes to "REJECTED"
+    \item Simple notification email sent to customer
+    \item In-app notification created for customer
+    \item Car remains available for other bookings
+\end{enumerate}
+
+\section{Sprint 5: Email and Notification System}
+
+\subsection{Email Service Architecture}
+The email system is built using Spring Boot's mail starter with SMTP configuration.
+
+\subsubsection{Email Configuration}
+\begin{verbatim}
+# application.properties
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=${EMAIL_USERNAME}
+spring.mail.password=${EMAIL_PASSWORD}
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+\end{verbatim}
+
+\subsubsection{Email Service Implementation}
+The EmailService class handles all email operations:
+
+\begin{verbatim}
+@Service
+public class EmailService {
+    
+    @Autowired
+    private JavaMailSender mailSender;
+    
+    public void sendConfirmationEmail(Booking booking, byte[] pdfBytes) {
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+        
+        helper.setTo(booking.getUserEmail());
+        helper.setSubject("Confirmation de Réservation - MyLoc");
+        helper.setText(buildConfirmationBody(booking));
+        
+        // Attach PDF contract
+        helper.addAttachment("contrat.pdf", 
+            new ByteArrayResource(pdfBytes));
+        
+        mailSender.send(message);
+    }
+    
+    public void sendRejectionEmail(Booking booking) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(booking.getUserEmail());
+        message.setSubject("Notification de Réservation - MyLoc");
+        message.setText("Votre réservation pour " + 
+            booking.getCarName() + " a été refusée.");
+        mailSender.send(message);
+    }
+}
+\end{verbatim}
+
+\subsection{PDF Contract Generation}
+When a booking is approved, the system generates a professional PDF contract using the iText library.
+
+\subsubsection{PDF Content Structure}
+The generated PDF includes:
 \begin{itemize}
-    \item Integrate real payment gateways for live transactions and invoicing.
-    \item Enhance the chatbot with advanced NLP capabilities and additional languages.
-    \item Implement push notifications for mobile devices.
-    \item Add analytics dashboards for admins and agencies to track usage, bookings, and revenue.
-    \item Introduce recommendation systems to suggest cars to customers based on preferences and history.
-    \item Optimize microservices performance and scalability for large-scale deployment.
-    \item Improve deployment automation and monitoring using Kubernetes tools such as Helm, Prometheus, and Grafana.
+    \item \textbf{Header}: MyLoc Agency logo and contact information
+    \item \textbf{Contract Title}: "Contrat de Location de Véhicule"
+    \item \textbf{Customer Information}: Name, email, phone
+    \item \textbf{Vehicle Details}: Car name, model, type, agency
+    \item \textbf{Rental Period}: Start date, end date, duration
+    \item \textbf{Pricing}: Daily rate, total price, taxes if applicable
+    \item \textbf{Terms and Conditions}: Standard rental terms
+    \item \textbf{QR Code}: Unique booking verification code
+    \item \textbf{Footer}: Signature lines and date
 \end{itemize}
 
-\section{Final Remarks}
-The Car Rental Platform provides a robust, secure, and user-friendly system that automates key rental workflows and integrates modern technologies such as AI and microservices. The deployment process demonstrates the ability to manage containerized applications, orchestrate them with Kubernetes, and use CI/CD pipelines for seamless updates. This platform serves as a solid foundation for future enhancements and real-world deployment in the car rental industry.
+\subsubsection{QR Code Generation}
+The QR code is generated using the ZXing library and contains:
+\begin{itemize}
+    \item Booking ID
+    \item Customer email
+    \item Car ID
+    \item Rental dates
+    \item Verification hash
+\end{itemize}
+
+\begin{verbatim}
+public byte[] generateQRCode(String content, int width, int height) {
+    QRCodeWriter qrCodeWriter = new QRCodeWriter();
+    BitMatrix bitMatrix = qrCodeWriter.encode(
+        content, BarcodeFormat.QR_CODE, width, height);
+    
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    MatrixToImageWriter.writeToStream(bitMatrix, "PNG", outputStream);
+    
+    return outputStream.toByteArray();
+}
+\end{verbatim}
+
+\subsection{In-App Notification System}
+Besides emails, users receive in-app notifications displayed in the platform.
+
+\subsubsection{Notification Entity}
+\begin{verbatim}
+@Entity
+public class Notification {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private Long userId;
+    private String userType; // CUSTOMER, AGENCY, ADMIN
+    private String title;
+    private String message;
+    private String type; // BOOKING, SYSTEM, ALERT
+    private boolean readStatus;
+    private LocalDateTime createdAt;
+}
+\end{verbatim}
+
+\subsubsection{Notification Types}
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|l|p{5cm}|}
+\hline
+\rowcolor{gray!20}
+\textbf{Type} & \textbf{Recipient} & \textbf{Trigger} \\
+\hline
+BOOKING\_RECEIVED & Agency & New booking request submitted \\
+\hline
+BOOKING\_APPROVED & Customer & Agency approved request \\
+\hline
+BOOKING\_REJECTED & Customer & Agency rejected request \\
+\hline
+NEW\_CAR & Followers & New car added to platform \\
+\hline
+NEW\_MESSAGE & Admin/Agency & Chat message received \\
+\hline
+SYSTEM & All & Platform announcements \\
+\hline
+\end{tabular}
+\caption{Notification Types and Triggers}
+\end{table}
+
+\section{Real-Time Chat System}
+
+\subsection{Chat Architecture}
+The chat system enables real-time communication between administrators and agencies using WebSocket technology.
+
+\subsubsection{Technology Stack}
+\begin{itemize}
+    \item \textbf{Backend}: Spring Boot WebSocket with STOMP protocol
+    \item \textbf{Frontend}: Angular with SockJS and STOMP.js
+    \item \textbf{Message Broker}: Simple in-memory broker
+    \item \textbf{Persistence}: MySQL for message history
+\end{itemize}
+
+\subsubsection{WebSocket Configuration}
+\begin{verbatim}
+@Configuration
+@EnableWebSocketMessageBroker
+public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
+    
+    @Override
+    public void configureMessageBroker(MessageBrokerRegistry config) {
+        config.enableSimpleBroker("/topic", "/queue");
+        config.setApplicationDestinationPrefixes("/app");
+    }
+    
+    @Override
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
+        registry.addEndpoint("/ws")
+            .setAllowedOrigins("*")
+            .withSockJS();
+    }
+}
+\end{verbatim}
+
+\subsection{Chat Features}
+\begin{itemize}
+    \item \textbf{Real-time messaging}: Messages appear instantly without page refresh
+    \item \textbf{Message history}: All conversations are stored and retrievable
+    \item \textbf{Read receipts}: Users can see when messages are read
+    \item \textbf{Typing indicators}: Shows when the other party is typing
+    \item \textbf{File attachments}: Support for sending images and documents
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=14cm]{img/chat-interface.png}
+    \caption{Real-Time Chat Interface Between Admin and Agency}
+    \label{fig:chat_interface}
+\end{figure}
+
+\subsection{Chat Message Entity}
+\begin{verbatim}
+@Entity
+public class ChatMessage {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private Long senderId;
+    private String senderType; // ADMIN or AGENCY
+    private Long receiverId;
+    private String receiverType;
+    
+    @Column(columnDefinition = "TEXT")
+    private String content;
+    
+    private LocalDateTime sentAt;
+    private boolean readStatus;
+}
+\end{verbatim}
+
+\section{Follower Subscription System}
+
+\subsection{How It Works}
+The follower system allows visitors to subscribe to new car alerts without creating a full account.
+
+\subsubsection{Subscription Flow}
+\begin{enumerate}
+    \item Visitor enters email in the footer subscription form
+    \item System validates email format
+    \item Email is stored in the followers table
+    \item Confirmation message displayed to user
+    \item When a new car is added, all active followers receive an email
+\end{enumerate}
+
+\subsubsection{Follower Entity}
+\begin{verbatim}
+@Entity
+public class Follower {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @Column(unique = true)
+    private String email;
+    
+    private LocalDateTime subscribedAt;
+    private boolean active;
+}
+\end{verbatim}
+
+\subsubsection{New Car Alert Trigger}
+When an agency adds a new car, the system automatically notifies all followers:
+
+\begin{verbatim}
+@PostMapping("/cars")
+public ResponseEntity<Car> addCar(@RequestBody Car car) {
+    Car savedCar = carRepository.save(car);
+    
+    // Notify all active followers
+    List<Follower> followers = followerRepository
+        .findByActiveTrue();
+    
+    for (Follower follower : followers) {
+        emailService.sendNewCarAlert(follower.getEmail(), savedCar);
+    }
+    
+    return ResponseEntity.ok(savedCar);
+}
+\end{verbatim}
+
+\section{Release 2 Deliverables}
+
+\subsection{Completed User Stories}
+\begin{table}[h!]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|l|c|}
+\hline
+\rowcolor{gray!20}
+\textbf{ID} & \textbf{User Story} & \textbf{Status} \\
+\hline
+US-13 & Customer checks car availability & Done \\
+\hline
+US-14 & Customer submits rental request & Done \\
+\hline
+US-15 & Agency views rental requests & Done \\
+\hline
+US-16 & Agency approves/rejects requests & Done \\
+\hline
+US-17 & Customer receives email notifications & Done \\
+\hline
+US-18 & Customer views booking history & Done \\
+\hline
+US-19 & Customer cancels pending requests & Done \\
+\hline
+US-20 & Admin chats with agencies & Done \\
+\hline
+US-21 & Agency receives real-time messages & Done \\
+\hline
+US-22 & User receives in-app notifications & Done \\
+\hline
+US-28 & Visitor becomes Follower & Done \\
+\hline
+US-29 & Customer receives PDF contract & Done \\
+\hline
+US-30 & Contract includes QR code & Done \\
+\hline
+\end{tabular}
+\caption{Release 2 Completed User Stories}
+\end{table}
+
+\section{Conclusion}
+Release 2 delivered the core business functionality of the MyLoc platform. The booking system provides a complete workflow from request submission to contract generation. The email notification system keeps customers informed at every stage. The real-time chat system enables efficient communication between administrators and agencies. The follower subscription system helps agencies reach potential customers with new offerings.
+
+The next chapter will cover Release 3, focusing on the AI chatbot integration, blog management, and advanced features.

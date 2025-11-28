@@ -1,0 +1,44 @@
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {2.}1}Introduction}{\reset@font\mtcSfont 32}{section.2.1}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {2.}2}Actors Identification}{\reset@font\mtcSfont 32}{section.2.2}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {2.}3}Needs Identification}{\reset@font\mtcSfont 32}{section.2.3}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.3.2}\else \textLR {2.3.1}\fi }Functional Needs}{\reset@font\mtcSSfont 32}{subsection.2.3.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.3.2}\else \textLR {2.3.2}\fi }Non-Functional Needs}{\reset@font\mtcSSfont 34}{subsection.2.3.2}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {2.}4}System Design}{\reset@font\mtcSfont 35}{section.2.4}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.4.2}\else \textLR {2.4.1}\fi }Global Use Case Diagram}{\reset@font\mtcSSfont 35}{subsection.2.4.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.4.2}\else \textLR {2.4.1}\fi .1}Customer Use Case Diagram}{\reset@font\mtcSSSfont 35}{subsubsection.2.4.1.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.4.2}\else \textLR {2.4.1}\fi .2}Agency Use Case Diagram}{\reset@font\mtcSSSfont 35}{subsubsection.2.4.1.2}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.4.2}\else \textLR {2.4.1}\fi .3}Administrator Use Case Diagram}{\reset@font\mtcSSSfont 35}{subsubsection.2.4.1.3}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.4.2}\else \textLR {2.4.2}\fi }Global Class Diagram}{\reset@font\mtcSSfont 36}{subsection.2.4.2}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {2.}5}Project Management Methodology}{\reset@font\mtcSfont 36}{section.2.5}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.5.2}\else \textLR {2.5.1}\fi }Traditional vs Agile Methods}{\reset@font\mtcSSfont 36}{subsection.2.5.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.5.2}\else \textLR {2.5.2}\fi }Methodology Selection}{\reset@font\mtcSSfont 36}{subsection.2.5.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {3.5.2}\else \textLR {2.5.3}\fi }Scrum Methodology Overview}{\reset@font\mtcSSfont 39}{subsection.2.5.3}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {3.5.2}\else \textLR {2.5.3}\fi .1}Scrum Key Concepts}{\reset@font\mtcSSSfont 40}{subsubsection.2.5.3.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {3.5.2}\else \textLR {2.5.3}\fi .2}Scrum Team Composition}{\reset@font\mtcSSSfont 41}{subsubsection.2.5.3.2}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {2.}6}Scrum Implementation and Artifacts}{\reset@font\mtcSfont 41}{section.2.6}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {2.}7}Introduction to Scrum Artifacts}{\reset@font\mtcSfont 41}{section.2.7}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.7.2}\else \textLR {2.7.1}\fi }Purpose of Scrum Artifacts}{\reset@font\mtcSSfont 42}{subsection.2.7.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.7.2}\else \textLR {2.7.2}\fi }How We Used Artifacts}{\reset@font\mtcSSfont 42}{subsection.2.7.2}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {2.}8}Product Backlog}{\reset@font\mtcSfont 43}{section.2.8}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.8.2}\else \textLR {2.8.1}\fi }User Stories and Prioritization}{\reset@font\mtcSSfont 44}{subsection.2.8.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.8.2}\else \textLR {2.8.1}\fi .1}Authentication, Car Management \& Booking (Sprints 1-3)}{\reset@font\mtcSSSfont 44}{subsubsection.2.8.1.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.8.2}\else \textLR {2.8.1}\fi .2}Communication, Blog, Contracts \& DevOps (Sprints 4-8)}{\reset@font\mtcSSSfont 44}{subsubsection.2.8.1.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.8.2}\else \textLR {2.8.2}\fi }Backlog Summary}{\reset@font\mtcSSfont 44}{subsection.2.8.2}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {2.}9}Sprint Planning}{\reset@font\mtcSfont 44}{section.2.9}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.9.2}\else \textLR {2.9.1}\fi }Sprint Overview}{\reset@font\mtcSSfont 44}{subsection.2.9.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.9.2}\else \textLR {2.9.2}\fi }Sprint 1: Authentication \& Platform Setup}{\reset@font\mtcSSfont 44}{subsection.2.9.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {3.9.2}\else \textLR {2.9.3}\fi }Sprint 2: Car Management Module}{\reset@font\mtcSSfont 45}{subsection.2.9.3}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {4.9.2}\else \textLR {2.9.4}\fi }Sprint 3: Booking System Core}{\reset@font\mtcSSfont 47}{subsection.2.9.4}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {5.9.2}\else \textLR {2.9.5}\fi }Sprint 4: Communication Features}{\reset@font\mtcSSfont 47}{subsection.2.9.5}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {6.9.2}\else \textLR {2.9.6}\fi }Sprint 5: Blog \& Subscription System}{\reset@font\mtcSSfont 47}{subsection.2.9.6}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {7.9.2}\else \textLR {2.9.7}\fi }Sprint 6: Contracts \& Payments}{\reset@font\mtcSSfont 48}{subsection.2.9.7}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {8.9.2}\else \textLR {2.9.8}\fi }Sprint 7: Chatbot \& Admin Panel}{\reset@font\mtcSSfont 48}{subsection.2.9.8}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {9.9.2}\else \textLR {2.9.9}\fi }Sprint 8: DevOps \& Deployment}{\reset@font\mtcSSfont 48}{subsection.2.9.9}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {2.}10}Sprint Burndown Analysis}{\reset@font\mtcSfont 49}{section.2.10}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.10.2}\else \textLR {2.10.1}\fi }Project Burndown Data}{\reset@font\mtcSSfont 49}{subsection.2.10.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.10.2}\else \textLR {2.10.2}\fi }Sprint 3 Detailed Burndown (Example)}{\reset@font\mtcSSfont 49}{subsection.2.10.2}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {2.}11}Team Velocity}{\reset@font\mtcSfont 49}{section.2.11}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {2.}12}Definition of Done (DoD)}{\reset@font\mtcSfont 51}{section.2.12}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {2.}13}Scrum Ceremonies}{\reset@font\mtcSfont 52}{section.2.13}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.13.2}\else \textLR {2.13.1}\fi }Chapter Conclusion}{\reset@font\mtcSSfont 52}{subsection.2.13.1}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {2.}14}Conclusion}{\reset@font\mtcSfont 53}{section.2.14}}

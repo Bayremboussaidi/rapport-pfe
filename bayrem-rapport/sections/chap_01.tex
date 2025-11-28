@@ -3,6 +3,302 @@
 \section{Introduction}
 This chapter presents the general context of the project. It introduces the host organization, \textbf{Myloc Agency}, analyzes existing methods, and describes the proposed solution. Additionally, it outlines the project architecture, design approaches, management methodology, and development environment.
 
+% =============================================================
+% PROJECT PROBLEMATIC
+% =============================================================
+\section{Project Problematic}
+Before the development of this application, car rental agencies faced numerous challenges that hindered their efficiency, customer satisfaction, and business growth. This section identifies the key problems that motivated the creation of the MyLoc platform.
+
+\subsection{Challenges Faced by Agencies Before This Project}
+
+\subsubsection{Manual and Time-Consuming Processes}
+Traditional car rental agencies relied heavily on manual processes:
+\begin{itemize}
+    \item \textbf{Paper-based booking systems}: Agencies used physical logbooks or basic spreadsheets to track reservations, leading to errors, double bookings, and lost records.
+    \item \textbf{Phone-only communication}: Customers had to call agencies during business hours to check availability, make reservations, or ask questions—limiting accessibility and creating bottlenecks.
+    \item \textbf{Manual contract preparation}: Rental contracts were typed or handwritten for each customer, consuming significant time and prone to errors.
+    \item \textbf{No real-time availability}: Agencies couldn't provide instant availability information, often requiring callbacks after checking physical records.
+\end{itemize}
+
+\subsubsection{Poor Communication Channels}
+\begin{itemize}
+    \item \textbf{Disconnected stakeholders}: There was no unified platform for administrators, agencies, and customers to communicate efficiently.
+    \item \textbf{Delayed responses}: Customer inquiries via email or phone often took hours or days to receive responses.
+    \item \textbf{No instant messaging}: Agencies couldn't engage in real-time conversations with customers or administrators.
+    \item \textbf{Language barriers}: International customers faced difficulties communicating with local agencies.
+\end{itemize}
+
+\subsubsection{Inefficient Request Management}
+\begin{itemize}
+    \item \textbf{No centralized request tracking}: Rental requests were scattered across emails, phone logs, and paper notes.
+    \item \textbf{Slow approval process}: Agencies manually reviewed each request, often taking 24-48 hours to confirm or decline.
+    \item \textbf{No automated notifications}: Customers had to repeatedly contact agencies to check their request status.
+    \item \textbf{Lost opportunities}: Delayed responses led to customers booking with competitors.
+\end{itemize}
+
+\subsubsection{Lack of Digital Presence}
+\begin{itemize}
+    \item \textbf{Limited visibility}: Small and medium agencies had minimal online presence, losing customers to larger competitors with websites.
+    \item \textbf{No car showcase}: Agencies couldn't display their fleet with photos, specifications, and pricing online.
+    \item \textbf{No filtering capabilities}: Customers couldn't search for specific car types, models, or price ranges.
+    \item \textbf{No customer reviews}: Potential customers had no way to read feedback from previous renters.
+\end{itemize}
+
+\subsubsection{Administrative Overhead}
+\begin{itemize}
+    \item \textbf{No centralized management}: Administrators managing multiple agencies had no unified dashboard.
+    \item \textbf{Difficult reporting}: Generating reports on bookings, revenue, or customer activity required manual data compilation.
+    \item \textbf{No subscriber management}: Agencies couldn't maintain lists of interested customers for marketing purposes.
+\end{itemize}
+
+\subsection{Impact of These Problems}
+These challenges resulted in:
+\begin{itemize}
+    \item \textbf{Revenue loss}: Slow processes and poor communication led to lost bookings.
+    \item \textbf{Customer frustration}: Long wait times and lack of transparency drove customers away.
+    \item \textbf{Operational inefficiency}: Staff spent excessive time on administrative tasks instead of customer service.
+    \item \textbf{Competitive disadvantage}: Agencies without digital tools fell behind tech-enabled competitors.
+    \item \textbf{Scalability issues}: Manual processes couldn't handle growth in customer volume.
+\end{itemize}
+
+% =============================================================
+% PROJECT OBJECTIVES
+% =============================================================
+\section{Project Objectives}
+The MyLoc platform was developed to address the problematic issues identified above. This section outlines the specific objectives that guided the development of the application.
+
+\subsection{Primary Objectives}
+
+\subsubsection{Digitize the Car Rental Process}
+\begin{itemize}
+    \item Create a comprehensive web platform replacing manual booking systems.
+    \item Enable 24/7 online access for customers to browse and book vehicles.
+    \item Provide real-time car availability checking to prevent double bookings.
+    \item Automate the entire rental workflow from request to contract generation.
+\end{itemize}
+
+\subsubsection{Facilitate Communication Between Stakeholders}
+\begin{itemize}
+    \item Implement real-time chat between administrators and agencies for operational coordination.
+    \item Enable instant email notifications for booking confirmations, rejections, and updates.
+    \item Provide in-app notifications to keep customers informed of their request status.
+    \item Integrate an AI-powered chatbot for instant customer support in multiple languages.
+    \item Allow direct email contact between customers and administrators.
+\end{itemize}
+
+\subsubsection{Streamline Request Management}
+\begin{itemize}
+    \item Create a centralized dashboard for agencies to view and manage all rental requests.
+    \item Enable one-click approval or rejection of requests with automatic customer notification.
+    \item Reduce response time from days to minutes through instant processing.
+    \item Automatically generate PDF contracts with QR codes upon approval.
+\end{itemize}
+
+\subsubsection{Enhance Customer Experience}
+\begin{itemize}
+    \item Provide intuitive car browsing with advanced filtering (type, model, price, availability).
+    \item Display detailed car information with multiple photos.
+    \item Allow customers to track their booking history and request status.
+    \item Enable customers to leave reviews and comments on cars and blog posts.
+    \item Send email updates to followers when new cars are added.
+\end{itemize}
+
+\subsubsection{Empower Agency Management}
+\begin{itemize}
+    \item Provide dedicated dashboards for each agency to manage their fleet.
+    \item Enable full CRUD operations on cars (add, edit, delete, upload photos).
+    \item Give agencies control over their booking calendar and availability.
+    \item Allow agencies to communicate directly with administrators.
+\end{itemize}
+
+\subsubsection{Centralize Administration}
+\begin{itemize}
+    \item Create a comprehensive admin dashboard for platform oversight.
+    \item Enable management of agencies, customers, and blog content from one interface.
+    \item Provide tools for monitoring platform activity and user engagement.
+\end{itemize}
+
+\subsection{Technical Objectives}
+
+\subsubsection{Security and Authentication}
+\begin{itemize}
+    \item Implement robust authentication using Keycloak with role-based access control.
+    \item Protect admin and agency routes with AuthGuard.
+    \item Ensure secure data transmission and storage.
+\end{itemize}
+
+\subsubsection{Modern Architecture}
+\begin{itemize}
+    \item Build a scalable microservices architecture with clear separation of concerns.
+    \item Use Angular for a responsive, dynamic frontend.
+    \item Implement Spring Boot REST APIs for robust backend services.
+    \item Integrate FastAPI for the AI chatbot service.
+\end{itemize}
+
+\subsubsection{DevOps and Deployment}
+\begin{itemize}
+    \item Containerize all services using Docker.
+    \item Orchestrate deployment with Docker Compose and Kubernetes (Minikube).
+    \item Automate CI/CD pipelines using GitLab CI.
+    \item Ensure consistent environments across development and production.
+\end{itemize}
+
+% =============================================================
+% HOW THE PROJECT SOLVES THE PROBLEMS
+% =============================================================
+\section{Solutions Provided by MyLoc Platform}
+This section details how the MyLoc platform addresses each of the identified problems, transforming the car rental experience for all stakeholders.
+
+\subsection{Transforming Communication}
+
+\subsubsection{Real-Time Admin-Agency Chat}
+The platform includes an integrated instant messaging system that enables:
+\begin{itemize}
+    \item Direct communication between administrators and agencies.
+    \item Real-time message delivery without page refresh.
+    \item Message history for reference and accountability.
+    \item Coordination on operational matters, promotions, and issues.
+\end{itemize}
+
+\subsubsection{Automated Email Notifications}
+The system automatically sends emails for:
+\begin{itemize}
+    \item \textbf{Request Acceptance}: Customer receives a confirmation email with PDF contract and QR code.
+    \item \textbf{Request Rejection}: Customer receives a polite notification explaining the decline.
+    \item \textbf{New Car Alerts}: Followers and customers receive updates when new vehicles are added.
+    \item \textbf{Contact Confirmations}: Acknowledgment emails for customer inquiries.
+\end{itemize}
+
+\subsubsection{AI-Powered Chatbot}
+The integrated chatbot, built with Flask API and connected to ChatGPT, provides:
+\begin{itemize}
+    \item \textbf{24/7 Availability}: Instant responses at any time, even outside business hours.
+    \item \textbf{Multilingual Support}: Assistance in multiple languages for international customers.
+    \item \textbf{Instant Answers}: Quick responses to common questions about cars, pricing, and booking.
+    \item \textbf{Reduced Staff Workload}: Automated handling of routine inquiries.
+\end{itemize}
+
+\subsubsection{In-App Notifications}
+Customers receive real-time notifications within the application for:
+\begin{itemize}
+    \item Rental request status changes (pending, approved, declined).
+    \item New messages or updates from agencies.
+    \item Important platform announcements.
+\end{itemize}
+
+\subsection{Streamlining the Booking Process}
+
+\subsubsection{Smart Availability Checking}
+Before submitting a rental request, the system:
+\begin{itemize}
+    \item Checks the car's availability for the selected date range.
+    \item Prevents double bookings automatically.
+    \item Shows real-time availability status on car listings.
+    \item Suggests alternative dates if the car is unavailable.
+\end{itemize}
+
+\subsubsection{One-Click Request Processing}
+Agencies can process requests efficiently:
+\begin{itemize}
+    \item View all pending requests in a centralized dashboard.
+    \item Accept or decline with a single click.
+    \item Automatic email sent to customer upon decision.
+    \item PDF contract generated instantly for approved requests.
+\end{itemize}
+
+\subsubsection{Automated Contract Generation}
+Upon approval, the system automatically:
+\begin{itemize}
+    \item Generates a professional PDF rental contract.
+    \item Includes all booking details (dates, car info, customer info, pricing).
+    \item Creates a unique QR code for verification.
+    \item Sends the contract via email to the customer.
+\end{itemize}
+
+\subsection{Enhancing Car Discovery}
+
+\subsubsection{Advanced Filtering System}
+Customers can filter cars by:
+\begin{itemize}
+    \item \textbf{Vehicle Type}: SUV, sedan, compact, luxury, etc.
+    \item \textbf{Brand/Model}: Search for specific manufacturers.
+    \item \textbf{Price Range}: Set minimum and maximum daily rates.
+    \item \textbf{Availability}: Show only cars available for selected dates.
+    \item \textbf{Features}: Air conditioning, GPS, automatic transmission, etc.
+\end{itemize}
+
+\subsubsection{Rich Car Profiles}
+Each car listing includes:
+\begin{itemize}
+    \item Multiple high-quality photos.
+    \item Detailed specifications (engine, seats, fuel type, transmission).
+    \item Daily rental price and any additional fees.
+    \item Customer reviews and ratings.
+    \item Real-time availability calendar.
+\end{itemize}
+
+\subsection{Saving Time for All Users}
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|p{4cm}|p{4cm}|p{4.5cm}|}
+\hline
+\rowcolor{gray!20}
+\textbf{Task} & \textbf{Before MyLoc} & \textbf{With MyLoc} \\
+\hline
+Check car availability & Phone call, wait for callback & Instant online check \\
+\hline
+Submit rental request & Visit agency or phone & 2-minute online form \\
+\hline
+Get request response & 24-48 hours & Minutes (instant notification) \\
+\hline
+Receive rental contract & Visit agency to sign & Auto-generated PDF via email \\
+\hline
+Ask a question & Phone during business hours & 24/7 chatbot or contact form \\
+\hline
+Browse available cars & Visit multiple agencies & Filter and compare online \\
+\hline
+Agency-Admin communication & Email chains, phone calls & Real-time chat \\
+\hline
+\end{tabular}
+\caption{Time Savings Comparison: Before vs. After MyLoc}
+\label{tab:time_savings}
+\end{table}
+
+\subsection{Empowering Agencies}
+
+\subsubsection{Dedicated Agency Dashboard}
+Each agency has access to:
+\begin{itemize}
+    \item \textbf{Fleet Management}: Add, edit, delete cars with full details and photos.
+    \item \textbf{Request Center}: View and process all rental requests.
+    \item \textbf{Communication Hub}: Chat with administrators, receive notifications.
+    \item \textbf{Profile Management}: Update agency information and settings.
+\end{itemize}
+
+\subsubsection{Increased Visibility}
+Agencies benefit from:
+\begin{itemize}
+    \item Online presence without building their own website.
+    \item Exposure to all platform visitors and customers.
+    \item Customer reviews that build trust and reputation.
+    \item Email marketing through the follower system.
+\end{itemize}
+
+\subsection{Follower Subscription System}
+The platform includes a unique follower feature:
+\begin{itemize}
+    \item Visitors enter their email in the website footer to subscribe.
+    \item Followers receive automatic email notifications when new cars are added.
+    \item No account creation required—low barrier to engagement.
+    \item Keeps potential customers informed and engaged with the platform.
+    \item Helps agencies reach interested customers with new offerings.
+\end{itemize}
+
+% =============================================================
+% PRESENTATION OF HOST ORGANIZATION
+% =============================================================
 \section{Presentation of the Host Organization: Myloc Agency}
 This section provides an overview of the host organization, its mission, activities, and products, highlighting its innovative approach and global impact.
 
@@ -97,10 +393,39 @@ The system follows a modern microservices architecture with clear separation of 
     \label{fig:system_architecture}
 \end{figure}
 
+\subsubsection{Architecture Layers}
 \begin{itemize}
-    \item \textbf{Presentation Layer}: Angular frontend handling UI and user interactions, communicating with backend via REST APIs.
-    \item \textbf{Business/Application Layer}: Spring Boot and FastAPI microservices for booking, chat, role-based access, notifications, and payment workflows.
-    \item \textbf{Data Layer}: MySQL relational database ensuring data integrity and advanced queries.
+    \item \textbf{Presentation Layer (Frontend)}: Angular 16+ application providing responsive UI for all user roles. Features include dynamic routing, lazy loading, and role-based component rendering. Protected by AuthGuard for secure route access.
+    
+    \item \textbf{Business/Application Layer (Backend Services)}:
+    \begin{itemize}
+        \item \textbf{Main API (Spring Boot)}: Core backend handling cars, agencies, customers, bookings, comments, and notifications via RESTful endpoints.
+        \item \textbf{Payment Service (Spring Boot)}: Separate microservice for payment processing, contract generation, and QR code creation.
+        \item \textbf{Chatbot Service (Flask/FastAPI)}: AI-powered assistant integrated with ChatGPT API for customer support.
+    \end{itemize}
+    
+    \item \textbf{Security Layer (Keycloak)}: OAuth2/OpenID Connect authentication server managing user identities, roles, and access tokens.
+    
+    \item \textbf{Data Layer}: MySQL relational database ensuring data integrity, referential constraints, and complex queries for bookings and availability checks.
+\end{itemize}
+
+\subsubsection{Service Communication Flow}
+\begin{enumerate}
+    \item User interacts with Angular frontend.
+    \item Frontend sends HTTP requests to Spring Boot API with JWT token.
+    \item Backend validates token with Keycloak.
+    \item Business logic executes, database queries processed.
+    \item For payments: Main API communicates with Payment microservice.
+    \item For AI assistance: Frontend calls Flask chatbot API.
+    \item Responses returned to frontend, UI updated.
+\end{enumerate}
+
+\subsubsection{Containerization and Deployment}
+\begin{itemize}
+    \item \textbf{Docker}: Each service (Angular, Spring Boot, Flask, MySQL, Keycloak) containerized separately.
+    \item \textbf{Docker Compose}: Orchestrates all containers locally with defined networks and volumes.
+    \item \textbf{Kubernetes (Minikube)}: Production-like orchestration with pods, services, deployments, and ingress controllers.
+    \item \textbf{GitLab CI/CD}: Automated pipeline for testing, building Docker images, and deploying to Kubernetes.
 \end{itemize}
 
 \subsection{Design Pattern: RESTful Service-Oriented Architecture (SOA)}
@@ -123,8 +448,463 @@ The system follows a modern microservices architecture with clear separation of 
 \end{itemize}
 
 \section{Project Management and Design Methodology}
-\subsection{Agile Methodology}
-Development is organized in small iterative cycles, encouraging feedback, team collaboration, and continuous improvement. Scrum is used for sprint planning, daily stand-ups, and iterative delivery.
+
+\subsection{Traditional vs Agile Approaches}
+Before selecting a methodology for this project, it is essential to understand the fundamental differences between traditional (classical) and agile approaches to project management.
+
+\textbf{Traditional methodologies} (such as Waterfall, V-Model) follow a linear, sequential approach where each phase must be completed before the next begins. Requirements are defined upfront, and changes are difficult to incorporate once development starts. This approach works well for projects with stable, well-defined requirements but struggles with evolving needs.
+
+\textbf{Agile methodologies} embrace change and iterative development. Work is divided into short cycles (sprints or iterations), allowing for continuous feedback, adaptation, and improvement. Agile prioritizes working software, customer collaboration, and responding to change over rigid planning.
+
+Given the dynamic nature of our car rental platform—with multiple user roles, evolving features, and the need for frequent stakeholder feedback—an agile approach was clearly more suitable.
+
+\subsection{Methodology Selection: Why Scrum?}
+The choice of the Scrum methodology for our project is based on several fundamental considerations. Before detailing the advantages of Scrum, it is relevant to compare this methodology with other recognized agile approaches, such as \textbf{Kanban} and \textbf{Extreme Programming (XP)}.
+
+\subsubsection{Comparative Analysis of Agile Methods}
+
+\begin{table}[h!]
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|p{2cm}|p{3.8cm}|p{3.8cm}|p{3.8cm}|}
+\hline
+\rowcolor{gray!20}
+\textbf{Criteria} & \textbf{Scrum} & \textbf{Kanban} & \textbf{XP} \\
+\hline
+Structure & Fixed sprints (2-4 weeks), defined roles (PO, SM, Daily Scrum) & Visual board, no fixed iterations & Short iterations, rigorous practices (pair programming) \\
+\hline
+Flexibility & Priorities revised at sprint end & Real-time priority adjustments & Flexible but requires discipline \\
+\hline
+Collaboration & Strong via ceremonies and retrospectives & Continuous but less structured & Intense (pair programming) \\
+\hline
+Tracking & Burndown charts, Daily Scrum & Kanban board & Frequent feedback cycles \\
+\hline
+Ideal For & Frequent feature deliveries & Continuous flow projects & High-quality software \\
+\hline
+Adaptability & At sprint boundaries & Continuous & Feedback-driven \\
+\hline
+\end{tabular}
+\caption{Comparative Analysis of Agile Methods: Scrum, Kanban, and XP}
+\label{tab:agile_comparison_ch1}
+\end{table}
+
+\subsubsection{Justification for Choosing Scrum}
+
+After careful analysis, \textbf{Scrum} was selected as the project management methodology for the following reasons:
+
+\begin{enumerate}
+    \item \textbf{Clear Structure with Flexibility}: Scrum provides a well-defined framework with sprints, roles, and ceremonies, while still allowing adaptation at each iteration. This balance was essential for managing a complex multi-module platform.
+    
+    \item \textbf{Regular Deliveries}: Our project required frequent delivery of functional increments to stakeholders. Scrum's sprint-based approach ensured that new features (authentication, car management, booking system, chat, chatbot) were delivered and validated regularly.
+    
+    \item \textbf{Stakeholder Collaboration}: The platform involves multiple actors (Admin, Agency, Customer, Visitor, Follower). Scrum ceremonies—especially Sprint Reviews and Retrospectives—facilitated continuous feedback and alignment with user needs.
+    
+    \item \textbf{Risk Management}: By breaking the project into 8 sprints, we could identify and address risks early. Each sprint delivered tested, working functionality, reducing the risk of major failures at the end.
+    
+    \item \textbf{Team Coordination}: Daily Stand-ups ensured that blockers were identified and resolved quickly, maintaining project momentum.
+    
+    \item \textbf{Transparency}: Scrum artifacts (Product Backlog, Sprint Backlog, Burndown Charts) provided clear visibility into project progress for all stakeholders.
+\end{enumerate}
+
+\textbf{Why not Kanban?} While Kanban offers excellent flexibility, it lacks the structured iterations needed for our project, which required planned releases and defined milestones.
+
+\textbf{Why not XP?} Extreme Programming emphasizes technical practices like pair programming and test-driven development, which are valuable but require a highly disciplined team. Our project needed a broader project management framework, not just development practices.
+
+\subsection{Scrum Framework Overview}
+
+Scrum is an agile framework that enables teams to work together to deliver high-value products iteratively and incrementally. It provides a structured yet flexible approach to project management, emphasizing collaboration, accountability, and continuous improvement. Figure~\ref{fig:scrum_methodology} illustrates the complete Scrum process flow.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=14cm]{figures/scrum-process-flow.png}
+    \caption{Scrum Methodology Framework}
+    \label{fig:scrum_methodology_ch1}
+\end{figure}
+
+The Scrum framework consists of three main components: \textbf{Roles}, \textbf{Events} (Ceremonies), and \textbf{Artifacts}. Each component plays a crucial role in ensuring the successful delivery of the project.
+
+% ---------------------------------------------------------
+% SCRUM ROLES - DETAILED
+% ---------------------------------------------------------
+\subsubsection{Scrum Team Roles}
+
+The Scrum Team is composed of three distinct roles, each with specific responsibilities that contribute to the project's success. The team is self-organizing and cross-functional, meaning members have all the skills necessary to deliver the product increment.
+
+\paragraph{The Product Owner (PO)}
+The Product Owner is the guardian of the project and the representative of the client and their needs. The PO serves as the single point of contact between the development team and stakeholders, ensuring that the team always works on the most valuable features.
+
+\textbf{Key Responsibilities:}
+\begin{itemize}
+    \item \textbf{Vision Management}: Defines and communicates the product vision to ensure all team members understand the project goals.
+    \item \textbf{Backlog Management}: Creates, maintains, and prioritizes the Product Backlog, ensuring items are clearly defined with acceptance criteria.
+    \item \textbf{Stakeholder Communication}: Acts as the liaison between stakeholders and the development team, gathering requirements and feedback.
+    \item \textbf{Value Maximization}: Makes decisions that maximize the value delivered by the team in each sprint.
+    \item \textbf{Acceptance}: Accepts or rejects completed work based on the Definition of Done.
+\end{itemize}
+
+In our MyLoc project, the Product Owner was responsible for:
+\begin{itemize}
+    \item Gathering requirements from different user perspectives (Admin, Agency, Customer).
+    \item Prioritizing features like authentication, car management, booking, and chatbot.
+    \item Validating completed increments during Sprint Reviews.
+\end{itemize}
+
+\paragraph{The Scrum Master (SM)}
+The Scrum Master is a facilitator and servant-leader who ensures the team follows Scrum practices correctly. The SM is focused on the framework itself and removes any obstacles that prevent the team from achieving their sprint goals.
+
+\textbf{Key Responsibilities:}
+\begin{itemize}
+    \item \textbf{Process Facilitation}: Ensures all Scrum events take place and are productive, time-boxed, and positive.
+    \item \textbf{Impediment Removal}: Identifies and removes obstacles that block the team's progress.
+    \item \textbf{Team Protection}: Shields the team from external interruptions and distractions during the sprint.
+    \item \textbf{Coaching}: Helps team members understand Scrum theory, practices, and rules.
+    \item \textbf{Continuous Improvement}: Facilitates retrospectives and drives process improvements.
+    \item \textbf{Collaboration}: Works with the Product Owner to ensure the backlog is well-maintained and understood.
+\end{itemize}
+
+In our project, the Scrum Master:
+\begin{itemize}
+    \item Facilitated Daily Stand-ups and ensured they stayed within 15 minutes.
+    \item Resolved blockers related to environment setup, API integration, and deployment.
+    \item Ensured smooth communication between frontend and backend developers.
+\end{itemize}
+
+\paragraph{The Development Team}
+The Development Team is responsible for delivering potentially shippable product increments at the end of each sprint. The team is multidisciplinary, self-organized, and collectively accountable for the work delivered.
+
+\textbf{Key Characteristics:}
+\begin{itemize}
+    \item \textbf{Cross-Functional}: The team possesses all skills needed to create the product increment (frontend, backend, database, DevOps, testing).
+    \item \textbf{Self-Organizing}: Team members decide how to accomplish their work without being directed by others.
+    \item \textbf{Collaborative}: Members work together, share knowledge, and help each other overcome challenges.
+    \item \textbf{Accountable}: The entire team is responsible for delivering the sprint commitment, not individual members.
+    \item \textbf{Optimal Size}: Typically 3-9 members to ensure effective communication and productivity.
+\end{itemize}
+
+\textbf{Responsibilities:}
+\begin{itemize}
+    \item Transform backlog items into working software increments.
+    \item Estimate the effort required for backlog items.
+    \item Participate actively in all Scrum ceremonies.
+    \item Maintain code quality through testing and code reviews.
+    \item Deploy and document completed features.
+\end{itemize}
+
+In our MyLoc project, the Development Team handled:
+\begin{itemize}
+    \item Frontend development (Angular): UI components, routing, guards, services.
+    \item Backend development (Spring Boot): REST APIs, business logic, database operations.
+    \item AI Service (Flask): Chatbot integration with ChatGPT API.
+    \item DevOps: Docker containerization, Kubernetes deployment, GitLab CI/CD pipelines.
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=12cm]{figures/scrum-team-structure.png}
+    \caption{Scrum Team Structure and Interactions}
+    \label{fig:scrum_team_ch1}
+\end{figure}
+
+% ---------------------------------------------------------
+% SCRUM EVENTS - DETAILED
+% ---------------------------------------------------------
+\subsubsection{Scrum Events (Ceremonies)}
+
+Scrum defines five key events (ceremonies) that create regularity and minimize the need for meetings not defined in Scrum. Each event is time-boxed, meaning it has a maximum duration that ensures efficient use of time.
+
+\paragraph{Sprint}
+The Sprint is the heart of Scrum—a time-boxed iteration during which a "Done", usable, and potentially releasable product increment is created. Sprints have consistent durations throughout development and a new sprint starts immediately after the previous one concludes.
+
+\textbf{Key Characteristics:}
+\begin{itemize}
+    \item \textbf{Duration}: Fixed length of 1-4 weeks (our project used 10-15 day sprints).
+    \item \textbf{Consistency}: Sprint length remains constant throughout the project for predictability.
+    \item \textbf{Protection}: No changes are made during the sprint that would endanger the Sprint Goal.
+    \item \textbf{Scope Flexibility}: Scope may be clarified and re-negotiated between the PO and Development Team.
+    \item \textbf{Cancellation}: Only the Product Owner can cancel a sprint if the Sprint Goal becomes obsolete.
+\end{itemize}
+
+During a sprint, the team:
+\begin{itemize}
+    \item Develops the selected features from the Sprint Backlog.
+    \item Attends Daily Scrum meetings to synchronize work.
+    \item Refines backlog items for future sprints.
+    \item Prepares for the Sprint Review and Retrospective.
+\end{itemize}
+
+Our project was divided into \textbf{8 sprints}, each focusing on specific modules:
+\begin{itemize}
+    \item Sprint 0: Project setup, environment configuration, Keycloak integration.
+    \item Sprints 1-2: User authentication, role management, admin dashboard.
+    \item Sprints 3-4: Agency management, car CRUD operations, image upload.
+    \item Sprints 5-6: Customer features, booking system, availability checking.
+    \item Sprint 7: Chat system, chatbot integration, notifications.
+    \item Sprint 8: Payment integration, PDF contracts, QR codes, final testing.
+\end{itemize}
+
+\paragraph{Sprint Planning Meeting}
+Sprint Planning is a collaborative meeting that initiates the sprint. The entire Scrum Team participates to define what can be delivered in the upcoming sprint and how the work will be achieved. This meeting should not exceed 4 hours for a 2-week sprint.
+
+\textbf{Meeting Structure:}
+\begin{enumerate}
+    \item \textbf{Part 1 - What?}: The Product Owner presents the highest priority items from the Product Backlog. The team discusses and selects items they can commit to completing.
+    \item \textbf{Part 2 - How?}: The Development Team plans the work needed to deliver the selected items, breaking them into tasks.
+\end{enumerate}
+
+\textbf{Inputs:}
+\begin{itemize}
+    \item Prioritized Product Backlog
+    \item Team velocity (historical data on work completed per sprint)
+    \item Team capacity (availability considering holidays, other commitments)
+    \item Definition of Done
+\end{itemize}
+
+\textbf{Outputs:}
+\begin{itemize}
+    \item Sprint Goal: A clear objective for the sprint
+    \item Sprint Backlog: Selected items + plan for delivering them
+    \item Team commitment to deliver the increment
+\end{itemize}
+
+\paragraph{Daily Scrum (Stand-up)}
+The Daily Scrum is a 15-minute time-boxed event held every day at the same time and place. It is designed to synchronize activities, identify impediments, and plan the next 24 hours of work. Only the Development Team members participate actively, though others may attend as observers.
+
+\textbf{The Three Questions:}
+Each team member answers three questions:
+\begin{enumerate}
+    \item \textbf{What did I do yesterday?} - Progress report on completed tasks.
+    \item \textbf{What will I do today?} - Planned tasks for the current day.
+    \item \textbf{Are there any impediments?} - Blockers preventing progress.
+\end{enumerate}
+
+\textbf{Key Rules:}
+\begin{itemize}
+    \item Same time, same place every day (consistency).
+    \item Standing up to keep it short (hence "stand-up").
+    \item No problem-solving during the meeting—issues are taken offline.
+    \item Focus on progress toward the Sprint Goal, not status reporting.
+\end{itemize}
+
+\textbf{Benefits:}
+\begin{itemize}
+    \item Improves communication and team cohesion.
+    \item Quickly surfaces blockers for resolution.
+    \item Eliminates the need for other meetings.
+    \item Promotes quick decision-making and accountability.
+\end{itemize}
+
+In our project, Daily Scrums helped identify:
+\begin{itemize}
+    \item API endpoint mismatches between frontend and backend.
+    \item Docker configuration issues.
+    \item Keycloak token validation problems.
+    \item Database schema updates needed for new features.
+\end{itemize}
+
+\paragraph{Sprint Review}
+The Sprint Review is held at the end of the sprint to inspect the increment and adapt the Product Backlog if needed. The team presents what was accomplished during the sprint, and stakeholders provide feedback. This meeting should not exceed 2 hours for a 2-week sprint.
+
+\textbf{Participants:}
+\begin{itemize}
+    \item Scrum Team (PO, SM, Development Team)
+    \item Key stakeholders (invited by the Product Owner)
+\end{itemize}
+
+\textbf{Meeting Activities:}
+\begin{enumerate}
+    \item The Product Owner explains what backlog items have been "Done" and what has not been "Done".
+    \item The Development Team demonstrates the completed work and answers questions.
+    \item The Product Owner discusses the current state of the Product Backlog and projects likely completion dates.
+    \item The entire group collaborates on what to do next, providing input for the next Sprint Planning.
+    \item Review of timeline, budget, and marketplace for the next anticipated product release.
+\end{enumerate}
+
+\textbf{Outputs:}
+\begin{itemize}
+    \item Updated Product Backlog based on feedback.
+    \item Acceptance or rejection of completed items.
+    \item Input for the next sprint's planning.
+\end{itemize}
+
+\paragraph{Sprint Retrospective}
+The Sprint Retrospective is an opportunity for the Scrum Team to inspect itself and create a plan for improvements to be implemented during the next sprint. It occurs after the Sprint Review and before the next Sprint Planning. The meeting should not exceed 1.5 hours for a 2-week sprint.
+
+\textbf{Focus Areas:}
+\begin{itemize}
+    \item \textbf{People}: How well did the team collaborate?
+    \item \textbf{Relationships}: How was the communication within the team and with stakeholders?
+    \item \textbf{Processes}: Were the Scrum practices followed effectively?
+    \item \textbf{Tools}: Did the tools support or hinder the work?
+\end{itemize}
+
+\textbf{Common Format (Start-Stop-Continue):}
+\begin{itemize}
+    \item \textbf{Start}: What should we start doing?
+    \item \textbf{Stop}: What should we stop doing?
+    \item \textbf{Continue}: What should we continue doing?
+\end{itemize}
+
+\textbf{Alternative Format (Liked-Learned-Lacked-Longed For):}
+\begin{itemize}
+    \item \textbf{Liked}: What did we enjoy this sprint?
+    \item \textbf{Learned}: What new knowledge did we gain?
+    \item \textbf{Lacked}: What was missing or insufficient?
+    \item \textbf{Longed For}: What do we wish we had?
+\end{itemize}
+
+\textbf{Outputs:}
+\begin{itemize}
+    \item Identified improvements for the next sprint.
+    \item Action items with owners and deadlines.
+    \item Updated team working agreements if needed.
+\end{itemize}
+
+In our project, retrospectives led to improvements such as:
+\begin{itemize}
+    \item Better Git branching strategy (feature branches).
+    \item More thorough API documentation.
+    \item Earlier integration testing between frontend and backend.
+    \item Improved Docker compose configurations for faster local development.
+\end{itemize}
+
+\paragraph{Backlog Refinement (Grooming)}
+Backlog Refinement is an ongoing activity where the Product Owner and Development Team collaborate to add detail, estimates, and order to Product Backlog items. This is not an official Scrum event but is essential for maintaining a healthy backlog.
+
+\textbf{Activities:}
+\begin{itemize}
+    \item Adding details and acceptance criteria to user stories.
+    \item Estimating effort using story points or hours.
+    \item Splitting large items into smaller, more manageable ones.
+    \item Re-prioritizing items based on new information.
+    \item Removing obsolete items.
+\end{itemize}
+
+\textbf{Best Practice:} The Development Team should spend no more than 10\% of their capacity on refinement activities.
+
+% ---------------------------------------------------------
+% SCRUM ARTIFACTS - DETAILED
+% ---------------------------------------------------------
+\subsubsection{Scrum Artifacts}
+
+Scrum artifacts represent work or value and are designed to maximize transparency and provide opportunities for inspection and adaptation. The three primary artifacts are the Product Backlog, Sprint Backlog, and Increment.
+
+\paragraph{Product Backlog}
+The Product Backlog is an ordered list of everything that is known to be needed in the product. It is the single source of requirements for any changes to be made to the product. The Product Owner is responsible for the Product Backlog, including its content, availability, and ordering.
+
+\textbf{Characteristics:}
+\begin{itemize}
+    \item \textbf{Dynamic}: Constantly evolves as new requirements emerge.
+    \item \textbf{Ordered}: Items are prioritized based on value, risk, dependencies, and need.
+    \item \textbf{Detailed Appropriately}: Higher priority items are more detailed; lower priority items are less refined.
+    \item \textbf{Estimated}: Items have size estimates provided by the Development Team.
+    \item \textbf{Living Document}: Never complete—it grows and changes with the product.
+\end{itemize}
+
+\textbf{Backlog Item Structure (User Story Format):}
+\begin{quote}
+    \textit{As a [type of user], I want [goal/desire] so that [benefit/value].}
+\end{quote}
+
+\textbf{Prioritization Methods:}
+\begin{itemize}
+    \item \textbf{MoSCoW}: Must have, Should have, Could have, Won't have.
+    \item \textbf{Value vs. Effort}: Prioritize high-value, low-effort items first.
+    \item \textbf{WSJF (Weighted Shortest Job First)}: Cost of delay divided by duration.
+\end{itemize}
+
+In our project, the Product Backlog contained 40 user stories organized by epic:
+\begin{itemize}
+    \item Authentication \& Authorization (US-01 to US-05)
+    \item Admin Management (US-06 to US-12)
+    \item Agency Management (US-13 to US-19)
+    \item Customer Features (US-20 to US-30)
+    \item Communication \& Notifications (US-31 to US-35)
+    \item Payment \& Contracts (US-36 to US-40)
+\end{itemize}
+
+\paragraph{Sprint Backlog}
+The Sprint Backlog is the set of Product Backlog items selected for the Sprint, plus a plan for delivering the product Increment and realizing the Sprint Goal. It is a forecast by the Development Team about what functionality will be in the next Increment and the work needed to deliver it.
+
+\textbf{Components:}
+\begin{itemize}
+    \item Selected Product Backlog items (user stories).
+    \item Tasks breakdown for each item.
+    \item Estimated effort for each task.
+    \item Task assignments (self-selected by team members).
+    \item Sprint Goal.
+\end{itemize}
+
+\textbf{Characteristics:}
+\begin{itemize}
+    \item Owned exclusively by the Development Team.
+    \item Updated daily as work progresses.
+    \item Only the Development Team can add or modify items during the sprint.
+    \item Highly visible to all stakeholders.
+\end{itemize}
+
+\paragraph{Increment}
+The Increment is the sum of all the Product Backlog items completed during a sprint and the value of the increments of all previous sprints. At the end of a sprint, the new Increment must be "Done," meaning it must be in usable condition and meet the Scrum Team's Definition of Done.
+
+\textbf{Definition of Done (DoD):}
+Our project's Definition of Done included:
+\begin{itemize}
+    \item Code is written and follows coding standards.
+    \item Code is reviewed by at least one other team member.
+    \item Unit tests are written and passing.
+    \item Integration tests are passing.
+    \item Feature is documented (API endpoints, user guide).
+    \item Feature is deployed to staging environment.
+    \item Feature is demonstrated and accepted by Product Owner.
+\end{itemize}
+
+\paragraph{Burndown Chart}
+The Burndown Chart is a visual representation of work left to do versus time. It shows the progress of the team toward completing the Sprint Backlog and helps predict whether the team will complete all planned work by the end of the sprint.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=12cm]{figures/project-burndown-chart.png}
+    \caption{Example Sprint Burndown Chart}
+    \label{fig:burndown_chart_ch1}
+\end{figure}
+
+\textbf{Reading the Burndown Chart:}
+\begin{itemize}
+    \item \textbf{Ideal Line}: The theoretical progression if work is completed evenly throughout the sprint.
+    \item \textbf{Actual Line}: The real progress based on completed work.
+    \item \textbf{Above Ideal}: Team is behind schedule.
+    \item \textbf{Below Ideal}: Team is ahead of schedule.
+    \item \textbf{Plateau}: No progress—possible blockers or impediments.
+\end{itemize}
+
+\paragraph{Velocity Chart}
+Velocity is the amount of work a team completes during a sprint, measured in story points or hours. Tracking velocity helps the team forecast how much work they can complete in future sprints.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=12cm]{figures/velocity-chart.png}
+    \caption{Team Velocity Chart Across Sprints}
+    \label{fig:velocity_chart_ch1}
+\end{figure}
+
+\textbf{Uses of Velocity:}
+\begin{itemize}
+    \item Capacity planning for Sprint Planning.
+    \item Release forecasting (when will feature X be ready?).
+    \item Identifying trends (improving or declining productivity).
+    \item Detecting process problems (sudden velocity drops).
+\end{itemize}
+
+\subsection{Agile Methodology Implementation}
+Development was organized in 8 sprints of 10-15 days each, encouraging feedback, team collaboration, and continuous improvement. The project followed these Scrum practices:
+
+\begin{itemize}
+    \item \textbf{Sprint Planning}: Each sprint began with planning sessions to select user stories and define acceptance criteria.
+    \item \textbf{Daily Stand-ups}: Brief daily meetings to synchronize team activities and identify blockers.
+    \item \textbf{Sprint Reviews}: Demonstrations of completed features to validate functionality with stakeholders.
+    \item \textbf{Retrospectives}: Team reflections to improve processes and address challenges.
+    \item \textbf{Continuous Integration}: Automated builds and tests via GitLab CI/CD to ensure code quality.
+\end{itemize}
 
 \subsection{Development Environment}
 \subsubsection{Hardware Environment}
@@ -164,8 +944,9 @@ Development is organized in small iterative cycles, encouraging feedback, team c
     \item Kubernetes (K8s) for scalable microservice deployment.
 \end{itemize}
 
-\section{Problematic}
-The main challenge addressed by this project is the absence of a centralized and automated car rental platform capable of supporting multiple user roles, real-time communication, and dynamic availability validation. Existing solutions are fragmented, lack interaction between agencies and customers, and rely on manual processes that hinder efficiency and user satisfaction.
-
 \section{Conclusion}
-The chosen stack and practices enabled efficient development of a scalable, secure, and automated car rental platform with real-time messaging, QR-based contracts, automated notifications, and AI chatbot assistance. This project highlights the benefits of combining modern web technologies, microservice architecture, and agile practices to create a multi-role, interactive, and robust system.
+This chapter established the foundation of the MyLoc project by thoroughly examining the problematic situation faced by car rental agencies before digitalization, defining clear objectives for the platform, and demonstrating how the proposed solution addresses each identified challenge. The analysis of existing systems revealed significant gaps in multi-role management, real-time communication, and automation—all of which our platform solves through modern technologies and best practices.
+
+The Scrum methodology was selected after careful comparison with other agile approaches, providing the structured yet flexible framework needed for delivering a complex, multi-stakeholder platform. The development environment, combining Angular, Spring Boot, FastAPI, Keycloak, Docker, Kubernetes, and GitLab CI/CD, ensures a scalable, secure, and maintainable solution.
+
+The next chapter will detail the requirements analysis, including a comprehensive study of actors, functional and non-functional requirements, and use case specifications for each user role.

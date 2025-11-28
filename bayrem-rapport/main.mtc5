@@ -1,0 +1,16 @@
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {4.}1}Introduction}{\reset@font\mtcSfont 60}{section.4.1}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {4.}2}System Modules Implementation}{\reset@font\mtcSfont 60}{section.4.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.2.4}\else \textLR {4.2.1}\fi }Authentication and Authorization Module (Keycloak)}{\reset@font\mtcSSfont 60}{subsection.4.2.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.2.4}\else \textLR {4.2.2}\fi }Admin Module}{\reset@font\mtcSSfont 60}{subsection.4.2.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {3.2.4}\else \textLR {4.2.3}\fi }Agency Module}{\reset@font\mtcSSfont 60}{subsection.4.2.3}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {4.2.4}\else \textLR {4.2.4}\fi }Customer Module}{\reset@font\mtcSSfont 61}{subsection.4.2.4}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {5.2.4}\else \textLR {4.2.5}\fi }Chatbot Module (FastAPI + ChatGPT)}{\reset@font\mtcSSfont 61}{subsection.4.2.5}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {6.2.4}\else \textLR {4.2.6}\fi }Online Payment Module}{\reset@font\mtcSSfont 61}{subsection.4.2.6}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {7.2.4}\else \textLR {4.2.7}\fi }Notification and Email System}{\reset@font\mtcSSfont 61}{subsection.4.2.7}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {4.}3}Database Implementation}{\reset@font\mtcSfont 61}{section.4.3}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {4.}4}Screenshots of the Application}{\reset@font\mtcSfont 62}{section.4.4}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {4.}5}Testing and Validation}{\reset@font\mtcSfont 63}{section.4.5}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {1.5.4}\else \textLR {4.5.1}\fi }Unit Testing}{\reset@font\mtcSSfont 63}{subsection.4.5.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {2.5.4}\else \textLR {4.5.2}\fi }Integration Testing}{\reset@font\mtcSSfont 63}{subsection.4.5.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {\if@rl \I {3.5.4}\else \textLR {4.5.3}\fi }CI/CD Pipeline Validation}{\reset@font\mtcSSfont 63}{subsection.4.5.3}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {\filterminitoc {4.}6}Conclusion}{\reset@font\mtcSfont 63}{section.4.6}}

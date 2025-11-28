@@ -1,0 +1,736 @@
+% =============================================================
+% SCRUM ARTIFACTS - Car Rental Platform (Myloc Agency)
+% =============================================================
+% This file contains all Scrum documentation including:
+% - Product Backlog
+% - Sprint Planning
+% - Sprint Backlogs
+% - Burndown Chart Data
+% - Velocity Tracking
+% =============================================================
+
+% -------------------------------------------------------------
+% INTRODUCTION TO SCRUM ARTIFACTS
+% -------------------------------------------------------------
+\section{Introduction to Scrum Artifacts}
+
+Scrum artifacts provide key information that the Scrum Team and stakeholders need to understand the work being done, the value being created, and the progress being made. These artifacts are designed to maximize transparency and provide opportunities for inspection and adaptation.
+
+In the context of the MyLoc car rental platform, Scrum artifacts played a crucial role in organizing development work, tracking progress, and ensuring all stakeholders had visibility into the project status.
+
+\subsection{Purpose of Scrum Artifacts}
+
+\textbf{Product Backlog}: Serves as the single source of truth for all work to be done on the product. It contains all features, requirements, enhancements, and bug fixes needed for the MyLoc platform.
+
+\textbf{Sprint Backlog}: Provides a real-time picture of the work planned for the current sprint, helping the Development Team stay focused on the Sprint Goal.
+
+\textbf{Increment}: Represents the cumulative value delivered at the end of each sprint—a potentially releasable version of the product.
+
+\textbf{Burndown Charts}: Visual tools that helped our team track progress, identify potential delays early, and make data-driven decisions.
+
+\textbf{Velocity Charts}: Helped forecast future capacity and establish realistic sprint commitments based on historical performance.
+
+\subsection{How We Used Artifacts}
+Throughout the MyLoc project, these artifacts were:
+\begin{itemize}
+    \item \textbf{Maintained Continuously}: The Product Backlog was refined weekly, with new items added and priorities adjusted based on stakeholder feedback.
+    \item \textbf{Reviewed During Ceremonies}: Sprint Backlogs were created during Sprint Planning and reviewed daily during Stand-ups.
+    \item \textbf{Shared Transparently}: All artifacts were accessible to stakeholders, promoting trust and collaboration.
+    \item \textbf{Used for Decision Making}: Burndown and velocity data informed sprint planning and release forecasting.
+\end{itemize}
+
+% -------------------------------------------------------------
+% SECTION: Product Backlog
+% -------------------------------------------------------------
+\section{Product Backlog}
+The Product Backlog is the master list of all features, requirements, enhancements, and fixes that constitute the changes to be made to the product. Each item is described as a User Story with acceptance criteria, priority, and story point estimation.
+
+\subsection{User Stories and Prioritization}
+User stories follow the format: \textit{"As a [role], I want [feature] so that [benefit]"}. Priority levels are defined using MoSCoW method (Must have, Should have, Could have, Won't have).
+
+% Table split into two parts for better readability
+\subsubsection{Authentication, Car Management \& Booking (Sprints 1-3)}
+
+\begin{table}[h!]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|l|c|c|}
+\hline
+\rowcolor{gray!20}
+\textbf{ID} & \textbf{User Story Description} & \textbf{Priority} & \textbf{Sprint} \\
+\hline
+US-01 & Visitor registers an account & Must & 1 \\
+\hline
+US-02 & User logs in securely & Must & 1 \\
+\hline
+US-03 & Admin manages user roles & Must & 1 \\
+\hline
+US-04 & User resets password & Should & 1 \\
+\hline
+US-05 & User updates profile & Should & 2 \\
+\hline
+US-06 & Agency adds new cars & Must & 2 \\
+\hline
+US-07 & Agency edits car details & Must & 2 \\
+\hline
+US-08 & Agency deletes cars & Must & 2 \\
+\hline
+US-09 & Agency uploads car photos & Must & 2 \\
+\hline
+US-10 & Customer browses cars & Must & 2 \\
+\hline
+US-11 & Customer filters cars by criteria & Should & 2 \\
+\hline
+US-12 & Customer views car details & Must & 2 \\
+\hline
+US-13 & Customer checks car availability & Must & 3 \\
+\hline
+US-14 & Customer submits rental request & Must & 3 \\
+\hline
+US-15 & Agency views rental requests & Must & 3 \\
+\hline
+US-16 & Agency approves/rejects requests & Must & 3 \\
+\hline
+US-17 & Customer receives email notifications & Must & 3 \\
+\hline
+\end{tabular}
+\caption{Product Backlog - Part 1: Core Features (Sprints 1-3)}
+\label{tab:backlog_part1}
+\end{table}
+
+\subsubsection{Communication, Blog, Contracts \& DevOps (Sprints 4-8)}
+
+\begin{table}[h!]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|l|c|c|}
+\hline
+\rowcolor{gray!20}
+\textbf{ID} & \textbf{User Story Description} & \textbf{Priority} & \textbf{Sprint} \\
+\hline
+US-18 & Customer views booking history & Should & 4 \\
+\hline
+US-19 & Customer cancels pending requests & Should & 4 \\
+\hline
+US-20 & Admin chats with agencies & Must & 4 \\
+\hline
+US-21 & Agency receives real-time messages & Must & 4 \\
+\hline
+US-22 & User receives in-app notifications & Should & 4 \\
+\hline
+US-23 & Customer contacts admin via email & Should & 4 \\
+\hline
+US-24 & Admin creates blog posts & Should & 5 \\
+\hline
+US-25 & Admin edits/deletes blogs & Should & 5 \\
+\hline
+US-26 & Visitor reads blogs & Should & 5 \\
+\hline
+US-27 & Customer comments on blogs & Could & 5 \\
+\hline
+US-28 & Visitor becomes Follower (email subscription for new car alerts) & Could & 5 \\
+\hline
+US-29 & Customer receives PDF contract & Must & 6 \\
+\hline
+US-30 & Contract includes QR code & Should & 6 \\
+\hline
+US-31 & Customer pays online & Must & 6 \\
+\hline
+US-32 & Agency tracks payments & Should & 6 \\
+\hline
+US-33 & Visitor uses chatbot & Should & 7 \\
+\hline
+US-34 & Customer uses multilingual chatbot & Could & 7 \\
+\hline
+US-35 & Admin manages agencies & Must & 7 \\
+\hline
+US-36 & Admin views statistics & Should & 7 \\
+\hline
+US-37 & Admin manages customers & Should & 7 \\
+\hline
+US-38 & Developer creates Docker containers & Must & 8 \\
+\hline
+US-39 & Developer sets up CI/CD pipelines & Must & 8 \\
+\hline
+US-40 & Developer deploys on Kubernetes & Should & 8 \\
+\hline
+\end{tabular}
+\caption{Product Backlog - Part 2: Advanced Features (Sprints 4-8)}
+\label{tab:backlog_part2}
+\end{table}
+
+\subsection{Backlog Summary}
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Priority Level} & \textbf{Number of Stories} & \textbf{Total Story Points} \\
+\hline
+Must Have & 22 & 132 \\
+\hline
+Should Have & 14 & 63 \\
+\hline
+Could Have & 4 & 14 \\
+\hline
+\textbf{Total} & \textbf{40} & \textbf{209} \\
+\hline
+\end{tabular}
+\caption{Product Backlog Summary by Priority}
+\end{table}
+
+% -------------------------------------------------------------
+% SECTION: Sprint Planning Details
+% -------------------------------------------------------------
+\section{Sprint Planning}
+The project was executed over 8 sprints, each lasting 10-15 days. The team velocity stabilized at approximately 26 story points per sprint after the initial sprints.
+
+\subsection{Sprint Overview}
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|l|c|c|c|}
+\hline
+\rowcolor{gray!20}
+\textbf{Sprint} & \textbf{Goal} & \textbf{Duration} & \textbf{Planned SP} & \textbf{Completed SP} \\
+\hline
+1 & Authentication \& Setup & 12 days & 24 & 24 \\
+\hline
+2 & Car Management Module & 14 days & 28 & 28 \\
+\hline
+3 & Booking System Core & 15 days & 31 & 31 \\
+\hline
+4 & Communication Features & 12 days & 24 & 24 \\
+\hline
+5 & Blog \& Subscription & 10 days & 17 & 17 \\
+\hline
+6 & Contracts \& Payments & 15 days & 31 & 31 \\
+\hline
+7 & Chatbot \& Admin Panel & 12 days & 21 & 21 \\
+\hline
+8 & DevOps \& Deployment & 15 days & 34 & 34 \\
+\hline
+\rowcolor{gray!10}
+\multicolumn{3}{|r|}{\textbf{Total (105 days)}} & \textbf{210} & \textbf{210} \\
+\hline
+\end{tabular}
+\caption{Sprint Overview - Planned vs Completed Story Points}
+\end{table}
+
+% -------------------------------------------------------------
+% SPRINT 1: Authentication & Setup
+% -------------------------------------------------------------
+\subsection{Sprint 1: Authentication \& Platform Setup}
+\textbf{Sprint Goal:} Set up development environment and implement secure multi-role authentication using Keycloak.
+
+\textbf{Duration:} 12 days
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|p{5.5cm}|c|c|c|}
+\hline
+\rowcolor{gray!20}
+\textbf{Task} & \textbf{Description} & \textbf{Assignee} & \textbf{Hours} & \textbf{Status} \\
+\hline
+T1.1 & Initialize Angular 16 project & Dev & 4h & Done \\
+\hline
+T1.2 & Set up Spring Boot 3.x backend & Dev & 4h & Done \\
+\hline
+T1.3 & Configure MySQL database & Dev & 6h & Done \\
+\hline
+T1.4 & Deploy Keycloak container & Dev & 4h & Done \\
+\hline
+T1.5 & Implement registration API & Dev & 8h & Done \\
+\hline
+T1.6 & Implement JWT login & Dev & 10h & Done \\
+\hline
+T1.7 & Create AuthGuard & Dev & 8h & Done \\
+\hline
+T1.8 & Password reset feature & Dev & 6h & Done \\
+\hline
+T1.9 & Login/register UI & Dev & 8h & Done \\
+\hline
+T1.10 & Unit testing & Dev & 6h & Done \\
+\hline
+\end{tabular}
+\caption{Sprint 1 Backlog - Authentication \& Setup}
+\end{table}
+
+\textbf{Sprint 1 Retrospective:}
+\begin{itemize}
+    \item \textit{What went well:} Keycloak integration was smoother than expected.
+    \item \textit{What could improve:} Initial environment setup took longer due to Docker configuration on Windows.
+    \item \textit{Action items:} Document Docker setup steps for future reference.
+\end{itemize}
+
+% -------------------------------------------------------------
+% SPRINT 2: Car Management
+% -------------------------------------------------------------
+\subsection{Sprint 2: Car Management Module}
+\textbf{Sprint Goal:} Implement complete CRUD operations for car listings with image upload functionality.
+
+\textbf{Duration:} 14 days
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|p{5.5cm}|c|c|c|}
+\hline
+\rowcolor{gray!20}
+\textbf{Task} & \textbf{Description} & \textbf{Assignee} & \textbf{Hours} & \textbf{Status} \\
+\hline
+T2.1 & Design Voiture entity & Dev & 4h & Done \\
+\hline
+T2.2 & Create car CRUD endpoints & Dev & 8h & Done \\
+\hline
+T2.3 & Image upload service & Dev & 6h & Done \\
+\hline
+T2.4 & Car listing component & Dev & 6h & Done \\
+\hline
+T2.5 & Car detail page & Dev & 4h & Done \\
+\hline
+T2.6 & Search \& filter functionality & Dev & 8h & Done \\
+\hline
+T2.7 & Agency dashboard & Dev & 10h & Done \\
+\hline
+T2.8 & Profile update feature & Dev & 6h & Done \\
+\hline
+T2.9 & Form validation & Dev & 4h & Done \\
+\hline
+T2.10 & Integration testing & Dev & 6h & Done \\
+\hline
+\end{tabular}
+\caption{Sprint 2 Backlog - Car Management}
+\end{table}
+
+% -------------------------------------------------------------
+% SPRINT 3: Booking System
+% -------------------------------------------------------------
+\subsection{Sprint 3: Booking System Core}
+\textbf{Sprint Goal:} Implement the complete rental request workflow with availability checking and email notifications.
+
+\textbf{Duration:} 15 days
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|p{5.5cm}|c|c|c|}
+\hline
+\rowcolor{gray!20}
+\textbf{Task} & \textbf{Description} & \textbf{Assignee} & \textbf{Hours} & \textbf{Status} \\
+\hline
+T3.1 & Design Booking entity & Dev & 4h & Done \\
+\hline
+T3.2 & Availability checking algorithm & Dev & 10h & Done \\
+\hline
+T3.3 & Booking request API & Dev & 8h & Done \\
+\hline
+T3.4 & Booking form with date picker & Dev & 6h & Done \\
+\hline
+T3.5 & Agency request management & Dev & 8h & Done \\
+\hline
+T3.6 & Approve/reject workflow & Dev & 6h & Done \\
+\hline
+T3.7 & Configure SMTP email & Dev & 4h & Done \\
+\hline
+T3.8 & Email notification templates & Dev & 6h & Done \\
+\hline
+T3.9 & Booking history page & Dev & 6h & Done \\
+\hline
+T3.10 & End-to-end testing & Dev & 8h & Done \\
+\hline
+\end{tabular}
+\caption{Sprint 3 Backlog - Booking System}
+\end{table}
+
+% -------------------------------------------------------------
+% SPRINT 4: Communication Features
+% -------------------------------------------------------------
+\subsection{Sprint 4: Communication Features}
+\textbf{Sprint Goal:} Implement real-time chat system and notification infrastructure.
+
+\textbf{Duration:} 12 days
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|p{5.5cm}|c|c|c|}
+\hline
+\rowcolor{gray!20}
+\textbf{Task} & \textbf{Description} & \textbf{Assignee} & \textbf{Hours} & \textbf{Status} \\
+\hline
+T4.1 & Design ChatMessage entity & Dev & 3h & Done \\
+\hline
+T4.2 & WebSocket configuration & Dev & 8h & Done \\
+\hline
+T4.3 & Chat service \& endpoints & Dev & 6h & Done \\
+\hline
+T4.4 & Chat UI component & Dev & 8h & Done \\
+\hline
+T4.5 & Notification entity \& service & Dev & 6h & Done \\
+\hline
+T4.6 & Notification dropdown & Dev & 4h & Done \\
+\hline
+T4.7 & Contact admin feature & Dev & 4h & Done \\
+\hline
+T4.8 & Booking cancel functionality & Dev & 4h & Done \\
+\hline
+T4.9 & Polish chat interface & Dev & 4h & Done \\
+\hline
+T4.10 & Real-time testing & Dev & 6h & Done \\
+\hline
+\end{tabular}
+\caption{Sprint 4 Backlog - Communication Features}
+\end{table}
+
+% -------------------------------------------------------------
+% SPRINT 5: Blog System
+% -------------------------------------------------------------
+\subsection{Sprint 5: Blog \& Subscription System}
+\textbf{Sprint Goal:} Implement blog management and email subscription for visitors.
+
+\textbf{Duration:} 10 days
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|p{5.5cm}|c|c|c|}
+\hline
+\rowcolor{gray!20}
+\textbf{Task} & \textbf{Description} & \textbf{Assignee} & \textbf{Hours} & \textbf{Status} \\
+\hline
+T5.1 & Design Blog entity & Dev & 3h & Done \\
+\hline
+T5.2 & Blog CRUD API endpoints & Dev & 6h & Done \\
+\hline
+T5.3 & Admin blog management & Dev & 6h & Done \\
+\hline
+T5.4 & Public blog listing & Dev & 4h & Done \\
+\hline
+T5.5 & Blog detail with comments & Dev & 6h & Done \\
+\hline
+T5.6 & Comment functionality & Dev & 4h & Done \\
+\hline
+T5.7 & Follower entity & Dev & 2h & Done \\
+\hline
+T5.8 & Subscription API & Dev & 4h & Done \\
+\hline
+T5.9 & Subscription form & Dev & 3h & Done \\
+\hline
+T5.10 & Feature testing & Dev & 4h & Done \\
+\hline
+\end{tabular}
+\caption{Sprint 5 Backlog - Blog \& Subscription}
+\end{table}
+
+% -------------------------------------------------------------
+% SPRINT 6: Contracts & Payments
+% -------------------------------------------------------------
+\subsection{Sprint 6: Contracts \& Payments}
+\textbf{Sprint Goal:} Implement PDF contract generation with QR codes and online payment integration.
+
+\textbf{Duration:} 15 days
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|p{5.5cm}|c|c|c|}
+\hline
+\rowcolor{gray!20}
+\textbf{Task} & \textbf{Description} & \textbf{Assignee} & \textbf{Hours} & \textbf{Status} \\
+\hline
+T6.1 & Research PDF libraries (iText) & Dev & 4h & Done \\
+\hline
+T6.2 & Contract PDF template & Dev & 6h & Done \\
+\hline
+T6.3 & PDF generation service & Dev & 10h & Done \\
+\hline
+T6.4 & QR code integration (ZXing) & Dev & 6h & Done \\
+\hline
+T6.5 & Payment microservice & Dev & 6h & Done \\
+\hline
+T6.6 & Payment API endpoints & Dev & 10h & Done \\
+\hline
+T6.7 & Payment email template & Dev & 4h & Done \\
+\hline
+T6.8 & Payment webhook & Dev & 6h & Done \\
+\hline
+T6.9 & Auto-send PDF on payment & Dev & 4h & Done \\
+\hline
+T6.10 & Payment-to-contract testing & Dev & 8h & Done \\
+\hline
+\end{tabular}
+\caption{Sprint 6 Backlog - Contracts \& Payments}
+\end{table}
+
+% -------------------------------------------------------------
+% SPRINT 7: Chatbot & Admin
+% -------------------------------------------------------------
+\subsection{Sprint 7: Chatbot \& Admin Panel}
+\textbf{Sprint Goal:} Integrate AI chatbot and complete admin dashboard functionalities.
+
+\textbf{Duration:} 12 days
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|p{5.5cm}|c|c|c|}
+\hline
+\rowcolor{gray!20}
+\textbf{Task} & \textbf{Description} & \textbf{Assignee} & \textbf{Hours} & \textbf{Status} \\
+\hline
+T7.1 & FastAPI project setup & Dev & 4h & Done \\
+\hline
+T7.2 & OpenAI ChatGPT integration & Dev & 6h & Done \\
+\hline
+T7.3 & Chatbot REST endpoints & Dev & 4h & Done \\
+\hline
+T7.4 & Chatbot UI widget & Dev & 6h & Done \\
+\hline
+T7.5 & Multilingual support (FR/EN) & Dev & 4h & Done \\
+\hline
+T7.6 & Agency management (Admin) & Dev & 6h & Done \\
+\hline
+T7.7 & Customer management (Admin) & Dev & 4h & Done \\
+\hline
+T7.8 & Statistics dashboard & Dev & 6h & Done \\
+\hline
+T7.9 & Data visualization charts & Dev & 4h & Done \\
+\hline
+T7.10 & Integration testing & Dev & 4h & Done \\
+\hline
+\end{tabular}
+\caption{Sprint 7 Backlog - Chatbot \& Admin Panel}
+\end{table}
+
+% -------------------------------------------------------------
+% SPRINT 8: DevOps & Deployment
+% -------------------------------------------------------------
+\subsection{Sprint 8: DevOps \& Deployment}
+\textbf{Sprint Goal:} Containerize all services and establish CI/CD pipeline with Kubernetes deployment.
+
+\textbf{Duration:} 15 days
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|p{5.5cm}|c|c|c|}
+\hline
+\rowcolor{gray!20}
+\textbf{Task} & \textbf{Description} & \textbf{Assignee} & \textbf{Hours} & \textbf{Status} \\
+\hline
+T8.1 & Dockerfile for Angular & Dev & 4h & Done \\
+\hline
+T8.2 & Dockerfile for Spring Boot & Dev & 4h & Done \\
+\hline
+T8.3 & Dockerfile for FastAPI & Dev & 3h & Done \\
+\hline
+T8.4 & docker-compose.yml & Dev & 6h & Done \\
+\hline
+T8.5 & GitLab CI/CD pipeline & Dev & 10h & Done \\
+\hline
+T8.6 & GitLab Container Registry & Dev & 4h & Done \\
+\hline
+T8.7 & K8s deployment YAMLs & Dev & 10h & Done \\
+\hline
+T8.8 & K8s services \& ingress & Dev & 6h & Done \\
+\hline
+T8.9 & Minikube deployment & Dev & 8h & Done \\
+\hline
+T8.10 & Documentation & Dev & 4h & Done \\
+\hline
+\end{tabular}
+\caption{Sprint 8 Backlog - DevOps \& Deployment}
+\end{table}
+
+% -------------------------------------------------------------
+% SECTION: Burndown Chart Data
+% -------------------------------------------------------------
+\section{Sprint Burndown Analysis}
+The burndown chart tracks the remaining work (in story points) over the course of each sprint. Figure \ref{fig:burndown_chart} illustrates the project-level burndown across all sprints.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=14cm]{img/project-burndown-chart.png}
+    \caption{Project Burndown Chart - Story Points Remaining Over Sprints}
+    \label{fig:burndown_chart}
+\end{figure}
+
+\subsection{Project Burndown Data}
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\rowcolor{gray!20}
+\textbf{Sprint} & \textbf{Start SP} & \textbf{Completed SP} & \textbf{Remaining} \\
+\hline
+Project Start & 210 & -- & 210 \\
+\hline
+Sprint 1 (12 days) & 210 & 24 & 186 \\
+\hline
+Sprint 2 (14 days) & 186 & 28 & 158 \\
+\hline
+Sprint 3 (15 days) & 158 & 31 & 127 \\
+\hline
+Sprint 4 (12 days) & 127 & 24 & 103 \\
+\hline
+Sprint 5 (10 days) & 103 & 17 & 86 \\
+\hline
+Sprint 6 (15 days) & 86 & 31 & 55 \\
+\hline
+Sprint 7 (12 days) & 55 & 21 & 34 \\
+\hline
+Sprint 8 (15 days) & 34 & 34 & 0 \\
+\hline
+\rowcolor{gray!10}
+\textbf{Total (105 days)} & \textbf{210} & \textbf{210} & \textbf{0} \\
+\hline
+\end{tabular}
+\caption{Project Burndown - Story Points per Sprint}
+\end{table}
+
+\subsection{Sprint 3 Detailed Burndown (Example)}
+The following table shows the daily burndown for Sprint 3 (Booking System), demonstrating how work was completed throughout the 15-day period.
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\rowcolor{gray!20}
+\textbf{Day} & \textbf{Ideal} & \textbf{Actual} & \textbf{Done} \\
+\hline
+Day 1 & 28.9 & 31 & 0 \\
+\hline
+Day 2 & 26.8 & 29 & 2 \\
+\hline
+Day 3 & 24.8 & 26 & 3 \\
+\hline
+Day 4 & 22.7 & 24 & 2 \\
+\hline
+Day 5 & 20.7 & 21 & 3 \\
+\hline
+Day 6 & 18.6 & 18 & 3 \\
+\hline
+Day 7 & 16.5 & 15 & 3 \\
+\hline
+Day 8 & 14.5 & 12 & 3 \\
+\hline
+Day 9 & 12.4 & 9 & 3 \\
+\hline
+Day 10 & 10.3 & 7 & 2 \\
+\hline
+Day 11 & 8.3 & 5 & 2 \\
+\hline
+Day 12 & 6.2 & 3 & 2 \\
+\hline
+Day 13 & 4.1 & 2 & 1 \\
+\hline
+Day 14 & 2.1 & 1 & 1 \\
+\hline
+Day 15 & 0 & 0 & 1 \\
+\hline
+\end{tabular}
+\caption{Sprint 3 Daily Burndown Chart Data}
+\end{table}
+
+% -------------------------------------------------------------
+% SECTION: Team Velocity
+% -------------------------------------------------------------
+\section{Team Velocity}
+Team velocity measures the amount of work completed per sprint, expressed in story points. This metric helps in future sprint planning and capacity estimation. Figure \ref{fig:velocity_chart} visualizes the velocity trend across all sprints.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=14cm]{img/velocity-chart.png}
+    \caption{Team Velocity Chart - Story Points Completed per Sprint}
+    \label{fig:velocity_chart}
+\end{figure}
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\rowcolor{gray!20}
+\textbf{Sprint} & \textbf{Duration} & \textbf{Velocity (SP)} & \textbf{Cumulative SP} \\
+\hline
+Sprint 1 & 12 days & 24 & 24 \\
+\hline
+Sprint 2 & 14 days & 28 & 52 \\
+\hline
+Sprint 3 & 15 days & 31 & 83 \\
+\hline
+Sprint 4 & 12 days & 24 & 107 \\
+\hline
+Sprint 5 & 10 days & 17 & 124 \\
+\hline
+Sprint 6 & 15 days & 31 & 155 \\
+\hline
+Sprint 7 & 12 days & 21 & 176 \\
+\hline
+Sprint 8 & 15 days & 34 & 210 \\
+\hline
+\rowcolor{gray!10}
+\multicolumn{2}{|r|}{\textbf{Average Velocity}} & \textbf{26.25 SP} & \textbf{210 SP Total} \\
+\hline
+\end{tabular}
+\caption{Team Velocity per Sprint}
+\end{table}
+
+\textbf{Velocity Analysis:}
+\begin{itemize}
+    \item The team maintained an average velocity of \textbf{26.25 story points per sprint}.
+    \item Sprint 5 had lower velocity due to the complexity of blog features being lower than estimated.
+    \item Sprint 8 had higher velocity due to familiarity with DevOps tasks and parallel work streams.
+    \item Velocity remained consistent, indicating stable team performance and accurate estimation.
+\end{itemize}
+
+% -------------------------------------------------------------
+% SECTION: Definition of Done
+% -------------------------------------------------------------
+\section{Definition of Done (DoD)}
+A user story is considered "Done" when all the following criteria are met:
+
+\begin{itemize}
+    \item Code is written and follows project coding standards.
+    \item Unit tests are written and pass successfully.
+    \item Code is reviewed by at least one team member.
+    \item Feature is integrated with the main branch.
+    \item Feature is tested in the staging environment.
+    \item Documentation is updated (API docs, README if needed).
+    \item No critical or high-severity bugs remain.
+    \item Product Owner accepts the feature during Sprint Review.
+\end{itemize}
+
+% -------------------------------------------------------------
+% SECTION: Scrum Ceremonies Summary
+% -------------------------------------------------------------
+\section{Scrum Ceremonies}
+The following Scrum ceremonies were conducted throughout the project:
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|p{3.5cm}|p{3cm}|p{7cm}|}
+\hline
+\rowcolor{gray!20}
+\textbf{Ceremony} & \textbf{Frequency} & \textbf{Purpose} \\
+\hline
+Sprint Planning & Start of sprint & Define sprint goal and select backlog items \\
+\hline
+Daily Stand-up & Daily (15 min) & Share progress, plans, and blockers \\
+\hline
+Sprint Review & End of sprint & Demo completed features to stakeholders \\
+\hline
+Retrospective & End of sprint & Reflect on process and identify improvements \\
+\hline
+Backlog Refinement & Weekly & Clarify, estimate, and prioritize backlog items \\
+\hline
+\end{tabular}
+\caption{Scrum Ceremonies Overview}
+\label{tab:scrum_ceremonies}
+\end{table}

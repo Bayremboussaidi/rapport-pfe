@@ -3,68 +3,305 @@
 \section{Introduction}
 This chapter formally defines and analyzes the functional and non-functional needs of the car rental platform. By identifying limitations in existing systems, this section translates user expectations into specific system requirements, focusing on secure, real-time, and scalable services for car rentals, including role-based interactions, authentication, booking workflows, communication, and deployment. Following the context and problem analysis outlined in Chapter 1, this chapter ensures that the platform meets real user needs efficiently and securely.
 
-\section{Actors Identification}
-The platform supports the following primary actors:
+The requirements analysis follows a systematic approach:
+\begin{enumerate}
+    \item \textbf{Actor Identification}: Defining who interacts with the system and their responsibilities.
+    \item \textbf{Functional Requirements}: Specifying what the system must do for each actor.
+    \item \textbf{Non-Functional Requirements}: Defining quality attributes like performance, security, and scalability.
+    \item \textbf{Use Case Modeling}: Visualizing interactions between actors and the system.
+    \item \textbf{Class Modeling}: Defining the data structures and relationships.
+\end{enumerate}
 
+\section{Actors Identification}
+An actor represents an external entity that interacts with the system. Actors can be humans (users with different roles) or systems (automated services). Understanding actors is crucial for defining system boundaries and requirements.
+
+The MyLoc platform supports the following primary actors:
+
+\subsection{Human Actors}
+
+\subsubsection{Administrator}
+The Administrator is the highest-privilege user responsible for the overall management and oversight of the platform.
+
+\textbf{Role Description:}
 \begin{itemize}
-    \item \textbf{Administrator}: Manages agencies, blogs, customers, and system security. Has access to all system functionalities.
-    \item \textbf{Agency}: Manages cars, responds to rental requests, communicates with the admin, and handles customer interactions.
-    \item \textbf{Customer}: Can view public content, submit rental requests, interact with agencies, and track requests post-login.
-    \item \textbf{Visitor}: Unauthenticated user who can view public content and access the chatbot.
-    \item \textbf{Chatbot (System)}: AI-powered assistant via a FastAPI service connected to ChatGPT, available for visitors and registered users.
+    \item Manages the entire platform ecosystem including agencies, customers, and content.
+    \item Ensures platform security and enforces access control policies.
+    \item Monitors system health and performance metrics.
+    \item Coordinates with agencies through the built-in chat system.
+    \item Manages blog content to engage users and promote services.
 \end{itemize}
+
+\textbf{Key Permissions:}
+\begin{itemize}
+    \item Full CRUD operations on agencies, customers, and blog posts.
+    \item Access to all dashboards and administrative panels.
+    \item System configuration and settings management.
+    \item Direct communication with all agencies.
+\end{itemize}
+
+\subsubsection{Agency}
+Agencies are the car rental businesses that list their vehicles on the platform and manage customer bookings.
+
+\textbf{Role Description:}
+\begin{itemize}
+    \item Represents car rental companies that offer vehicles for rent.
+    \item Manages their own fleet of cars with full control over listings.
+    \item Processes customer rental requests (approve/reject).
+    \item Communicates with administrators for support and coordination.
+    \item Tracks booking history and manages availability calendars.
+\end{itemize}
+
+\textbf{Key Permissions:}
+\begin{itemize}
+    \item Full CRUD operations on their own cars only.
+    \item View and process rental requests for their vehicles.
+    \item Chat with administrators.
+    \item Manage agency profile and settings.
+\end{itemize}
+
+\subsubsection{Customer}
+Customers are registered users who browse cars and make rental requests.
+
+\textbf{Role Description:}
+\begin{itemize}
+    \item Primary consumers of the car rental service.
+    \item Can browse the full catalog and make informed decisions.
+    \item Submit rental requests with date ranges and preferences.
+    \item Track their booking history and request status.
+    \item Engage with the platform through comments, reviews, and the chatbot.
+\end{itemize}
+
+\textbf{Key Permissions:}
+\begin{itemize}
+    \item Browse all public content (cars, blogs).
+    \item Submit and manage their rental requests.
+    \item View their booking history and notifications.
+    \item Post comments and reviews.
+    \item Contact administrators via email.
+    \item Use the AI chatbot for assistance.
+\end{itemize}
+
+\subsubsection{Visitor}
+Visitors are unauthenticated users exploring the platform before registration.
+
+\textbf{Role Description:}
+\begin{itemize}
+    \item Potential customers browsing the platform without an account.
+    \item Can explore available cars and read blog content.
+    \item Can interact with the chatbot for information.
+    \item May subscribe as a Follower to receive updates.
+    \item Can initiate registration to become a Customer.
+\end{itemize}
+
+\textbf{Key Permissions:}
+\begin{itemize}
+    \item View public car listings (limited details).
+    \item Read blog posts.
+    \item Use the chatbot.
+    \item Subscribe as a Follower.
+    \item Register for a full account.
+\end{itemize}
+
+\subsubsection{Follower}
+Followers are visitors who subscribe to receive email updates without creating a full account.
+
+\textbf{Role Description:}
+\begin{itemize}
+    \item Interested users who want to stay informed about new offerings.
+    \item Subscribe by entering their email in the website footer.
+    \item Receive automatic notifications when new cars are added.
+    \item Represents a marketing channel for the platform.
+    \item Low-commitment engagement method to attract potential customers.
+\end{itemize}
+
+\textbf{Key Permissions:}
+\begin{itemize}
+    \item Subscribe to new car alerts.
+    \item Receive email notifications.
+    \item Unsubscribe at any time.
+\end{itemize}
+
+\subsection{System Actors}
+
+\subsubsection{Chatbot (AI Assistant)}
+The Chatbot is an automated AI-powered assistant that provides instant support to users.
+
+\textbf{System Description:}
+\begin{itemize}
+    \item Built with Flask/FastAPI backend connected to ChatGPT API.
+    \item Provides 24/7 automated assistance to visitors and customers.
+    \item Answers common questions about cars, bookings, and platform usage.
+    \item Supports multiple languages for international users.
+    \item Reduces workload on human support staff.
+\end{itemize}
+
+\textbf{Capabilities:}
+\begin{itemize}
+    \item Natural language processing for user queries.
+    \item Context-aware responses based on conversation history.
+    \item Integration with platform data for accurate information.
+    \item Fallback to human support for complex issues.
+\end{itemize}
+
+\subsection{Actor Hierarchy Diagram}
+Figure~\ref{fig:actor_hierarchy} shows the relationships between different actors and their inheritance of permissions.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{img/actor-hierarchy.png}
+    \caption{Actor Hierarchy and Permission Inheritance}
+    \label{fig:actor_hierarchy}
+\end{figure}
 
 \section{Needs Identification}
 
 \subsection{Functional Needs}
+Functional requirements define what the system must do—the features and capabilities it provides to each actor. These requirements are derived from user stories and stakeholder interviews.
+
+\subsubsection{Customer Functional Requirements}
+Customers are the primary end-users of the platform. Their requirements focus on ease of use, transparency, and efficient booking processes.
+
 \begin{itemize}
-    \item \textbf{Customers:}
+    \item \textbf{Browsing and Discovery:}
     \begin{itemize}
         \item Browse available cars and blogs without logging in.
-        \item Register, log in securely, and manage their profiles.
-        \item Search and filter cars based on availability and specifications.
-        \item Submit rental requests for cars with date availability checked.
-        \item Receive email notifications on rental request status (accepted/declined).
-        \item Access notifications and view rental request history.
-        \item Delete rental requests that are declined or not confirmed.
-        \item Comment and provide reviews on cars and blog posts.
-        \item Receive updates via email when new cars are added or blogs published.
+        \item Search and filter cars based on availability, type, price, and specifications.
+        \item View detailed car information including photos, features, and pricing.
+        \item Read reviews and ratings from other customers.
+    \end{itemize}
+
+    \item \textbf{Account Management:}
+    \begin{itemize}
+        \item Register with email verification for security.
+        \item Log in securely using Keycloak authentication.
+        \item Update profile information and preferences.
+        \item Reset password through secure email link.
+    \end{itemize}
+
+    \item \textbf{Booking and Rental:}
+    \begin{itemize}
+        \item Check real-time car availability for selected dates.
+        \item Submit rental requests with date range selection.
+        \item Receive immediate validation of date availability.
+        \item Track rental request status (pending, approved, rejected).
+        \item Cancel pending requests before processing.
+        \item View complete booking history.
+    \end{itemize}
+
+    \item \textbf{Communication and Support:}
+    \begin{itemize}
+        \item Receive email notifications on rental request status changes.
+        \item Receive PDF contract with QR code upon approval.
         \item Contact admin directly via email within the app.
-        \item Interact with the chatbot for support and inquiries.
+        \item Interact with the AI chatbot for instant support.
+        \item Receive in-app notifications for important updates.
     \end{itemize}
 
-    \item \textbf{Agencies:}
+    \item \textbf{Engagement:}
     \begin{itemize}
-        \item Register, log in securely, and manage agency profiles.
-        \item Add, edit, or delete cars and their features (name, model, type, photos).
-        \item Accept or decline rental requests from customers.
-        \item Send automated email responses to customers based on request status.
-        \item Communicate with admin via instant chat within the app.
-        \item Manage car availability and scheduling.
+        \item Comment and provide reviews on cars and blog posts.
+        \item Receive updates via email when new cars are added.
+        \item Share content on social media platforms.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Agency Functional Requirements}
+Agencies require tools to efficiently manage their fleet and customer interactions.
+
+\begin{itemize}
+    \item \textbf{Account and Profile:}
+    \begin{itemize}
+        \item Register as an agency with business details.
+        \item Log in securely with role-based authentication.
+        \item Manage agency profile, logo, and contact information.
+    \end{itemize}
+
+    \item \textbf{Fleet Management:}
+    \begin{itemize}
+        \item Add new cars with complete details (name, model, type, price, features).
+        \item Upload multiple photos for each car.
+        \item Edit car information and availability.
+        \item Delete cars from the platform.
+        \item Manage car availability calendars.
+    \end{itemize}
+
+    \item \textbf{Booking Management:}
+    \begin{itemize}
+        \item View all rental requests for their cars.
+        \item Accept or decline requests with one click.
+        \item Automatic email sent to customers upon decision.
+        \item Track booking history and statistics.
+    \end{itemize}
+
+    \item \textbf{Communication:}
+    \begin{itemize}
+        \item Chat with administrators in real-time.
         \item Receive notifications of new rental requests.
+        \item View message history for reference.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Administrator Functional Requirements}
+Administrators need comprehensive control over all platform aspects.
+
+\begin{itemize}
+    \item \textbf{Agency Management:}
+    \begin{itemize}
+        \item Add new agencies to the platform.
+        \item Edit agency information and status.
+        \item Delete or suspend agency accounts.
+        \item View agency performance metrics.
     \end{itemize}
 
-    \item \textbf{Administrators:}
+    \item \textbf{Customer Management:}
     \begin{itemize}
-        \item Manage agency accounts: add, edit, and delete agencies.
-        \item Manage customers: add, edit, and delete customer accounts.
-        \item Manage blog posts: add, edit, and delete blog content.
-        \item Oversee platform-wide notifications and communications.
-        \item Monitor system health and enforce security via secured route access (using Keycloak and AuthGuard).
-        \item Engage in chat with agencies for operational coordination.
-        \item Configure system settings and roles for access control.
+        \item View all registered customers.
+        \item Edit customer information if needed.
+        \item Delete or suspend customer accounts.
+        \item Handle customer complaints and issues.
     \end{itemize}
 
-    \item \textbf{System-wide Functionalities:}
+    \item \textbf{Content Management:}
     \begin{itemize}
-        \item Secure authentication and role-based authorization via Keycloak.
-        \item Instant messaging system enabling admin-agency communication.
-        \item Email notification system for updates, rental request status, and confirmations.
-        \item PDF generation with QR codes for confirmed rental contracts.
-        \item Integration of chatbot powered by an external Flask API for user assistance.
-        \item Deployment automation using GitLab CI/CD pipelines, Docker Compose, and Kubernetes.
-        \item Real-time availability checking for cars during rental request submission.
+        \item Create blog posts with rich content.
+        \item Edit and update existing blogs.
+        \item Delete inappropriate content.
+        \item Moderate comments and reviews.
     \end{itemize}
+
+    \item \textbf{Communication:}
+    \begin{itemize}
+        \item Chat with agencies for coordination.
+        \item Send platform-wide announcements.
+        \item Respond to customer contact emails.
+    \end{itemize}
+
+    \item \textbf{System Administration:}
+    \begin{itemize}
+        \item Monitor system health and performance.
+        \item Manage security settings via Keycloak.
+        \item Configure platform settings and preferences.
+        \item Access logs and audit trails.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Follower Functional Requirements}
+\begin{itemize}
+    \item Subscribe to updates by entering email in the website footer.
+    \item Receive automatic email notifications when new cars are added.
+    \item Stay informed about new offerings without a full account.
+    \item Unsubscribe from notifications at any time via email link.
+\end{itemize}
+
+\subsubsection{System-wide Functionalities}
+\begin{itemize}
+    \item Secure authentication and role-based authorization via Keycloak.
+    \item Instant messaging system enabling admin-agency communication.
+    \item Email notification system for updates, rental request status, and confirmations.
+    \item PDF generation with QR codes for confirmed rental contracts.
+    \item Integration of chatbot powered by Flask API for user assistance.
+    \item Deployment automation using GitLab CI/CD pipelines, Docker Compose, and Kubernetes.
+    \item Real-time availability checking for cars during rental request submission.
 \end{itemize}
 
 \subsection{Non-Functional Needs}
@@ -119,8 +356,21 @@ The platform supports the following primary actors:
 
 \section{System Design}
 
-\subsection{Global Use Case Diagram}
-The global use case diagram represents the overall interactions between primary actors (Customer, Agency, Administrator, Visitor) and the car rental platform. It highlights the key functionalities accessible to each actor, offering a high-level overview of the system's capabilities.
+This section presents the visual models that describe the system's structure and behavior. These diagrams follow the Unified Modeling Language (UML) standard and serve as blueprints for development.
+
+\subsection{Use Case Diagrams}
+Use case diagrams describe the functional requirements of the system from the user's perspective. They show what the system does, not how it does it. Each diagram represents the interactions between a specific actor and the system.
+
+\subsubsection{Global Use Case Overview}
+The global use case diagram represents the overall interactions between primary actors (Customer, Agency, Administrator, Visitor, Follower) and the car rental platform. It highlights the key functionalities accessible to each actor, offering a high-level overview of the system's capabilities.
+
+\textbf{Key System Boundaries:}
+\begin{itemize}
+    \item \textbf{Public Area}: Accessible to all users (visitors, customers, followers) - includes car browsing, blog reading, and chatbot interaction.
+    \item \textbf{Customer Area}: Requires customer authentication - includes booking, history, notifications.
+    \item \textbf{Agency Area}: Requires agency authentication - includes fleet management, request processing.
+    \item \textbf{Admin Area}: Requires administrator privileges - includes full platform management.
+\end{itemize}
 
 \subsubsection{Customer Use Case Diagram}
 The customer use case diagram illustrates the primary interactions between customers and the car rental platform. It shows how registered customers can manage their profiles, search and book vehicles, interact with the AI chatbot, and engage with the platform's content system.
@@ -132,6 +382,20 @@ The customer use case diagram illustrates the primary interactions between custo
     \label{fig:customer_interactions}
 \end{figure}
 
+\textbf{Primary Use Cases for Customer:}
+\begin{itemize}
+    \item \textbf{UC-C01: Browse Cars} - Customer explores the available car catalog with filtering options.
+    \item \textbf{UC-C02: View Car Details} - Customer examines detailed information, photos, and pricing.
+    \item \textbf{UC-C03: Check Availability} - System validates car availability for selected dates.
+    \item \textbf{UC-C04: Submit Rental Request} - Customer submits a booking request for a specific car and date range.
+    \item \textbf{UC-C05: Track Request Status} - Customer monitors the status of submitted requests.
+    \item \textbf{UC-C06: View Booking History} - Customer accesses past and current bookings.
+    \item \textbf{UC-C07: Receive Notifications} - Customer receives email and in-app notifications.
+    \item \textbf{UC-C08: Use Chatbot} - Customer interacts with AI assistant for support.
+    \item \textbf{UC-C09: Post Comments} - Customer leaves reviews on cars and blogs.
+    \item \textbf{UC-C10: Contact Admin} - Customer sends direct email to administrators.
+\end{itemize}
+
 \subsubsection{Agency Use Case Diagram}
 The agency use case diagram demonstrates how car rental agencies interact with the platform to manage their fleet, handle customer bookings, and maintain their business operations through the comprehensive agency dashboard.
 
@@ -141,6 +405,20 @@ The agency use case diagram demonstrates how car rental agencies interact with t
     \caption{Use Case Diagram for Agency - Fleet and Booking Management}
     \label{fig:agency_interactions}
 \end{figure}
+
+\textbf{Primary Use Cases for Agency:}
+\begin{itemize}
+    \item \textbf{UC-A01: Manage Profile} - Agency updates their business information and settings.
+    \item \textbf{UC-A02: Add Car} - Agency adds a new vehicle to their fleet with details and photos.
+    \item \textbf{UC-A03: Edit Car} - Agency modifies existing car information.
+    \item \textbf{UC-A04: Delete Car} - Agency removes a car from the platform.
+    \item \textbf{UC-A05: Upload Photos} - Agency uploads multiple images for each car.
+    \item \textbf{UC-A06: View Requests} - Agency sees all rental requests for their cars.
+    \item \textbf{UC-A07: Approve Request} - Agency accepts a customer's booking request.
+    \item \textbf{UC-A08: Reject Request} - Agency declines a customer's booking request.
+    \item \textbf{UC-A09: Chat with Admin} - Agency communicates with administrators in real-time.
+    \item \textbf{UC-A10: Receive Notifications} - Agency receives alerts for new requests.
+\end{itemize}
 
 \subsubsection{Administrator Use Case Diagram}
 The administrator use case diagram showcases the comprehensive system management capabilities available to platform administrators, including user management, content moderation, financial oversight, and system maintenance operations.
@@ -152,7 +430,39 @@ The administrator use case diagram showcases the comprehensive system management
     \label{fig:admin_interactions}
 \end{figure}
 
-\subsection{Global Class Diagram}
+\textbf{Primary Use Cases for Administrator:}
+\begin{itemize}
+    \item \textbf{UC-AD01: Manage Agencies} - Admin performs CRUD operations on agency accounts.
+    \item \textbf{UC-AD02: Manage Customers} - Admin manages customer accounts and issues.
+    \item \textbf{UC-AD03: Create Blog} - Admin publishes new blog content.
+    \item \textbf{UC-AD04: Edit Blog} - Admin updates existing blog posts.
+    \item \textbf{UC-AD05: Delete Blog} - Admin removes inappropriate content.
+    \item \textbf{UC-AD06: Chat with Agencies} - Admin communicates with agencies in real-time.
+    \item \textbf{UC-AD07: View Statistics} - Admin monitors platform metrics and performance.
+    \item \textbf{UC-AD08: Manage Settings} - Admin configures system preferences.
+    \item \textbf{UC-AD09: Respond to Contacts} - Admin replies to customer inquiries.
+    \item \textbf{UC-AD10: Monitor Security} - Admin oversees authentication and access control.
+\end{itemize}
+
+\subsubsection{Visitor and Follower Use Cases}
+\textbf{Visitor Use Cases:}
+\begin{itemize}
+    \item \textbf{UC-V01: Browse Public Content} - View car listings and blog posts.
+    \item \textbf{UC-V02: Use Chatbot} - Interact with AI assistant.
+    \item \textbf{UC-V03: Register Account} - Create a new customer account.
+    \item \textbf{UC-V04: Subscribe as Follower} - Enter email for notifications.
+\end{itemize}
+
+\textbf{Follower Use Cases:}
+\begin{itemize}
+    \item \textbf{UC-F01: Subscribe} - Enter email in footer form.
+    \item \textbf{UC-F02: Receive Alerts} - Get email when new cars are added.
+    \item \textbf{UC-F03: Unsubscribe} - Opt out of notifications via email link.
+\end{itemize}
+
+\subsection{Class Diagram}
+The class diagram represents the static structure of the system, showing the classes, their attributes, methods, and the relationships between them. It serves as the foundation for the database schema and backend models.
+
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\textwidth]{img/class-diagram.png}
@@ -160,68 +470,220 @@ The administrator use case diagram showcases the comprehensive system management
     \label{fig:class_diagram}
 \end{figure}
 
-\section{Specification}
-
-\subsection{Role Allocation}
-\subsubsection*{Scrum Master (SM)}
+\textbf{Core Entity Classes:}
 \begin{itemize}
-    \item \textbf{Responsibility:} Facilitates Scrum ceremonies, removes impediments, and ensures Agile principles are followed.
-    \item \textbf{Interaction:} Acts as a servant leader between Product Owner and development team, maintaining productivity and team alignment.
+    \item \textbf{User}: Base class for all user types with common attributes (id, email, password, role).
+    \item \textbf{Customer}: Extends User with customer-specific attributes (name, phone, address).
+    \item \textbf{Agency}: Extends User with agency details (company name, logo, description).
+    \item \textbf{Admin}: Extends User with administrative privileges.
+    \item \textbf{Follower}: Simple entity with email for newsletter subscriptions.
+    \item \textbf{Car}: Represents vehicles with attributes (name, model, type, price, images, availability).
+    \item \textbf{RentalRequest}: Links Customer to Car with dates, status, and timestamps.
+    \item \textbf{Blog}: Content entity with title, body, images, and author reference.
+    \item \textbf{Comment}: User feedback linked to Car or Blog.
+    \item \textbf{Message}: Chat messages between Admin and Agency.
+    \item \textbf{Notification}: Alerts for users with type, content, and read status.
 \end{itemize}
 
-\subsubsection*{Development Team (DT)}
+\textbf{Key Relationships:}
 \begin{itemize}
-    \item \textbf{Responsibility:} Design, implement, test, and deliver functional features of the platform within each sprint.
-    \item \textbf{Interaction:} Collaborate with Scrum Master and Product Owner to select tasks, implement solutions, validate outcomes, and deliver high-quality increments of the product.
+    \item Agency $\rightarrow$ Car: One-to-Many (Agency owns multiple cars).
+    \item Customer $\rightarrow$ RentalRequest: One-to-Many (Customer makes multiple requests).
+    \item Car $\rightarrow$ RentalRequest: One-to-Many (Car can have multiple requests).
+    \item User $\rightarrow$ Comment: One-to-Many (User posts multiple comments).
+    \item Admin $\rightarrow$ Blog: One-to-Many (Admin creates multiple blogs).
+    \item Admin $\leftrightarrow$ Agency (via Message): Many-to-Many communication.
 \end{itemize}
 
-\subsection{Scrum Planning}
+% =============================================================
+% PROJECT MANAGEMENT METHODOLOGY
+% =============================================================
+\section{Project Management Methodology}
+
+\subsection{Traditional vs Agile Methods}
+Before selecting a methodology for this project, it is essential to understand the fundamental differences between traditional (classical) and agile approaches to project management. The following table presents a comprehensive comparison:
+
+\begin{table}[h!]
+\centering
+\small
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{2.8cm}|p{5.2cm}|p{5.2cm}|}
+\hline
+\rowcolor{gray!20}
+\textbf{Criteria} & \textbf{Traditional Methods} & \textbf{Agile Methods} \\
+\hline
+Process & Linear, sequential (V-Model, Waterfall) & Iterative, incremental (Scrum, Kanban) \\
+\hline
+Requirements & Detailed specs fixed at project start & Evolving specs, adjusted continuously \\
+\hline
+Flexibility & Low, hard to integrate changes & High, continuous adaptation \\
+\hline
+Delivery & Single delivery at project end & Frequent functional increments \\
+\hline
+Client Interaction & Limited after requirements phase & Continuous collaboration \\
+\hline
+Risk Management & Upfront identification, few adjustments & Continuous with iterative adjustments \\
+\hline
+Planning & Complete upfront, rigid & Flexible, adjusted per iteration \\
+\hline
+Ideal Project & Simple, well-defined, stable & Complex, evolving requirements \\
+\hline
+Examples & V-Model, Waterfall, PERT & Scrum, Kanban, XP \\
+\hline
+\end{tabular}
+\caption{Comparison between Traditional and Agile Methods}
+\label{tab:traditional_vs_agile}
+\end{table}
+
+\subsection{Methodology Selection}
+The choice of the Scrum methodology for our project is based on several fundamental considerations. Before detailing the advantages of Scrum, it is relevant to compare this methodology with other recognized agile approaches, such as \textbf{Kanban} and \textbf{Extreme Programming (XP)}.
+
+The following comparative table presents the three agile methods and justifies the choice of Scrum:
+
+\begin{table}[h!]
+\centering
+\small
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{2.2cm}|p{3.6cm}|p{3.6cm}|p{3.6cm}|}
+\hline
+\rowcolor{gray!20}
+\textbf{Criteria} & \textbf{Scrum} & \textbf{Kanban} & \textbf{XP} \\
+\hline
+Structure & Fixed sprints (10-15 days), defined roles \& ceremonies & Visual board, no fixed iterations & Short iterations, rigorous practices \\
+\hline
+Flexibility & Adaptation at sprint end & Real-time priority changes & Flexible but requires rigor \\
+\hline
+Collaboration & Strong via ceremonies \& retrospectives & Continuous but less structured & Intense (pair programming) \\
+\hline
+Tracking & Burndown charts, Daily Scrum & Kanban board & Frequent feedback \\
+\hline
+Ideal For & Frequent deliveries & Continuous flow projects & High-quality software \\
+\hline
+Adaptability & High at sprint boundaries & Continuous & Feedback-driven \\
+\hline
+\end{tabular}
+\caption{Comparison between Agile Methods: Scrum, Kanban, and XP}
+\label{tab:agile_comparison}
+\end{table}
+
+\textbf{Justification for Choosing Scrum:}
 \begin{itemize}
-    \item \textbf{Sprint Goal Definition:} Each sprint starts with a clearly defined goal contributing to project progress.
-    \item \textbf{Backlog Refinement:} Regular review and prioritization of the product backlog.
-    \item \textbf{Sprint Backlog Creation:} Select prioritized tasks and break them into actionable items.
-    \item \textbf{Task Estimation:} Estimate tasks using story points or time-based measures.
-    \item \textbf{Daily Stand-ups:} Short meetings to share progress, blockers, and daily goals.
-    \item \textbf{Sprint Review and Retrospective:} Review completed features and reflect internally on improvements.
+    \item \textbf{Scrum} is chosen for its clear structure, which combines flexibility and rigor, while promoting close collaboration and continuous adaptation at each sprint.
+    \item This methodology is particularly suited to our project, which requires regular deliveries and strong interaction with stakeholders.
+    \item \textbf{Kanban} is flexible but lacks structure for projects requiring well-defined iterations.
+    \item \textbf{XP} is very effective for code quality but demands rigorous discipline and is more oriented towards pure software development.
 \end{itemize}
 
-\subsection{Sprint Planning Overview}
-\begin{longtable}{|>{\raggedright\arraybackslash}p{2cm}|>{\raggedright\arraybackslash}p{13cm}|}
-\hline
-\textbf{ID} & \textbf{Sprint} \\
-\hline
-\endfirsthead
-\hline
-\textbf{ID} & \textbf{Sprint} \\
-\hline
-\endhead
-\hline
-\endfoot
-\hline
-\caption{Sprint Planning Overview} \\
-\endlastfoot
-1 & Platform Setup, Environment Configuration, and Project Initialization (Angular, Spring Boot, Keycloak) \\
-\hline
-2 & User Registration, Login, and Role-Based Access Control (Admin, Agency, Customer) \\
-\hline
-3 & Car Management Module: Add, Edit, Delete, List Cars (Admin & Agency) \\
-\hline
-4 & Rental Request Flow: Submit, Approve/Reject, Email Notifications \\
-\hline
-5 & Real-Time Chat Between Admin and Agencies + Notification System \\
-\hline
-6 & Blog Module: Create, View, Comment on Blogs + Email Updates \\
-\hline
-7 & PDF Generation with QR Code for Confirmed Rentals + Car Availability Checking \\
-\hline
-8 & Chatbot Integration via Flask API for Visitors and Customers \\
-\hline
-9 & Final Integrations: Booking History, Contact Admin, Dashboard Statistics \\
-\hline
-10 & Testing, CI/CD with GitLab Pipelines, Docker/Kubernetes Deployment \\
-\end{longtable}
+\subsection{Scrum Methodology Overview}
+Scrum is an agile project management method designed to improve team productivity, even remotely, while allowing continuous product optimization through regular user feedback. Inspired by rugby, where teams gather in a scrum, Scrum encourages a dynamic and participative approach to project management.
 
-\subsection{Conclusion}
-In this chapter, we explored the functional and non-functional requirements for the car rental platform. We identified the different user roles (Admin, Agency, Customer, Visitor), their needs, and outlined the system features accordingly. We also established the development methodology using Scrum, assigned team roles, and laid out the sprint plan and product backlog. This structured specification ensures the platform is developed efficiently, securely, and in alignment with user needs.
+This ensures a fair balance between initial investment and the final delivered product, offering flexibility to redirect the project along the way. Scrum is widely adopted by development teams because it promotes:
+\begin{itemize}
+    \item Collaboration with the client
+    \item Acceptance of change
+    \item Interaction between team members
+    \item Delivery of operational software
+\end{itemize}
 
-In the next chapter, we will focus on the **first sprint**, dedicated to platform setup, secure authentication using Keycloak, and user role management.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{img/scrum.PNG}
+    \caption{Scrum Methodology Overview}
+    \label{fig:scrum_methodology}
+\end{figure}
+
+\subsubsection{Scrum Key Concepts}
+
+\textbf{Sprint}\\
+Scrum breaks down the project into different iterations called sprints. Each sprint lasts no more than four weeks, during which the team develops the features specified in the product backlog.
+
+\vspace{0.5cm}
+\textbf{Daily Scrum (Daily Stand-up)}\\
+This is a 15-minute daily meeting that tracks project progress. During this meeting, team members present:
+\begin{itemize}
+    \item Tasks completed yesterday
+    \item Tasks planned for today
+    \item Identified obstacles preventing them from reaching their goal
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Sprint Planning Meeting}\\
+A sprint planning meeting lasting no more than 4 hours, during which the team selects the priority features to develop for the upcoming sprint.
+
+\vspace{0.5cm}
+\textbf{Sprint Review}\\
+The sprint review is a meeting at the end of the sprint where the team presents the developed features to the client and collects corresponding feedback.
+
+\vspace{0.5cm}
+\textbf{Sprint Retrospective}\\
+A meeting where the team reflects on the sprint to identify what went well, what could be improved, and action items for the next sprint.
+
+\subsubsection{Scrum Team Composition}
+The Scrum team consists of the Scrum Master, the Product Owner, and the Development Team. The team's objective is to have business value to display at the end of each sprint and to make the most profitable increments at each sprint.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|p{4cm}|p{10cm}|}
+\hline
+\textbf{Role} & \textbf{Description} \\
+\hline
+\textbf{Product Owner (PO)} & Guardian of the project and representative of the client and their needs. Responsible for maximizing the value of the product and managing the product backlog. \\
+\hline
+\textbf{Scrum Master (SM)} & Facilitator of project realization, team animator focused on the Scrum framework to ensure its proper implementation. Removes impediments and coaches the team. \\
+\hline
+\textbf{Development Team} & Handles multidisciplinary realizations, is self-organized, and is responsible for the delivered increment. Cross-functional team capable of delivering potentially shippable product increments. \\
+\hline
+\end{tabular}
+\caption{Scrum Team Roles and Responsibilities}
+\label{tab:scrum_roles}
+\end{table}
+
+The Scrum team for this project is presented in the following table:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Product Owner} & \textbf{Scrum Master} & \textbf{Development Team} \\
+\hline
+Amine Ben Chaabane & Mme. Sawsen Jalel & Bayrem Boussaidi \\
+\hline
+\end{tabular}
+\caption{Project Scrum Team}
+\label{tab:project_scrum_team}
+\end{table}
+
+% =============================================================
+% SCRUM IMPLEMENTATION DETAILS
+% =============================================================
+\section{Scrum Implementation and Artifacts}
+This section presents the detailed Scrum artifacts used throughout the project, including the product backlog, sprint planning, burndown charts, and velocity tracking—similar to tools like Jira.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=12cm]{img/scrum-team-structure.png}
+    \caption{Scrum Team Structure - Myloc Agency Project}
+    \label{fig:scrum_team}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=14cm]{img/scrum-process-flow.png}
+    \caption{Scrum Process Flow}
+    \label{fig:scrum_process}
+\end{figure}
+
+% Include the comprehensive Scrum artifacts
+\input{sections/scrum_artifacts}
+
+\subsection{Chapter Conclusion}
+In this chapter, we explored the functional and non-functional requirements for the car rental platform. We identified the different user roles (Admin, Agency, Customer, Visitor), their needs, and outlined the system features accordingly. 
+
+We also established the development methodology using Scrum, assigned team roles (Product Owner, Scrum Master, Development Team), and laid out the complete sprint plan with a detailed product backlog containing 40 user stories totaling 210 story points. The project was organized into 8 sprints with an average team velocity of 26.25 story points per sprint.
+
+This structured specification ensures the platform is developed efficiently, securely, and in alignment with user needs through iterative development and continuous feedback.
+
+\section{Conclusion}
+The analysis and specification phase has established a solid foundation for the project. With clearly defined requirements, comprehensive use case diagrams, and a detailed Scrum planning with product backlog, the development team is well-prepared to begin implementation.
+
+In the following chapters, we will detail the realization of each sprint, starting with Sprint 1 focused on platform setup and secure authentication using Keycloak.

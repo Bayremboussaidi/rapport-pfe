@@ -65,6 +65,182 @@ The application is organized into modular components corresponding to specific f
     \item Notifications are stored in the database and displayed in-app.
 \end{itemize}
 
+\subsubsection{Email Confirmation System}
+When an agency approves a rental request, the system automatically generates and sends a confirmation email to the customer. This email contains all booking details and a PDF contract with a unique QR code for verification.
+
+\textbf{Email Workflow:}
+\begin{enumerate}
+    \item Agency clicks "Approve" on a pending rental request.
+    \item Backend generates a PDF contract with booking details.
+    \item A unique QR code is embedded in the PDF for verification at pickup.
+    \item Email service sends the confirmation with PDF attachment.
+    \item Customer receives instant notification (in-app + email).
+    \item Booking status changes from "PENDING" to "APPROVED".
+\end{enumerate}
+
+\textbf{Example: Confirmation Email Sent to Customer}
+
+Figure~\ref{fig:email_confirmation} shows a real example of a confirmation email sent to a customer after their booking was approved.
+
+\begin{figure}[h!]
+    \centering
+    \fbox{
+    \begin{minipage}{0.85\textwidth}
+    \vspace{0.5cm}
+    \begin{center}
+    \textbf{\Large Confirmation de Réservation}
+    \end{center}
+    \vspace{0.3cm}
+    
+    \textbf{Chèr(e) Notre Client(e),}
+    
+    \vspace{0.3cm}
+    
+    \begin{tabular}{ll}
+    \textbf{Nom:} & Aloui \\
+    \textbf{Email:} & zahidaaloui506@gmail.com \\
+    \textbf{Message:} & Votre réservation pour \textbf{CLA A} a été confirmée. \\
+    \end{tabular}
+    
+    \vspace{0.5cm}
+    
+    Nous vous remercions de votre confiance.
+    
+    \vspace{0.3cm}
+    
+    Pour toute question supplémentaire, notre équipe reste à votre disposition.
+    
+    \vspace{0.5cm}
+    
+    \begin{center}
+    % Note: Add your QR code image here (img/qr-code-example.png)
+    % Or use a placeholder box:
+    \fbox{\parbox{2.5cm}{\centering\vspace{1cm}\textbf{QR Code}\\\small(Scan at pickup)\vspace{1cm}}}
+    
+    \small\textit{Scannez ce QR code lors de la récupération du véhicule}
+    \end{center}
+    
+    \vspace{0.3cm}
+    
+    \hrule
+    \vspace{0.2cm}
+    \small
+    \textit{Cet email a été envoyé automatiquement par la plateforme MyLoc.}
+    
+    \textit{Ne pas répondre à cet email.}
+    \vspace{0.3cm}
+    \end{minipage}
+    }
+    \caption{Example of Booking Confirmation Email with QR Code}
+    \label{fig:email_confirmation}
+\end{figure}
+
+\textbf{Email Content Details:}
+\begin{itemize}
+    \item \textbf{Subject Line}: "Confirmation de Réservation - MyLoc Agency"
+    \item \textbf{Recipient}: Customer's registered email address.
+    \item \textbf{Body}: Personalized message with customer name and car details.
+    \item \textbf{Attachment}: PDF contract with complete booking information.
+    \item \textbf{QR Code}: Unique identifier for the booking, scannable at vehicle pickup.
+\end{itemize}
+
+\textbf{QR Code Verification Process:}
+\begin{enumerate}
+    \item Customer arrives at the agency to pick up the vehicle.
+    \item Agency staff scans the QR code from the email or PDF.
+    \item System verifies the booking details and validity.
+    \item If valid, the rental process proceeds.
+    \item Booking status updates to "IN\_PROGRESS" or "COMPLETED".
+\end{enumerate}
+
+\subsubsection{Rejection Email Example}
+When an agency declines a rental request, a simple notification email is sent to inform the customer.
+
+\begin{figure}[h!]
+    \centering
+    \fbox{
+    \begin{minipage}{0.85\textwidth}
+    \vspace{0.5cm}
+    \begin{center}
+    \textbf{\Large Notification de Réservation}
+    \end{center}
+    \vspace{0.3cm}
+    
+    \textbf{Email:} zahidaaloui506@gmail.com
+    
+    \vspace{0.5cm}
+    
+    \textbf{Message:}
+    
+    Votre réservation pour \textbf{Toyota Corolla} a été refusée.
+    
+    \vspace{0.5cm}
+    
+    \hrule
+    \vspace{0.2cm}
+    \small
+    \textit{MyLoc Agency}
+    \vspace{0.3cm}
+    \end{minipage}
+    }
+    \caption{Example of Booking Rejection Email}
+    \label{fig:email_rejection}
+\end{figure}
+
+\textbf{Note:} Unlike the confirmation email, the rejection email does not include a PDF attachment or QR code. It is a simple notification to inform the customer that their request was not accepted.
+
+\subsubsection{New Car Alert Email (For Followers)}
+Followers who subscribed via the website footer receive automatic emails when new cars are added to the platform.
+
+\begin{figure}[h!]
+    \centering
+    \fbox{
+    \begin{minipage}{0.85\textwidth}
+    \vspace{0.5cm}
+    \begin{center}
+    \textbf{\Large New Car Alert}
+    \end{center}
+    \vspace{0.3cm}
+    
+    \textbf{Message:}
+    
+    \vspace{0.3cm}
+    
+    A new car \textbf{"Mercedes CLA 200"} has just been added to our agency. Check it out now!
+    
+    \vspace{0.5cm}
+    
+    \hrule
+    \vspace{0.2cm}
+    \small
+    \textit{MyLoc Agency - You are receiving this email because you subscribed to our alerts.}
+    \vspace{0.3cm}
+    \end{minipage}
+    }
+    \caption{Example of New Car Alert Email for Followers}
+    \label{fig:email_follower}
+\end{figure}
+
+\textbf{Email Types Summary:}
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\rowcolor{gray!20}
+\textbf{Email Type} & \textbf{PDF Attached} & \textbf{QR Code} & \textbf{Recipient} \\
+\hline
+Booking Confirmation & Yes & Yes & Customer \\
+\hline
+Booking Rejection & No & No & Customer \\
+\hline
+New Car Alert & No & No & Followers \\
+\hline
+\end{tabular}
+\caption{Email Types and Their Content}
+\label{tab:email_types}
+\end{table}
+
 \section{Database Implementation}
 The platform uses a MySQL relational database. Entities are mapped via JPA annotations and structured around key objects:
 
